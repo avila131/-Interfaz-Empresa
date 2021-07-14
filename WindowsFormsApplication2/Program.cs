@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -157,7 +157,11 @@ namespace WindowsFormsApplication2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form9());
+            Form9 loginForm = new Form9();
+            Application.Run(loginForm);
+
+            if (loginForm.UserSuccessfullyAuthenticated)
+                Application.Run(new Form1());
         }
     }
 }
