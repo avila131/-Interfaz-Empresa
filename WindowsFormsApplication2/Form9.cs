@@ -1,11 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -13,12 +6,27 @@ namespace WindowsFormsApplication2
 {
     public partial class Form9 : Form
     {
+        public bool UserSuccessfullyAuthenticated { get; private set; }
+        public string userRole;
+
         public MySqlDataReader reader;
         public Form9()
         {
             InitializeComponent();
         }
 
+        public bool canOpenConnection()
+        {
+            try
+            {
+                string connectionString = "datasource=localhost;port=3306;username='" + textBox1.Text
+                    + "';password='" + textBox2.Text + "';database=mydb;";
+                Program.databaseConnection = new MySqlConnection(connectionString);
+                Program.databaseConnection.Open();
+                return true;
+            }
+            catch { return false; }
+        }
         private void Form9_Load(object sender, EventArgs e)
         {
 
@@ -28,34 +36,23 @@ namespace WindowsFormsApplication2
         {
             string connectionString = "datasource=localhost;port=3306;username='" + textBox1.Text
                 + "';password='" + textBox2.Text + "';database=mydb;";
-            using (Program.databaseConnection = new MySqlConnection(connectionString));
-            try
+            if (canOpenConnection())
             {
-                Program.databaseConnection.Open();
+                UserSuccessfullyAuthenticated = true;
                 MessageBox.Show("Conexión exitosa");
-
-                string query = "SELECT CURRENT_ROLE()";
-                MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
-                commandDatabase.CommandTimeout = 60;
-                String reader = (String)commandDatabase.ExecuteScalar();
-
-                if (reader == "`empleadoLaboratorista`@`%`") 
+                try
                 {
-                    Form1 ventana = new Form1();
-                    ventana.Show();
-                    this.Hide();
-                }
-                else
+                    string query = "SELECT CURRENT_ROLE()";
+                    MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                    userRole = (String)commandDatabase.ExecuteScalar();
+                }catch
                 {
-                    Form1 ventana = new Form1();
-                    ventana.Show();
-                    this.Hide();
+                    MessageBox.Show("No se pudo hacer la lectura del rol del usuario");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            }   
+            else
+                MessageBox.Show("Usuario o contraseña incorrectos");
+            this.Close();
         }
     }
 }
