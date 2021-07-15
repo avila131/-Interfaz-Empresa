@@ -12,28 +12,20 @@ namespace WindowsFormsApplication2
 
         private void MostrarDatosActualizadosEnPantalla()
         {
-            txtNombreProyectoSeleccionado.Text = obtenerNombreProyectoActual();
-            txtNombrePerforacionSeleccionada.Text = obtenerNombrePerforacionActual();
-            txtNumeroMuestraSeleccionada.Text = obtenerNumeroMuestraActual();
-            txtTipoEnsayoSeleccionado.Text = obtenerNombreTipoEnsayoActual();
+            txtNombreProyectoSeleccionado.Text = Program.obtenerNombreProyectoDadoID(Proyecto_ID);
+            txtNombrePerforacionSeleccionada.Text = Program.obtenerNombrePerforacionDadoID(Perforacion_ID);
+            txtNumeroMuestraSeleccionada.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
+            txtTipoEnsayoSeleccionado.Text = Program.obtenerNombreTipoEnsayoDadoID(tipoEnsayo_ID);
             txtEstadoEnsayoMuestraSeleccionado.Text = obtenerEstadoEnsayoMuestraActual();
-        }
-
-
-        private string obtenerNombreProyectoActual()
-        {
-            string query = "SELECT NombreProyecto FROM vw_idProyecto_nombreProyecto_estadoProyecto WHERE ID = " + Proyecto_ID + ";";
-            string nombreObtenido = ExecuteScalarReader(query);
-            return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido; 
         }
 
 
         private void btnSiguientePerforacion_Click(object sender, EventArgs e)
         {
             string query = "select per_idPerforacion from perforacion where per_idPerforacion = (select min(per_idPerforacion) from perforacion where per_idPerforacion > " + Perforacion_ID + " AND pro_idProyecto =" + Proyecto_ID + ");";  // Obtener id siguiente perforación
-            if (ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
+            if (Program.ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
                 return;
-            Perforacion_ID = ExecuteScalarReader(query);
+            Perforacion_ID = Program.ExecuteScalarReader(query);
 
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
@@ -43,38 +35,13 @@ namespace WindowsFormsApplication2
         }
 
 
-        private string ExecuteScalarReader(string given_query)
-        {
-            MySqlCommand command = Program.getNewMySqlCommand(given_query);
-            try
-            { return command.ExecuteScalar().ToString(); }
-            catch
-            { return "NULL"; }
-        }
-
-
-        private string obtenerNombrePerforacionActual()
-        {
-            string query = "SELECT per_nombrePerforacion FROM perforacion WHERE per_idPerforacion = "+ Perforacion_ID + ";";
-            string nombreObtenido = ExecuteScalarReader(query);
-            return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido;
-        }
-
-
-        private string obtenerNombreTipoEnsayoActual()
-        {
-            string query = "SELECT tip_nombreTipoEnsayo FROM tipoensayo WHERE tip_idTipoEnsayo = " + tipoEnsayo_ID + ";";
-            string nombreObtenido = ExecuteScalarReader(query);
-            return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido;
-        }
-
 
         private void btnAnteriorPerforacion_Click(object sender, EventArgs e)
         {
             string query = "select per_idPerforacion from perforacion where per_idPerforacion = (select max(per_idPerforacion) from perforacion where per_idPerforacion < " + Perforacion_ID + " AND pro_idProyecto =" + Proyecto_ID + ");";  // Obtener id anterior perforación
-            if (ExecuteScalarReader(query) == "NULL")
+            if (Program.ExecuteScalarReader(query) == "NULL")
                 return;
-            Perforacion_ID = ExecuteScalarReader(query);
+            Perforacion_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
             MostrarDatosActualizadosEnPantalla();
@@ -84,9 +51,9 @@ namespace WindowsFormsApplication2
         private void btnAnteriorMuestra_Click(object sender, EventArgs e)
         {
             string query = "select mue_idMuestra from muestra where mue_idMuestra = (select max(mue_idMuestra) from muestra where mue_idMuestra < " + Muestra_ID + " AND per_idPerforacion = " + Proyecto_ID + ");";
-            if (ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
+            if (Program.ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
                 return;
-            Muestra_ID = ExecuteScalarReader(query);
+            Muestra_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_TipoEnsayo();
             MostrarDatosActualizadosEnPantalla();
         }
@@ -95,9 +62,9 @@ namespace WindowsFormsApplication2
         private void btnSiguienteMuestra_Click(object sender, EventArgs e)
         {
             string query = "select mue_idMuestra from muestra where mue_idMuestra = (select min(mue_idMuestra) from muestra where mue_idMuestra > " + Muestra_ID + ");";
-            if (ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
+            if (Program.ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
                 return;
-            Muestra_ID = ExecuteScalarReader(query);
+            Muestra_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_TipoEnsayo();
 
             MostrarDatosActualizadosEnPantalla();
@@ -107,23 +74,23 @@ namespace WindowsFormsApplication2
         private void actualizar_ID_Muestra()
         {
             string query = "SELECT mue_idMuestra FROM muestra WHERE per_idPerforacion = " + Perforacion_ID + " ORDER BY mue_idMuestra LIMIT 1;";
-            Muestra_ID = ExecuteScalarReader(query);
+            Muestra_ID = Program.ExecuteScalarReader(query);
         }
 
 
         private void actualizar_ID_EnsayoMuestra()
         {
             string query = "SELECT ens_idEnsayoMuestra FROM ensayomuestra WHERE mue_idMuestra = " + Muestra_ID + " ORDER BY ens_idEnsayoMuestra LIMIT 1;";
-            ensayoMuestra_ID = ExecuteScalarReader(query);
+            ensayoMuestra_ID = Program.ExecuteScalarReader(query);
         }
 
 
         private void btnSiguienteEnsayo_Click(object sender, EventArgs e)
         {
             string query = "select tip_idTipoEnsayo from tipoensayo NATURAL JOIN ensayomuestra where tip_idTipoEnsayo = (select min(tip_idTipoEnsayo) from tipoensayo where tip_idTipoEnsayo > " + tipoEnsayo_ID + ") AND mue_idMuestra = " + Muestra_ID + ";";
-            if (ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
+            if (Program.ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
                 return;
-            tipoEnsayo_ID = ExecuteScalarReader(query);
+            tipoEnsayo_ID = Program.ExecuteScalarReader(query);
             MostrarDatosActualizadosEnPantalla();
         }
 
@@ -131,32 +98,24 @@ namespace WindowsFormsApplication2
         private void actualizar_ID_TipoEnsayo()
         {
             string query = "SELECT tip_idTipoEnsayo FROM ensayomuestra NATURAL JOIN tipoensayo WHERE mue_idMuestra =" + Muestra_ID + " ORDER BY tip_idTipoEnsayo LIMIT 1;";
-            tipoEnsayo_ID = ExecuteScalarReader(query);
+            tipoEnsayo_ID = Program.ExecuteScalarReader(query);
         }
 
 
         private void btnAnteriorEnsayo_Click(object sender, EventArgs e)
         {
             string query = "select tip_idTipoEnsayo from tipoensayo NATURAL JOIN ensayomuestra where tip_idTipoEnsayo = (select max(tip_idTipoEnsayo) from tipoensayo where tip_idTipoEnsayo < " + tipoEnsayo_ID + ") AND mue_idMuestra = " + Muestra_ID + ";";
-            if (ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
+            if (Program.ExecuteScalarReader(query) == "NULL")  // Se sale de los límites
                 return;
-            tipoEnsayo_ID = ExecuteScalarReader(query);
+            tipoEnsayo_ID = Program.ExecuteScalarReader(query);
             MostrarDatosActualizadosEnPantalla();
         }
 
 
-        private string obtenerNumeroMuestraActual()
-        {   
-            string query = "SELECT mue_numeroMuestra FROM muestra WHERE mue_idMuestra = " + Muestra_ID + ";";
-            string nombreObtenido = ExecuteScalarReader(query);
-            return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido;
-        }
-
-
-        private string obtenerEstadoEnsayoMuestraActual()
+        private string obtenerEstadoEnsayoMuestraDadoID(string )
         {
             string query = "select ens_estado FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_ID +";";
-            string nombreObtenido = ExecuteScalarReader(query);
+            string nombreObtenido = Program.ExecuteScalarReader(query);
             return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido;
         }
 
