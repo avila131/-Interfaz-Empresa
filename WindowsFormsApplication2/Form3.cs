@@ -445,13 +445,13 @@ namespace WindowsFormsApplication2
         public Form3()
         {
             InitializeComponent();
-            /*inicializarProyectoFiltro();
+            inicializarProyectoFiltro();
             txtNombreProyecto.Text = nombre_proyectoRecibido;
             llenarListaPerforaciones();
             mostrarDatosPerforacion(currentPerforacionIndex);
             llenarListaMuestras();
             mostrarDatosMuestra(0);
-            menuNormalPerforacion();*/
+            menuNormalPerforacion();
 
             groupBoxPerforacion.Controls.Remove(button1);
             this.Controls.Add(button1);
