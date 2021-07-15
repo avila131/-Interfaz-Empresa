@@ -11,13 +11,20 @@ namespace WindowsFormsApplication2
         public MySqlDataReader reader;
         public List<Perforacion> perforaciones = new List<Perforacion>();
         public List<Muestra> muestras = new List<Muestra>();
-        public int id_proyectoRecibido;
-        public string nombre_proyectoRecibido;
+        public static int id_proyectoRecibido;
+        public static string nombre_proyectoRecibido;
         public string mascaraBusquedaPerforacion = "", filtroBusquedaPerforacion = "per_idPerforacion";
         public string mascaraBusquedaMuestra = "", filtroBusquedaMuestra = "mue_idMuestra";
-        public int currentPerforacionIndex = 0, currentMuestraIndex = 0;
+        public static int currentPerforacionIndex = 0, currentMuestraIndex = 0;
         public bool actualizandoPerforacion, agregandoPerforacion;
         public bool actualizandoMuestra, agregandoMuestra;
+
+
+        public static string String_ID_MuestraActual, String_ID_PerforacionActual,
+                            String_ID_ProyectoActual;
+
+
+        public bool creandoEnsayoMuestra;
 
         /////// /////////////////////////  Perforación   ////////////////////////////////////////////////
 
@@ -36,7 +43,7 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Al parecer no existen proyectos...");
             }
-            finally { if(reader!=null)reader.Close(); }
+            finally { reader.Close(); }
         }
         private void mostrarDatosPerforacion(int given_index)
         {
@@ -344,6 +351,14 @@ namespace WindowsFormsApplication2
             }
         }
 
+        private void btnCrearEnsayoMuestra_Click(object sender, EventArgs e)
+        {
+            String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
+            String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
+            var form = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual, id_proyectoRecibido.ToString());
+            this.Hide();     
+            form.ShowDialog();
+        }
 
         private void btnAnteriorMuestra_Click(object sender, EventArgs e)
         {
@@ -445,78 +460,13 @@ namespace WindowsFormsApplication2
         public Form3()
         {
             InitializeComponent();
-            /*inicializarProyectoFiltro();
+            inicializarProyectoFiltro();
             txtNombreProyecto.Text = nombre_proyectoRecibido;
             llenarListaPerforaciones();
             mostrarDatosPerforacion(currentPerforacionIndex);
             llenarListaMuestras();
             mostrarDatosMuestra(0);
-            menuNormalPerforacion();*/
-
-            groupBoxPerforacion.Controls.Remove(button1);
-            this.Controls.Add(button1);
-            groupBoxMuestra.Controls.Remove(button2);
-            this.Controls.Add(button2);
-
-            button1.Location = new System.Drawing.Point(31, 83);
-            button2.Location = new System.Drawing.Point(31, 296);
-
-            button1.BringToFront();
-            button2.BringToFront();
-
-            groupBoxMuestra.Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (button1.Text == "Perforación +")
-            {
-                esconderMuestra();
-            }
-            else
-            {
-                esconderPerforacion();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (button1.Text == "Perforación +")
-            {
-                esconderMuestra();
-            }
-            else
-            {
-                esconderPerforacion();
-            }
-        }
-        private void esconderPerforacion()
-        {
-            groupBoxPerforacion.Visible = false;
-            groupBoxMuestra.Visible = true;
-            button1.Text = "Perforación +";
-            button2.Text = "Muestra -";
-            button2.Location = new System.Drawing.Point(31, 123);
-            groupBoxMuestra.Location = new System.Drawing.Point(31, 123);
-        }
-        private void esconderMuestra()
-        {
-            groupBoxMuestra.Visible = false;
-            groupBoxPerforacion.Visible = true;
-            button1.Text = "Perforación -";
-            button2.Text = "Muestra +";
-            button2.Location = new System.Drawing.Point(31, 296);
-            groupBoxMuestra.Location = new System.Drawing.Point(33, 297);
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+            menuNormalPerforacion();
         }
     }
 }

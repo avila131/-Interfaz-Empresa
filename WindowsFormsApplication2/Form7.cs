@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,42 +12,9 @@ namespace WindowsFormsApplication2
 {
     public partial class Form7 : Form
     {
-        public Form selection;
         public Form7()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            selection = new Form6();
-            this.Hide();
-            selection.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            selection = new Form3();
-            this.Hide();
-            selection.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            selection = new Form5();
-            this.Hide();
-            selection.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (Program.databaseConnection != null)
-            {
-                Program.databaseConnection.Close();
-            }
-            selection = new Form9();
-            selection.Show();
-            this.Close();
         }
     }
 }
