@@ -110,7 +110,7 @@ public class EstadoPago
 
 public class ComboboxItem
 {
-    public string Text{get;set;}
+    public string Text { get; set; }
     public int Value { get; set; }
     public override string ToString()
     {
@@ -120,7 +120,9 @@ public class ComboboxItem
 }
 namespace WindowsFormsApplication2
 {
-    static class Program{
+    static class Program
+    {
+        public static Form MenSelection = null;
         public static MySqlConnection databaseConnection;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -161,7 +163,23 @@ namespace WindowsFormsApplication2
             Application.Run(loginForm);
 
             if (loginForm.UserSuccessfullyAuthenticated)
-                Application.Run(new Form1());
+            {
+                Form menuForm;
+                if (loginForm.userRole == "empleadoLaboratorista")
+                {
+                    menuForm = new Form7();
+                    Application.Run(menuForm);
+                }
+                else
+                {
+                    menuForm = new Form8();
+                    Application.Run(menuForm);
+                }
+                if(MenSelection != null){
+                    Application.Run(MenSelection);
+                }
+
+            }
         }
     }
 }
