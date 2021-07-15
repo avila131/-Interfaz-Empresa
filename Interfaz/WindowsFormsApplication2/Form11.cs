@@ -16,7 +16,7 @@ namespace WindowsFormsApplication2
             txtNombrePerforacionSeleccionada.Text = Program.obtenerNombrePerforacionDadoID(Perforacion_ID);
             txtNumeroMuestraSeleccionada.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
             txtTipoEnsayoSeleccionado.Text = Program.obtenerNombreTipoEnsayoDadoID(tipoEnsayo_ID);
-            txtEstadoEnsayoMuestraSeleccionado.Text = obtenerEstadoEnsayoMuestraActual();
+            txtEstadoEnsayoMuestraSeleccionado.Text = Program.obtenerEstadoEnsayoMuestraDadoID(ensayoMuestra_ID);
         }
 
 
@@ -33,7 +33,6 @@ namespace WindowsFormsApplication2
             query = "SELECT per_nombrePerforacion FROM perforacion WHERE per_idPerforacion = " + Perforacion_ID + ";";
             MostrarDatosActualizadosEnPantalla();
         }
-
 
 
         private void btnAnteriorPerforacion_Click(object sender, EventArgs e)
@@ -109,14 +108,6 @@ namespace WindowsFormsApplication2
                 return;
             tipoEnsayo_ID = Program.ExecuteScalarReader(query);
             MostrarDatosActualizadosEnPantalla();
-        }
-
-
-        private string obtenerEstadoEnsayoMuestraDadoID(string )
-        {
-            string query = "select ens_estado FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_ID +";";
-            string nombreObtenido = Program.ExecuteScalarReader(query);
-            return nombreObtenido == "NULL" ? "Sin registros para mostrar" : nombreObtenido;
         }
 
 
