@@ -12,7 +12,6 @@ namespace WindowsFormsApplication2
 {
     public partial class Form8 : Form
     {
-        public Form selection;
         public Form8()
         {
             InitializeComponent();
@@ -20,37 +19,32 @@ namespace WindowsFormsApplication2
 
         private void button6_Click(object sender, EventArgs e)
         {
-            selection = new Form1();
-            this.Hide();
-            selection.Show();
+            Program.MenSelection = new Form1();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            selection = new Form5();
-            this.Hide();
-            selection.Show();
+            Program.MenSelection = new Form5();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            selection = new Form6();
-            this.Hide();
-            selection.Show();
+            Program.MenSelection = new Form6();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            selection = new Form3();
-            this.Hide();
-            selection.Show();
+            Program.MenSelection = new Form3();
+            this.Close();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            selection = new Form4();
-            this.Hide();
-            selection.Show();
+            Program.MenSelection = new Form4();
+            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -59,8 +53,7 @@ namespace WindowsFormsApplication2
             {
                 Program.databaseConnection.Close();
             }
-            selection = new Form9();
-            selection.Show();
+            Program.MenSelection = new Form9();
             this.Close();
 
         }
