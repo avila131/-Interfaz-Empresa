@@ -47,6 +47,7 @@ namespace WindowsFormsApplication2
             this.btnAnteriorMuestra = new System.Windows.Forms.PictureBox();
             this.btnAnteriorPerforacion = new System.Windows.Forms.PictureBox();
             this.btnSiguientePerforacion = new System.Windows.Forms.PictureBox();
+            this.btnActualizaEnsayoMuestra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnSiguienteMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAnteriorEnsayo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSiguienteEnsayo)).BeginInit();
@@ -142,7 +143,7 @@ namespace WindowsFormsApplication2
             // 
             // btnMostrarDetalles
             // 
-            this.btnMostrarDetalles.Location = new System.Drawing.Point(586, 244);
+            this.btnMostrarDetalles.Location = new System.Drawing.Point(540, 248);
             this.btnMostrarDetalles.Name = "btnMostrarDetalles";
             this.btnMostrarDetalles.Size = new System.Drawing.Size(119, 41);
             this.btnMostrarDetalles.TabIndex = 21;
@@ -222,11 +223,22 @@ namespace WindowsFormsApplication2
             this.btnSiguientePerforacion.TabStop = false;
             this.btnSiguientePerforacion.Click += new System.EventHandler(this.btnSiguientePerforacion_Click);
             // 
+            // btnActualizaEnsayoMuestra
+            // 
+            this.btnActualizaEnsayoMuestra.Location = new System.Drawing.Point(276, 265);
+            this.btnActualizaEnsayoMuestra.Name = "btnActualizaEnsayoMuestra";
+            this.btnActualizaEnsayoMuestra.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizaEnsayoMuestra.TabIndex = 22;
+            this.btnActualizaEnsayoMuestra.Text = "Actualizar";
+            this.btnActualizaEnsayoMuestra.UseVisualStyleBackColor = true;
+            this.btnActualizaEnsayoMuestra.Click += new System.EventHandler(this.btnActualizaEnsayoMuestra_Click);
+            // 
             // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnActualizaEnsayoMuestra);
             this.Controls.Add(this.btnMostrarDetalles);
             this.Controls.Add(this.btnSiguienteMuestra);
             this.Controls.Add(this.txtEstadoEnsayoMuestraSeleccionado);
@@ -277,5 +289,6 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.TextBox txtEstadoEnsayoMuestraSeleccionado;
         private System.Windows.Forms.PictureBox btnSiguienteMuestra;
         private System.Windows.Forms.Button btnMostrarDetalles;
+        private System.Windows.Forms.Button btnActualizaEnsayoMuestra;
     }
 }

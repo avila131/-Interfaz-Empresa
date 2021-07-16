@@ -7,7 +7,7 @@ namespace WindowsFormsApplication2
     public partial class Form9 : Form
     {
         public bool UserSuccessfullyAuthenticated { get; private set; }
-        public string userRole;
+        public string userRole, userName;
 
         public MySqlDataReader reader;
         public Form9()
@@ -38,6 +38,7 @@ namespace WindowsFormsApplication2
                 + "';password='" + textBox2.Text + "';database=mydb;convert zero datetime=True";
             if (canOpenConnection())
             {
+                userName = textBox1.Text;
                 UserSuccessfullyAuthenticated = true;
                 MessageBox.Show("Conexión exitosa");
                 try
@@ -45,7 +46,7 @@ namespace WindowsFormsApplication2
                     string query = "SELECT CURRENT_ROLE()";
                     MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
                     string receivedRole = (String)commandDatabase.ExecuteScalar();
-                    if (receivedRole.Contains("laboratorista"))
+                    if (receivedRole.Contains("Laboratorista"))
                         userRole = "Laboratorista";
                     else
                         userRole = "Administrador";

@@ -100,6 +100,13 @@ namespace WindowsFormsApplication2
             formularioDetalles.Show();
         }
 
+        private void btnActualizaEnsayoMuestra_Click(object sender, EventArgs e)
+        {
+            Form12 formularioActualizar = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Actualizar");
+            this.Hide();
+            formularioActualizar.Show();
+        }
+
         private void actualizar_ID_TipoEnsayo()
         {
             string query = "SELECT tip_idTipoEnsayo FROM ensayomuestra NATURAL JOIN tipoensayo WHERE mue_idMuestra =" + Muestra_ID + " ORDER BY tip_idTipoEnsayo LIMIT 1;";
