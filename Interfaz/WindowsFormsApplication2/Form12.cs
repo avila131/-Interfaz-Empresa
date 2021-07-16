@@ -21,7 +21,7 @@ namespace WindowsFormsApplication2
             foreach (TextBox box in groupBoxParametrosMuestra.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
 
-
+            mostrarDatosEnPantalla();
             if (accionSeleccionada == "Actualizar")
                 establecerPropiedadesFormularioActualizar();
             else if (accionSeleccionada == "Agregar")
@@ -29,8 +29,7 @@ namespace WindowsFormsApplication2
             else if (accionSeleccionada == "AgregarSinRealizar")
                 establecerPropiedadesFormularioAgregarSinRealizar();
             else if (accionSeleccionada == "Leer")
-                establecerPropiedadesFormularioLeer();
-            mostrarDatosEnPantalla();
+                menuLectura();       
         }
 
         
@@ -40,28 +39,45 @@ namespace WindowsFormsApplication2
             txtProyecto.Text = Program.obtenerNombreProyectoDadoID(Proyecto_ID);
             txtPerforacion.Text = Program.obtenerNombrePerforacionDadoID(Perforacion_ID);
             txtMuestra.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
-            //comboBoxTipoEnsayo.Text = Program.obtenerNombreTipoEnsayoDadoID(TipoEnsayo_ID);
-            comboBoxTipoEnsayo.Text = "shit";
-            comboBoxEstadoEnsayo.Text = Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID) != "NULL" ? Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID) : "";
+            comboBoxTipoEnsayo.Text = Program.obtenerNombreTipoEnsayoDadoID(TipoEnsayo_ID);
+            comboBoxEstadoEnsayo.Text = Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID);
             groupBoxEnsayoMuestraRealizado.Visible = true;
             dateTimePickerFechaEjecucion.Value = Convert.ToDateTime(Program.obtenerDateTimeFechaEjecucion(EnsayoMuestra_ID));
-            txtEjecutor.Text = Program.obtenerNombreEjecutorEnsayoMuestra(Empleado_ID) != "NULL" ? Program.obtenerNombreEjecutorEnsayoMuestra(Empleado_ID) : "";
+            txtEjecutor.Text = Program.obtenerNombreEjecutorEnsayoMuestra(Empleado_ID);
             if (Program.hayResiduoMuestra(EnsayoMuestra_ID) == "1")
                 radioBtnHayResiduo_SI.Checked = true;
             else
                 radioBtnHayResiduo_NO.Checked = true;
-            txtCondicionesParticulares.Text = Program.obtenerCondicionesParticularesEnsayoMuestra(EnsayoMuestra_ID) != "NULL" ? Program.obtenerCondicionesParticularesEnsayoMuestra(EnsayoMuestra_ID) : "";
+            txtCondicionesParticulares.Text = Program.obtenerCondicionesParticularesEnsayoMuestra(EnsayoMuestra_ID);
+            Program.quitarValoresNulosCajasDeTextoEnFormularioCompleto(this);
         }
 
 
-        private void establecerPropiedadesFormularioLeer()
+        private void menuLectura()
         {
-            groupBoxEnsayoMuestraRealizado.Enabled = false;
+            foreach (TextBox box in groupBoxParametrosMuestra.Controls.OfType<TextBox>())
+                box.ReadOnly = true;
+
+            textBoxReadOnlyTipoEnsayo.Text = comboBoxTipoEnsayo.Text;
+            comboBoxTipoEnsayo.Visible = false;
+            textBoxReadOnlyTipoEnsayo.ReadOnly = true;
+
+            txtEstadoEnsayoReadOnly.Text = comboBoxEstadoEnsayo.Text;
+            comboBoxEstadoEnsayo.Visible = false;
+            txtEstadoEnsayoReadOnly.ReadOnly = true;
+
+            txtCondicionesParticulares.ReadOnly = true;
+            radioBtnHayResiduo_NO.AutoCheck = false;
+            radioBtnHayResiduo_SI.AutoCheck = false;
+            txtEjecutor.ReadOnly = true;
+            dateTimePickerFechaEjecucion.Enabled = false;
+
+            btnConfirmarEnsayoMuestra.Visible = false;
+            btnSeleccionarEmpleado.Visible = false;
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!Must add values here !!!!!!!!!!!!!!!!!!!!!!!!!
         }
-
-        
+       
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
@@ -71,22 +87,39 @@ namespace WindowsFormsApplication2
         }
 
         
+        private void menuUpdateAdministrador()
+        {
+            comboBoxTipoEnsayo.Visible = true;
+            comboBoxEstadoEnsayo.Visible = true;
+            dateTimePickerFechaEjecucion.Enabled = true;
+            radioBtnHayResiduo_SI.AutoCheck = true;
+            radioBtnHayResiduo_NO.AutoCheck = true;
+            txtCondicionesParticulares.ReadOnly = false;
+            btnSeleccionarEmpleado.Visible = true;
+            btnConfirmarEnsayoMuestra.Visible = true;
+            txtEjecutor.ReadOnly = true;
+        }
+
+
+        private void menuUpdateLaboratorista()
+        {
+            menuUpdateAdministrador();
+            textBoxReadOnlyTipoEnsayo.Text = comboBoxTipoEnsayo.Text;
+            textBoxReadOnlyTipoEnsayo.ReadOnly = true;
+            comboBoxTipoEnsayo.Visible = false;
+            btnSeleccionarEmpleado.Visible = false;
+            txtCondicionesParticulares.ReadOnly = true;
+            txtEjecutor.Text = Program.nombreUsuarioActual;         
+        }
+
+
 
         private void establecerPropiedadesFormularioActualizar()
         {
-            MessageBox.Show(Program.rolActual);
-            if (Program.rolActual == "Laboratorista")
-            {
-                
-            }
+            if (Program.rolActual == "Administrador")
+                menuUpdateAdministrador();
             else
-            {
-                groupBoxEnsayoMuestraRealizado.Enabled = true;
-                groupBoxEnsayoMuestraRealizado.Visible = true;
-            }   
-            btnCambiarMuestra.Visible = true;
-            btnSeleccionarEmpleado.Visible = true;
-            btnConfirmarEnsayoMuestra.Visible = true;
+                menuUpdateLaboratorista();
         }
 
 
@@ -120,7 +153,6 @@ namespace WindowsFormsApplication2
         }
 
 
-
         private void btnSeleccionarEmpleado_Click(object sender, EventArgs e)
         {
             /*
@@ -143,16 +175,16 @@ namespace WindowsFormsApplication2
             if (accionSeleccionada == "Actualizar" && Program.rolActual == "Administrador")
                 query = "UPDATE ensayomuestra SET ens_fechaEnsayoMuestra = '" + fechaSeleccionada
                     + "', ens_hayResiduo = " + hayResiduo
-                    + ", ens_condicionesParticularesEstudio = " + condicionesParticulares
-                    + ", emp_idEmpleado = " + Empleado_ID
+                    + ", ens_condicionesParticularesEstudio = '" + condicionesParticulares
+                    + "', emp_idEmpleado = " + Empleado_ID
                     + ", mue_idMuestra = " + Muestra_ID
                     + ", tip_idTipoEnsayo = " + TipoEnsayo_ID
                     + ", ens_estado = " + estadoEnsayo
                     + " WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
 
             else if (accionSeleccionada == "Actualizar" && Program.rolActual == "Laboratorista")
-                query = "UPDATE vw_ensayoMuestra_laboratorista SET ens_fechaEnsayoMuestra = " + fechaSeleccionada
-                    + ", ens_hayResiduo = " + hayResiduo
+                query = "UPDATE vw_ensayoMuestra_laboratorista SET ens_fechaEnsayoMuestra = '" + fechaSeleccionada
+                    + "', ens_hayResiduo = " + hayResiduo
                     + ", ens_estado = " + estadoEnsayo
                     + " WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
 
@@ -174,7 +206,7 @@ namespace WindowsFormsApplication2
                 Form11 formEnsayoMuestra = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
                 this.Hide();
                 formEnsayoMuestra.Show();
-            }catch (Exception ex)
+            }catch (Exception)
             { MessageBox.Show("Error en la ejecución de la operación"); }
         }
 

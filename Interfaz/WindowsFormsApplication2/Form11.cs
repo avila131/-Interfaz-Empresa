@@ -17,6 +17,7 @@ namespace WindowsFormsApplication2
             txtNumeroMuestraSeleccionada.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
             txtTipoEnsayoSeleccionado.Text = Program.obtenerNombreTipoEnsayoDadoID(tipoEnsayo_ID);
             txtEstadoEnsayoMuestraSeleccionado.Text = Program.obtenerEstadoEnsayoMuestraDadoID(ensayoMuestra_ID);
+            Program.quitarValoresNulosCajasDeTextoEnFormularioCompleto(this);
         }
 
 
@@ -29,6 +30,7 @@ namespace WindowsFormsApplication2
 
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
+            actualizar_ID_EnsayoMuestra();
 
             query = "SELECT per_nombrePerforacion FROM perforacion WHERE per_idPerforacion = " + Perforacion_ID + ";";
             MostrarDatosActualizadosEnPantalla();
@@ -43,6 +45,7 @@ namespace WindowsFormsApplication2
             Perforacion_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
+            actualizar_ID_EnsayoMuestra();
             MostrarDatosActualizadosEnPantalla();
         }
 
@@ -54,6 +57,7 @@ namespace WindowsFormsApplication2
                 return;
             Muestra_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_TipoEnsayo();
+            actualizar_ID_EnsayoMuestra();
             MostrarDatosActualizadosEnPantalla();
         }
 
@@ -65,6 +69,7 @@ namespace WindowsFormsApplication2
                 return;
             Muestra_ID = Program.ExecuteScalarReader(query);
             actualizar_ID_TipoEnsayo();
+            actualizar_ID_EnsayoMuestra();
 
             MostrarDatosActualizadosEnPantalla();
         }
@@ -82,6 +87,7 @@ namespace WindowsFormsApplication2
             string query = "SELECT ens_idEnsayoMuestra FROM ensayomuestra WHERE mue_idMuestra = " + Muestra_ID + " ORDER BY ens_idEnsayoMuestra LIMIT 1;";
             ensayoMuestra_ID = Program.ExecuteScalarReader(query);
         }
+
 
 
         private void btnSiguienteEnsayo_Click(object sender, EventArgs e)
