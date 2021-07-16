@@ -148,6 +148,7 @@ namespace WindowsFormsApplication2
             this.btnMostrarDetalles.TabIndex = 21;
             this.btnMostrarDetalles.Text = "Ver más detalles";
             this.btnMostrarDetalles.UseVisualStyleBackColor = true;
+            this.btnMostrarDetalles.Click += new System.EventHandler(this.btnMostrarDetalles_Click);
             // 
             // btnSiguienteMuestra
             // 

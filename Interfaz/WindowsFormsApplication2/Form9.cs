@@ -44,8 +44,13 @@ namespace WindowsFormsApplication2
                 {
                     string query = "SELECT CURRENT_ROLE()";
                     MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
-                    userRole = (String)commandDatabase.ExecuteScalar();
-                }catch
+                    string receivedRole = (String)commandDatabase.ExecuteScalar();
+                    if (receivedRole.Contains("laboratorista"))
+                        userRole = "Laboratorista";
+                    else
+                        userRole = "Administrador";
+                }
+                catch
                 {
                     MessageBox.Show("No se pudo hacer la lectura del rol del usuario");
                 }

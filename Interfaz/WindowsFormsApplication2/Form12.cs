@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,167 @@ namespace WindowsFormsApplication2
 {
     public partial class Form12 : Form
     {
-        public Form12()
+        public string Proyecto_ID, Perforacion_ID, Muestra_ID, EnsayoMuestra_ID, Empleado_ID, TipoEnsayo_ID, accionSeleccionada;
+
+        
+        private void Form12_Load(object sender, EventArgs e)
+        {
+            if (accionSeleccionada == "Actualizar")
+                establecerPropiedadesFormularioActualizar();
+            else if (accionSeleccionada == "Agregar")
+                establecerPropiedadesFormularioAgregar();
+            else if (accionSeleccionada == "AgregarSinRealizar")
+                establecerPropiedadesFormularioAgregarSinRealizar();
+            else if (accionSeleccionada == "Leer")
+                establecerPropiedadesFormularioLeer();
+            mostrarDatosEnPantalla();
+        }
+
+        
+
+        private void mostrarDatosEnPantalla()
+        {
+            txtProyecto.Text = Program.obtenerNombreProyectoDadoID(Proyecto_ID);
+            txtPerforacion.Text = Program.obtenerNombrePerforacionDadoID(Perforacion_ID);
+            txtMuestra.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
+            comboBoxTipoEnsayo.Text = Program.obtenerNombreTipoEnsayoDadoID(TipoEnsayo_ID);
+            comboBoxEstadoEnsayo.Text = Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID);
+            if (Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID) == "Realizado")
+            {
+                groupBoxEnsayoMuestraRealizado.Visible = true;
+                dateTimePickerFechaEjecucion.Value = Convert.ToDateTime(Program.obtenerDateTimeFechaEjecucion(EnsayoMuestra_ID));
+                txtEjecutor.Text = Program.obtenerNombreEjecutorEnsayoMuestra(Empleado_ID);
+                if (Program.hayResiduoMuestra(EnsayoMuestra_ID) == "1")
+                    radioBtnHayResiduo_SI.Checked = true;
+                else
+                    radioBtnHayResiduo_NO.Checked = true;
+                txtCondicionesParticulares.Text = Program.obtenerCondicionesParticularesEnsayoMuestra(EnsayoMuestra_ID);
+            }
+            else
+                groupBoxEnsayoMuestraRealizado.Visible = false;
+        }
+
+
+        private void establecerPropiedadesFormularioLeer()
+        {
+            groupBoxEnsayoMuestraRealizado.Enabled = false;
+
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!Must add values here !!!!!!!!!!!!!!!!!!!!!!!!!
+        }
+
+        
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Form11 formularioEnsayoMuestra = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
+            this.Hide();
+            formularioEnsayoMuestra.Show();
+        }
+
+        
+
+        private void establecerPropiedadesFormularioActualizar()
+        {
+            groupBoxEnsayoMuestraRealizado.Enabled = true;
+            btnCambiarMuestra.Visible = true;
+            btnSeleccionarEmpleado.Visible = true;
+            btnConfirmarEnsayoMuestra.Visible = true;
+        }
+
+
+        private void establecerPropiedadesFormularioAgregar()
+        {
+            establecerPropiedadesFormularioActualizar();
+            // Vaciar todo menos llaves foráneas
+            foreach (TextBox box in this.Controls.OfType<TextBox>())
+                box.Text = "";
+            radioBtnHayResiduo_NO.Checked = false;
+            radioBtnHayResiduo_SI.Checked = false;
+            dateTimePickerFechaEjecucion.Value = DateTime.Now;
+        }
+
+
+        private void btnCambiarMuestra_Click(object sender, EventArgs e)
+        {
+            Form3 formularioPerforacionesMuestras = new Form3();
+            this.Hide();
+            formularioPerforacionesMuestras.Show();
+        }
+
+
+        private void establecerPropiedadesFormularioAgregarSinRealizar()
+        {
+            groupBoxEmpleado.Visible = false;
+            groupBoxEstadoEnsayo.Visible = false;
+            groupBoxFechaEjecucion.Visible = false;
+            groupBoxResiduo.Visible = false;
+            groupBoxCondicionesParticulares.Location = new Point(100, 200);
+        }
+
+
+
+        private void btnSeleccionarEmpleado_Click(object sender, EventArgs e)
+        {
+            /*
+            Form13 formularioSeleccionarEmpleado = new Form13();
+            formularioSeleccionarEmpleado.ShowDialog();
+            Empleado_ID = formularioSeleccionarEmpleado.idEmpleado;
+            txtEjecutor.Text = formularioSeleccionarEmpleado.nombreEmpleado;*/
+        }
+
+
+        private void btnConfirmarEnsayoMuestra_Click(object sender, EventArgs e)
+        {
+            if (accionSeleccionada == "Leer") return;
+            string fechaSeleccionada = dateTimePickerFechaEjecucion.Value.ToString("yyyy-MM-dd");
+            string hayResiduo = radioBtnHayResiduo_SI.Checked ? "1" : "2";
+            string condicionesParticulares = txtCondicionesParticulares.Text == "" ? "NULL" : txtCondicionesParticulares.Text;
+            string estadoEnsayo = comboBoxEstadoEnsayo.Text;
+            string query = "";
+            if (accionSeleccionada == "Actualizar" && Program.rolActual == "Administrador")
+                query = "UPDATE ensayomuestra SET ens_fechaEnsayoMuestra = " + fechaSeleccionada
+                    + ", ens_hayResiduo = " + hayResiduo
+                    + ", ens_condicionesParticularesEstudio = " + condicionesParticulares
+                    + ", emp_idEmpleado = " + Empleado_ID
+                    + ", mue_idMuestra = " + Muestra_ID
+                    + ", tip_idTipoEnsayo = " + TipoEnsayo_ID
+                    + ", ens_estado = " + estadoEnsayo
+                    + ", WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
+            else if (accionSeleccionada == "Actualizar" && Program.rolActual == "Laboratorista")
+                query = "UPDATE vw_ensayoMuestra_laboratorista SET ens_fechaEnsayoMuestra = " + fechaSeleccionada
+                    + ", ens_hayResiduo = " + hayResiduo
+                    + ", ens_estado = " + estadoEnsayo
+                    + ", WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
+            else if ((accionSeleccionada == "Agregar" || accionSeleccionada == "AgregarSinRealizar") && Program.rolActual == "Administrador")
+                query = "INSERT INTO ensayomuestra VALUES( " +
+                    fechaSeleccionada + ", " + hayResiduo + ", " + condicionesParticulares
+                    + ", " + Empleado_ID + ", " + Muestra_ID + ", " + TipoEnsayo_ID + ", " + estadoEnsayo + ");";
+            else if ((accionSeleccionada == "Agregar" || accionSeleccionada == "AgregarSinRealizar") && Program.rolActual == "Laboratorista")
+                query = "INSERT INTO vw_ensayoMuestra_laboratorista VALUES( " +
+                    fechaSeleccionada + ", " + hayResiduo + ", " + estadoEnsayo + ");";
+
+            MySqlCommand command = Program.getNewMySqlCommand(query);
+            try
+            {
+                command.ExecuteNonQuery();
+                MessageBox.Show("Operación ejecutada correctamente");
+            }catch (Exception ex)
+            { MessageBox.Show("Error en la ejecución de la operación"); }
+
+        }
+
+
+        public Form12(string id_proyecto, string id_perforacion, string muestra_id, string ensayoMuestra_id, string tipoEnsayo_id, string accion)
         {
             InitializeComponent();
+            Proyecto_ID = id_proyecto;
+            Perforacion_ID = id_perforacion;
+            Muestra_ID = muestra_id;
+            EnsayoMuestra_ID = ensayoMuestra_id;
+            Empleado_ID = Program.obtenerID_EjecutorEnsayoMuestra(EnsayoMuestra_ID);
+            TipoEnsayo_ID = tipoEnsayo_id;
+            accionSeleccionada = accion;
         }
+        
     }
 }

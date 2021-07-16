@@ -33,10 +33,11 @@ namespace WindowsFormsApplication2
             this.labelPerforacion = new System.Windows.Forms.Label();
             this.labelMuestra = new System.Windows.Forms.Label();
             this.labelTipoEnsayo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtPerforacion = new System.Windows.Forms.TextBox();
+            this.txtMuestra = new System.Windows.Forms.TextBox();
+            this.comboBoxTipoEnsayo = new System.Windows.Forms.ComboBox();
             this.groupBoxEnsayoMuestraRealizado = new System.Windows.Forms.GroupBox();
+            this.txtEjecutor = new System.Windows.Forms.TextBox();
             this.txtCondicionesParticulares = new System.Windows.Forms.TextBox();
             this.groupBoxResiduo = new System.Windows.Forms.GroupBox();
             this.radioBtnHayResiduo_NO = new System.Windows.Forms.RadioButton();
@@ -48,9 +49,21 @@ namespace WindowsFormsApplication2
             this.labelResiduo = new System.Windows.Forms.Label();
             this.labelFechaEjecucion = new System.Windows.Forms.Label();
             this.btnCambiarMuestra = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtProyecto = new System.Windows.Forms.TextBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.btnConfirmarEnsayoMuestra = new System.Windows.Forms.Button();
+            this.groupBoxEmpleado = new System.Windows.Forms.GroupBox();
+            this.groupBoxFechaEjecucion = new System.Windows.Forms.GroupBox();
+            this.groupBoxCondicionesParticulares = new System.Windows.Forms.GroupBox();
+            this.lblEstadoEnsayo = new System.Windows.Forms.Label();
+            this.comboBoxEstadoEnsayo = new System.Windows.Forms.ComboBox();
+            this.groupBoxEstadoEnsayo = new System.Windows.Forms.GroupBox();
             this.groupBoxEnsayoMuestraRealizado.SuspendLayout();
             this.groupBoxResiduo.SuspendLayout();
+            this.groupBoxEmpleado.SuspendLayout();
+            this.groupBoxFechaEjecucion.SuspendLayout();
+            this.groupBoxCondicionesParticulares.SuspendLayout();
+            this.groupBoxEstadoEnsayo.SuspendLayout();
             this.SuspendLayout();
             // 
             // labeProyecto
@@ -93,39 +106,35 @@ namespace WindowsFormsApplication2
             this.labelTipoEnsayo.TabIndex = 5;
             this.labelTipoEnsayo.Text = "Ensayo:";
             // 
-            // textBox1
+            // txtPerforacion
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtPerforacion.Location = new System.Drawing.Point(115, 57);
+            this.txtPerforacion.Name = "txtPerforacion";
+            this.txtPerforacion.Size = new System.Drawing.Size(153, 20);
+            this.txtPerforacion.TabIndex = 6;
             // 
-            // textBox2
+            // txtMuestra
             // 
-            this.textBox2.Location = new System.Drawing.Point(425, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtMuestra.Location = new System.Drawing.Point(425, 59);
+            this.txtMuestra.Name = "txtMuestra";
+            this.txtMuestra.Size = new System.Drawing.Size(153, 20);
+            this.txtMuestra.TabIndex = 7;
             // 
-            // comboBox1
+            // comboBoxTipoEnsayo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(115, 118);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 21);
-            this.comboBox1.TabIndex = 8;
+            this.comboBoxTipoEnsayo.FormattingEnabled = true;
+            this.comboBoxTipoEnsayo.Location = new System.Drawing.Point(115, 118);
+            this.comboBoxTipoEnsayo.Name = "comboBoxTipoEnsayo";
+            this.comboBoxTipoEnsayo.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxTipoEnsayo.TabIndex = 8;
             // 
             // groupBoxEnsayoMuestraRealizado
             // 
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.textBox4);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.txtCondicionesParticulares);
+            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxCondicionesParticulares);
+            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxFechaEjecucion);
+            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxEmpleado);
             this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxResiduo);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.btnSeleccionarEmpleado);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.dateTimePickerFechaEjecucion);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.labelCondicionesParticulares);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.labelEjecutor);
             this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.labelResiduo);
-            this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.labelFechaEjecucion);
             this.groupBoxEnsayoMuestraRealizado.Location = new System.Drawing.Point(16, 159);
             this.groupBoxEnsayoMuestraRealizado.Name = "groupBoxEnsayoMuestraRealizado";
             this.groupBoxEnsayoMuestraRealizado.Size = new System.Drawing.Size(772, 372);
@@ -133,9 +142,16 @@ namespace WindowsFormsApplication2
             this.groupBoxEnsayoMuestraRealizado.TabStop = false;
             this.groupBoxEnsayoMuestraRealizado.Text = "EnsayoMuestraRealizado";
             // 
+            // txtEjecutor
+            // 
+            this.txtEjecutor.Location = new System.Drawing.Point(91, 17);
+            this.txtEjecutor.Name = "txtEjecutor";
+            this.txtEjecutor.Size = new System.Drawing.Size(112, 20);
+            this.txtEjecutor.TabIndex = 14;
+            // 
             // txtCondicionesParticulares
             // 
-            this.txtCondicionesParticulares.Location = new System.Drawing.Point(351, 206);
+            this.txtCondicionesParticulares.Location = new System.Drawing.Point(28, 51);
             this.txtCondicionesParticulares.Multiline = true;
             this.txtCondicionesParticulares.Name = "txtCondicionesParticulares";
             this.txtCondicionesParticulares.Size = new System.Drawing.Size(400, 160);
@@ -176,16 +192,17 @@ namespace WindowsFormsApplication2
             // 
             // btnSeleccionarEmpleado
             // 
-            this.btnSeleccionarEmpleado.Location = new System.Drawing.Point(641, 48);
+            this.btnSeleccionarEmpleado.Location = new System.Drawing.Point(223, 17);
             this.btnSeleccionarEmpleado.Name = "btnSeleccionarEmpleado";
             this.btnSeleccionarEmpleado.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionarEmpleado.TabIndex = 10;
             this.btnSeleccionarEmpleado.Text = "Seleccionar";
             this.btnSeleccionarEmpleado.UseVisualStyleBackColor = true;
+            this.btnSeleccionarEmpleado.Click += new System.EventHandler(this.btnSeleccionarEmpleado_Click);
             // 
             // dateTimePickerFechaEjecucion
             // 
-            this.dateTimePickerFechaEjecucion.Location = new System.Drawing.Point(162, 47);
+            this.dateTimePickerFechaEjecucion.Location = new System.Drawing.Point(150, 16);
             this.dateTimePickerFechaEjecucion.Name = "dateTimePickerFechaEjecucion";
             this.dateTimePickerFechaEjecucion.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerFechaEjecucion.TabIndex = 11;
@@ -194,7 +211,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelCondicionesParticulares.AutoSize = true;
             this.labelCondicionesParticulares.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCondicionesParticulares.Location = new System.Drawing.Point(347, 171);
+            this.labelCondicionesParticulares.Location = new System.Drawing.Point(24, 16);
             this.labelCondicionesParticulares.Name = "labelCondicionesParticulares";
             this.labelCondicionesParticulares.Size = new System.Drawing.Size(188, 20);
             this.labelCondicionesParticulares.TabIndex = 10;
@@ -204,7 +221,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelEjecutor.AutoSize = true;
             this.labelEjecutor.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEjecutor.Location = new System.Drawing.Point(434, 47);
+            this.labelEjecutor.Location = new System.Drawing.Point(16, 16);
             this.labelEjecutor.Name = "labelEjecutor";
             this.labelEjecutor.Size = new System.Drawing.Size(69, 20);
             this.labelEjecutor.TabIndex = 10;
@@ -224,7 +241,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelFechaEjecucion.AutoSize = true;
             this.labelFechaEjecucion.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFechaEjecucion.Location = new System.Drawing.Point(18, 47);
+            this.labelFechaEjecucion.Location = new System.Drawing.Point(6, 16);
             this.labelFechaEjecucion.Name = "labelFechaEjecucion";
             this.labelFechaEjecucion.Size = new System.Drawing.Size(125, 20);
             this.labelFechaEjecucion.TabIndex = 10;
@@ -238,34 +255,130 @@ namespace WindowsFormsApplication2
             this.btnCambiarMuestra.TabIndex = 10;
             this.btnCambiarMuestra.Text = "Cambiar Muestra";
             this.btnCambiarMuestra.UseVisualStyleBackColor = true;
+            this.btnCambiarMuestra.Click += new System.EventHandler(this.btnCambiarMuestra_Click);
             // 
-            // textBox4
+            // txtProyecto
             // 
-            this.textBox4.Location = new System.Drawing.Point(509, 48);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(112, 20);
-            this.textBox4.TabIndex = 14;
+            this.txtProyecto.Location = new System.Drawing.Point(115, 8);
+            this.txtProyecto.Name = "txtProyecto";
+            this.txtProyecto.Size = new System.Drawing.Size(239, 20);
+            this.txtProyecto.TabIndex = 11;
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(657, 105);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 12;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // btnConfirmarEnsayoMuestra
+            // 
+            this.btnConfirmarEnsayoMuestra.Location = new System.Drawing.Point(581, 130);
+            this.btnConfirmarEnsayoMuestra.Name = "btnConfirmarEnsayoMuestra";
+            this.btnConfirmarEnsayoMuestra.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirmarEnsayoMuestra.TabIndex = 13;
+            this.btnConfirmarEnsayoMuestra.Text = "Confirmar";
+            this.btnConfirmarEnsayoMuestra.UseVisualStyleBackColor = true;
+            this.btnConfirmarEnsayoMuestra.Click += new System.EventHandler(this.btnConfirmarEnsayoMuestra_Click);
+            // 
+            // groupBoxEmpleado
+            // 
+            this.groupBoxEmpleado.Controls.Add(this.labelEjecutor);
+            this.groupBoxEmpleado.Controls.Add(this.txtEjecutor);
+            this.groupBoxEmpleado.Controls.Add(this.btnSeleccionarEmpleado);
+            this.groupBoxEmpleado.Location = new System.Drawing.Point(421, 47);
+            this.groupBoxEmpleado.Name = "groupBoxEmpleado";
+            this.groupBoxEmpleado.Size = new System.Drawing.Size(318, 59);
+            this.groupBoxEmpleado.TabIndex = 15;
+            this.groupBoxEmpleado.TabStop = false;
+            this.groupBoxEmpleado.Text = "groupBoxEmpleado";
+            // 
+            // groupBoxFechaEjecucion
+            // 
+            this.groupBoxFechaEjecucion.Controls.Add(this.labelFechaEjecucion);
+            this.groupBoxFechaEjecucion.Controls.Add(this.dateTimePickerFechaEjecucion);
+            this.groupBoxFechaEjecucion.Location = new System.Drawing.Point(24, 47);
+            this.groupBoxFechaEjecucion.Name = "groupBoxFechaEjecucion";
+            this.groupBoxFechaEjecucion.Size = new System.Drawing.Size(347, 63);
+            this.groupBoxFechaEjecucion.TabIndex = 16;
+            this.groupBoxFechaEjecucion.TabStop = false;
+            this.groupBoxFechaEjecucion.Text = "groupBoxFechaEjecucion";
+            // 
+            // groupBoxCondicionesParticulares
+            // 
+            this.groupBoxCondicionesParticulares.Controls.Add(this.labelCondicionesParticulares);
+            this.groupBoxCondicionesParticulares.Controls.Add(this.txtCondicionesParticulares);
+            this.groupBoxCondicionesParticulares.Location = new System.Drawing.Point(315, 128);
+            this.groupBoxCondicionesParticulares.Name = "groupBoxCondicionesParticulares";
+            this.groupBoxCondicionesParticulares.Size = new System.Drawing.Size(442, 238);
+            this.groupBoxCondicionesParticulares.TabIndex = 17;
+            this.groupBoxCondicionesParticulares.TabStop = false;
+            this.groupBoxCondicionesParticulares.Text = "groupBoxCondicionesParticulares";
+            // 
+            // lblEstadoEnsayo
+            // 
+            this.lblEstadoEnsayo.AutoSize = true;
+            this.lblEstadoEnsayo.Location = new System.Drawing.Point(6, 23);
+            this.lblEstadoEnsayo.Name = "lblEstadoEnsayo";
+            this.lblEstadoEnsayo.Size = new System.Drawing.Size(43, 13);
+            this.lblEstadoEnsayo.TabIndex = 14;
+            this.lblEstadoEnsayo.Text = "Estado:";
+            // 
+            // comboBoxEstadoEnsayo
+            // 
+            this.comboBoxEstadoEnsayo.FormattingEnabled = true;
+            this.comboBoxEstadoEnsayo.Location = new System.Drawing.Point(89, 20);
+            this.comboBoxEstadoEnsayo.Name = "comboBoxEstadoEnsayo";
+            this.comboBoxEstadoEnsayo.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEstadoEnsayo.TabIndex = 15;
+            // 
+            // groupBoxEstadoEnsayo
+            // 
+            this.groupBoxEstadoEnsayo.Controls.Add(this.comboBoxEstadoEnsayo);
+            this.groupBoxEstadoEnsayo.Controls.Add(this.lblEstadoEnsayo);
+            this.groupBoxEstadoEnsayo.Location = new System.Drawing.Point(326, 105);
+            this.groupBoxEstadoEnsayo.Name = "groupBoxEstadoEnsayo";
+            this.groupBoxEstadoEnsayo.Size = new System.Drawing.Size(217, 57);
+            this.groupBoxEstadoEnsayo.TabIndex = 18;
+            this.groupBoxEstadoEnsayo.TabStop = false;
+            this.groupBoxEstadoEnsayo.Text = "groupBoxEstadoEnsayo";
             // 
             // Form12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 560);
+            this.Controls.Add(this.groupBoxEstadoEnsayo);
+            this.Controls.Add(this.btnConfirmarEnsayoMuestra);
+            this.Controls.Add(this.btnRegresar);
+            this.Controls.Add(this.txtProyecto);
             this.Controls.Add(this.btnCambiarMuestra);
             this.Controls.Add(this.groupBoxEnsayoMuestraRealizado);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBoxTipoEnsayo);
+            this.Controls.Add(this.txtMuestra);
+            this.Controls.Add(this.txtPerforacion);
             this.Controls.Add(this.labelTipoEnsayo);
             this.Controls.Add(this.labelMuestra);
             this.Controls.Add(this.labelPerforacion);
             this.Controls.Add(this.labeProyecto);
             this.Name = "Form12";
             this.Text = "Form12";
+            this.Load += new System.EventHandler(this.Form12_Load);
             this.groupBoxEnsayoMuestraRealizado.ResumeLayout(false);
             this.groupBoxEnsayoMuestraRealizado.PerformLayout();
             this.groupBoxResiduo.ResumeLayout(false);
             this.groupBoxResiduo.PerformLayout();
+            this.groupBoxEmpleado.ResumeLayout(false);
+            this.groupBoxEmpleado.PerformLayout();
+            this.groupBoxFechaEjecucion.ResumeLayout(false);
+            this.groupBoxFechaEjecucion.PerformLayout();
+            this.groupBoxCondicionesParticulares.ResumeLayout(false);
+            this.groupBoxCondicionesParticulares.PerformLayout();
+            this.groupBoxEstadoEnsayo.ResumeLayout(false);
+            this.groupBoxEstadoEnsayo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,9 +390,9 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.Label labelPerforacion;
         private System.Windows.Forms.Label labelMuestra;
         private System.Windows.Forms.Label labelTipoEnsayo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtPerforacion;
+        private System.Windows.Forms.TextBox txtMuestra;
+        private System.Windows.Forms.ComboBox comboBoxTipoEnsayo;
         private System.Windows.Forms.GroupBox groupBoxEnsayoMuestraRealizado;
         private System.Windows.Forms.TextBox txtCondicionesParticulares;
         private System.Windows.Forms.GroupBox groupBoxResiduo;
@@ -292,6 +405,15 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.Label labelResiduo;
         private System.Windows.Forms.Label labelFechaEjecucion;
         private System.Windows.Forms.Button btnCambiarMuestra;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtEjecutor;
+        private System.Windows.Forms.TextBox txtProyecto;
+        private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.Button btnConfirmarEnsayoMuestra;
+        private System.Windows.Forms.GroupBox groupBoxCondicionesParticulares;
+        private System.Windows.Forms.GroupBox groupBoxFechaEjecucion;
+        private System.Windows.Forms.GroupBox groupBoxEmpleado;
+        private System.Windows.Forms.Label lblEstadoEnsayo;
+        private System.Windows.Forms.ComboBox comboBoxEstadoEnsayo;
+        private System.Windows.Forms.GroupBox groupBoxEstadoEnsayo;
     }
 }

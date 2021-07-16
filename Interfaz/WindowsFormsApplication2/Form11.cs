@@ -93,6 +93,12 @@ namespace WindowsFormsApplication2
             MostrarDatosActualizadosEnPantalla();
         }
 
+        private void btnMostrarDetalles_Click(object sender, EventArgs e)
+        {
+            Form12 formularioDetalles = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Leer");
+            this.Hide();
+            formularioDetalles.Show();
+        }
 
         private void actualizar_ID_TipoEnsayo()
         {
