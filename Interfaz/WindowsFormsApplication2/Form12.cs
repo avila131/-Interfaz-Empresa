@@ -158,12 +158,11 @@ namespace WindowsFormsApplication2
 
 
         private void btnSeleccionarEmpleado_Click(object sender, EventArgs e)
-        {
-            /*
+        {        
             Form13 formularioSeleccionarEmpleado = new Form13();
             formularioSeleccionarEmpleado.ShowDialog();
-            Empleado_ID = formularioSeleccionarEmpleado.idEmpleado;
-            txtEjecutor.Text = formularioSeleccionarEmpleado.nombreEmpleado;*/
+            Empleado_ID = formularioSeleccionarEmpleado.id_asignado;
+            txtEjecutor.Text = formularioSeleccionarEmpleado.nombre_asignado;
         }
 
 

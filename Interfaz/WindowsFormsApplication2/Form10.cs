@@ -19,23 +19,19 @@ namespace WindowsFormsApplication2
         public int id_asignado { get; set; }
         public string nombre_asignado { get; set; }
 
-        
-
         public void display()
         {
             try
             {
                 DataTable dt = new DataTable();
                 string query = "SELECT NombreProyecto, Estado FROM vw_idProyecto_nombreProyecto_estadoProyecto";
-                MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
-                commandDatabase.CommandTimeout = 60;
+                MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
                 commandDatabase.ExecuteNonQuery();
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commandDatabase);
                 adpt.Fill(dt);
                 dataGridView1.DataSource = dt;
             }catch(Exception)
-            {
-            }
+            {}
         }
 
         public Form10()
@@ -56,9 +52,7 @@ namespace WindowsFormsApplication2
                 this.Close();
             }
             catch (Exception)
-            {
-            }
-
+            {}
         }
     }
 }
