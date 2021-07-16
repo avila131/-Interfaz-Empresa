@@ -132,6 +132,10 @@ namespace WindowsFormsApplication2
             radioBtnHayResiduo_NO.Checked = false;
             radioBtnHayResiduo_SI.Checked = false;
             dateTimePickerFechaEjecucion.Value = DateTime.Now;
+            comboBoxTipoEnsayo.Text = "";
+            comboBoxEstadoEnsayo.Visible = false;
+            txtEstadoEnsayoReadOnly.Text = "REALIZADO";
+            txtEstadoEnsayoReadOnly.ReadOnly = true;
         }
 
 
@@ -149,7 +153,7 @@ namespace WindowsFormsApplication2
             groupBoxEstadoEnsayo.Visible = false;
             groupBoxFechaEjecucion.Visible = false;
             groupBoxResiduo.Visible = false;
-            groupBoxCondicionesParticulares.Location = new Point(100, 200);
+            groupBoxCondicionesParticulares.Location = groupBoxFechaEjecucion.Location;
         }
 
 
@@ -171,6 +175,8 @@ namespace WindowsFormsApplication2
             string condicionesParticulares = txtCondicionesParticulares.Text == "" ? "NULL" : txtCondicionesParticulares.Text;
             string estadoEnsayo = comboBoxEstadoEnsayo.Text == "PENDIENTE" ? "1" :
                                   comboBoxEstadoEnsayo.Text == "EN CURSO" ? "2" : "3";
+            string idTipoEnsayo = Program.obtenerIDTipoEnsayoDadoNombre(comboBoxTipoEnsayo.Text);
+
             string query = "";
             if (accionSeleccionada == "Actualizar" && Program.rolActual == "Administrador")
                 query = "UPDATE ensayomuestra SET ens_fechaEnsayoMuestra = '" + fechaSeleccionada
@@ -178,7 +184,7 @@ namespace WindowsFormsApplication2
                     + ", ens_condicionesParticularesEstudio = '" + condicionesParticulares
                     + "', emp_idEmpleado = " + Empleado_ID
                     + ", mue_idMuestra = " + Muestra_ID
-                    + ", tip_idTipoEnsayo = " + TipoEnsayo_ID
+                    + ", tip_idTipoEnsayo = " + idTipoEnsayo
                     + ", ens_estado = " + estadoEnsayo
                     + " WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
 
@@ -189,14 +195,14 @@ namespace WindowsFormsApplication2
                     + " WHERE ens_idEnsayoMuestra = " + EnsayoMuestra_ID + ";";
 
             else if ((accionSeleccionada == "Agregar" || accionSeleccionada == "AgregarSinRealizar") && Program.rolActual == "Administrador")
-                query = "INSERT INTO ensayomuestra VALUES( " +
-                    fechaSeleccionada + ", " + hayResiduo + ", " + condicionesParticulares
-                    + ", " + Empleado_ID + ", " + Muestra_ID + ", " + TipoEnsayo_ID + ", " + estadoEnsayo + ");";
+                query = "INSERT INTO ensayomuestra(ens_fechaEnsayoMuestra, ens_hayResiduo, ens_condicionesParticularesEstudio, emp_idEmpleado, mue_idMuestra, tip_idTipoEnsayo, ens_estado) VALUES( '" +
+                    fechaSeleccionada + "', " + hayResiduo + ", '" + condicionesParticulares
+                    + "', " + Empleado_ID + ", " + Muestra_ID + ", " + idTipoEnsayo + ", " + estadoEnsayo + ");";
             
             else if ((accionSeleccionada == "Agregar" || accionSeleccionada == "AgregarSinRealizar") && Program.rolActual == "Laboratorista")
-                query = "INSERT INTO vw_ensayoMuestra_laboratorista VALUES( " +
-                    fechaSeleccionada + ", " + hayResiduo + ", " + estadoEnsayo + ", "
-                    + Empleado_ID + ");";  // Se agrega Empleado_ID para saber quién hace el ensayoMuestra
+                query = "INSERT INTO ensayomuestra(ens_fechaEnsayoMuestra, ens_hayResiduo, ens_estado, emp_idEmpleado, mue_idMuestra, tip_idTipoEnsayo, ens_condicionesParticularesEstudio) VALUES('" +
+                    fechaSeleccionada + "', " + hayResiduo + ", " + estadoEnsayo + ", "
+                    + Empleado_ID + ", "+ Muestra_ID + ", "+ idTipoEnsayo + ", '"+ condicionesParticulares + "');";  // Se agrega Empleado_ID para saber quién hace el ensayoMuestra
 
             MySqlCommand command = Program.getNewMySqlCommand(query);
             try

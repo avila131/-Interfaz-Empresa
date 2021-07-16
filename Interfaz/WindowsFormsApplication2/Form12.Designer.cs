@@ -135,7 +135,25 @@ namespace WindowsFormsApplication2
             // comboBoxTipoEnsayo
             // 
             this.comboBoxTipoEnsayo.FormattingEnabled = true;
-            this.comboBoxTipoEnsayo.Location = new System.Drawing.Point(143, 68);
+            this.comboBoxTipoEnsayo.Items.AddRange(new object[] {
+            "Triaxial UU",
+            "Triaxial CU",
+            "Triaxial CD",
+            "Compresión inconfinada",
+            "Corte directo",
+            "Triaxial cíclico",
+            "Columna resonante",
+            "Bender element",
+            "Consolidación",
+            "Expansión libre ",
+            "Expansión controlada ",
+            "Consolidación en succión controlada",
+            "Humedad",
+            "Límites",
+            "Peso unitario",
+            "Granulometría",
+            "Hidrometría"});
+            this.comboBoxTipoEnsayo.Location = new System.Drawing.Point(148, 43);
             this.comboBoxTipoEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxTipoEnsayo.Name = "comboBoxTipoEnsayo";
             this.comboBoxTipoEnsayo.Size = new System.Drawing.Size(228, 28);

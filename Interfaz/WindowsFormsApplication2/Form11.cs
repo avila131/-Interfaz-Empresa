@@ -113,6 +113,20 @@ namespace WindowsFormsApplication2
             formularioActualizar.Show();
         }
 
+        private void btnAgregarSinRealizar_Click(object sender, EventArgs e)
+        {
+            Form12 formularioAgregarSinRealizar = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "AgregarSinRealizar");
+            this.Hide();
+            formularioAgregarSinRealizar.Show();
+        }
+
+        private void btnAgregarEnsayoRealizado_Click(object sender, EventArgs e)
+        {
+            Form12 formularioAgregarEnsayoMuestraRealizado = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Agregar");
+            this.Hide();
+            formularioAgregarEnsayoMuestraRealizado.Show();
+        }
+
         private void actualizar_ID_TipoEnsayo()
         {
             string query = "SELECT tip_idTipoEnsayo FROM ensayomuestra NATURAL JOIN tipoensayo WHERE mue_idMuestra =" + Muestra_ID + " ORDER BY tip_idTipoEnsayo LIMIT 1;";

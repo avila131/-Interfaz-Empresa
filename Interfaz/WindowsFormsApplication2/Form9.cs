@@ -38,7 +38,7 @@ namespace WindowsFormsApplication2
                 + "';password='" + textBox2.Text + "';database=mydb;convert zero datetime=True";
             if (canOpenConnection())
             {
-                userName = textBox1.Text;
+                userName = textBox1.Text + "@localhost";
                 UserSuccessfullyAuthenticated = true;
                 MessageBox.Show("Conexión exitosa");
                 try
