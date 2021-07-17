@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
-    
+
     public partial class Form10 : Form
     {
         public int id_asignado { get; set; }
         public string nombre_asignado { get; set; }
 
-        
+
 
         public void display()
         {
@@ -33,7 +33,8 @@ namespace WindowsFormsApplication2
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commandDatabase);
                 adpt.Fill(dt);
                 dataGridView1.DataSource = dt;
-            }catch(Exception)
+            }
+            catch (Exception)
             {
             }
         }
@@ -46,7 +47,7 @@ namespace WindowsFormsApplication2
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string query = "SELECT ID FROM vw_idProyecto_nombreProyecto_estadoProyecto ORDER BY ID LIMIT "+ e.RowIndex.ToString() + " ,1;";
+            string query = "SELECT ID FROM vw_idProyecto_nombreProyecto_estadoProyecto ORDER BY ID LIMIT " + e.RowIndex.ToString() + " ,1;";
             try
             {
                 MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
