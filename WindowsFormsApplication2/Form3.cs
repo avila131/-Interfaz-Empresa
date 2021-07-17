@@ -19,6 +19,11 @@ namespace WindowsFormsApplication2
         public bool actualizandoPerforacion, agregandoPerforacion;
         public bool actualizandoMuestra, agregandoMuestra;
 
+        public static string String_ID_MuestraActual, String_ID_PerforacionActual,
+                            String_ID_ProyectoActual;
+
+        public bool creandoEnsayoMuestra;
+
         /////// /////////////////////////  Perforación   ////////////////////////////////////////////////
 
         private void inicializarProyectoFiltro()
@@ -442,6 +447,15 @@ namespace WindowsFormsApplication2
             agregandoMuestra = true;
         }
 
+        private void btnCrearEnsayoMuestra_Click(object sender, EventArgs e)
+        {
+            String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
+            String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
+            var form = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual, id_proyectoRecibido.ToString());
+            this.Hide();
+            form.ShowDialog();
+        }
+
         public Form3()
         {
             InitializeComponent();
@@ -517,6 +531,16 @@ namespace WindowsFormsApplication2
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombreProyecto_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
