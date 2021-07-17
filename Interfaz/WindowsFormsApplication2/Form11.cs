@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
@@ -142,11 +143,13 @@ namespace WindowsFormsApplication2
             tipoEnsayo_ID = Program.ExecuteScalarReader(query);
             MostrarDatosActualizadosEnPantalla();
         }
-
+        
 
         private void Form11_Load(object sender, EventArgs e)
         {
             MostrarDatosActualizadosEnPantalla();
+            foreach (TextBox box in this.Controls.OfType<TextBox>())
+                box.ReadOnly = true;
         }
 
 

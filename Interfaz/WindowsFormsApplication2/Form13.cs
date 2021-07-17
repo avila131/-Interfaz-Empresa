@@ -22,7 +22,7 @@ namespace WindowsFormsApplication2
                 dataGridView1.DataSource = dt;
             }
             catch (Exception)
-            {}
+            { }
         }
 
 
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication2
                 this.Close();
             }
             catch (Exception)
-            {}
+            { }
         }
     }
 }
