@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 public class Cliente
 {
@@ -55,6 +56,9 @@ public class EnsayoMuestra
     public String mue_idMuestra { get; set; }
     public String tip_idTipoEnsayo { get; set; }
     public String ens_estado { get; set; }
+    //Auxiliares
+    public String tip_nombreTipoEnsayo { get; set; }
+    public String mue_numeroMuestra { get; set; }
 }
 
 
@@ -153,6 +157,138 @@ namespace WindowsFormsApplication2
             commandDatabase.CommandTimeout = 60;
             return commandDatabase;
         }
+        public static string ExecuteScalarReader(string given_query)
+        {
+            MySqlCommand command = Program.getNewMySqlCommand(given_query);
+            try
+            { return command.ExecuteScalar().ToString(); }
+            catch
+            { return "NULL"; }
+        }
+
+
+        public static string obtenerNumeroMuestraDadoID(string muestra_id_dado)
+        {
+            string query = "SELECT mue_numeroMuestra FROM muestra WHERE mue_idMuestra = " + muestra_id_dado + ";";
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerNombreProyectoDadoID(string proyecto_id_dado)
+        {
+            string query = "SELECT NombreProyecto FROM vw_idProyecto_nombreProyecto_estadoProyecto WHERE ID = " + proyecto_id_dado + ";";
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerNombrePerforacionDadoID(string perforacion_id_dado)
+        {
+            string query = "SELECT per_nombrePerforacion FROM perforacion WHERE per_idPerforacion = " + perforacion_id_dado + ";";
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerNombreTipoEnsayoDadoID(string tipoEnsayo_id_dado)
+        {
+            string query = "SELECT tip_nombreTipoEnsayo FROM tipoensayo WHERE tip_idTipoEnsayo = " + tipoEnsayo_id_dado + ";";
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerIDTipoEnsayoDadoNombre(string nombreTipoEnsayo)
+        {
+            string query = "SELECT tip_idTipoEnsayo FROM tipoensayo WHERE tip_nombreTipoEnsayo = '" + nombreTipoEnsayo + "';";
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerEstadoEnsayoMuestraDadoID(string ensayoMuestra_id_dado)
+        {
+            string query = "select ens_estado FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_id_dado + ";";
+            string jose = Program.ExecuteScalarReader(query);
+            return Program.ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerDateTimeFechaEjecucion(string ensayoMuestra_id_dado)
+        {
+            string query = "SELECT ens_fechaEnsayoMuestra FROM ensayoMuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_id_dado + ";";
+            return ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerNombreEjecutorEnsayoMuestra(string ensayoMuestra_id_dado)
+        {
+            string idEjecutor = obtenerID_EjecutorEnsayoMuestra(ensayoMuestra_id_dado);
+            return obtenerNombreEmpleadoDadoID(idEjecutor);
+        }
+
+
+        public static string hayResiduoMuestra(string ensayoMuestra_id_dado)
+        {
+            string query = "SELECT ens_hayResiduo FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_id_dado + ";";
+            return ExecuteScalarReader(query) == "SI" ? "1" : "2";  // por el enum declarado en mysql
+        }
+
+
+        public static string obtenerCondicionesParticularesEnsayoMuestra(string ensayoMuestra_id_dado)
+        {
+            string query = "SELECT ens_condicionesParticulares FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_id_dado + ";";
+            return ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerNombreEmpleadoDadoID(string empleado_id)
+        {
+            string query = "SELECT nombre FROM vw_nombreEmpleado_vs_idEmpleado WHERE id = " + empleado_id + ";";
+            return ExecuteScalarReader(query);
+        }
+
+        public static string obtenerID_EjecutorEnsayoMuestra(string ensayoMuestra_id_dado)
+        {
+            string query = "SELECT Ejecutor FROM vw_ejecutorEnsayoMuestra WHERE ensayoMuestra_id = " + ensayoMuestra_id_dado + ";";
+            return ExecuteScalarReader(query);
+        }
+
+
+        public static string obtenerEstadoEnsayoDadoID(string ensayoMuestra_id_dado)
+        {
+            string query = "SELECT ens_estado FROM ensayomuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_id_dado + ";";
+            return ExecuteScalarReader(query);
+        }
+
+        public static string obtenerIDEmpleadoDadoNombreUsuario(string nombreUsuario)
+        {
+            string query = "SELECT emp_idEmpleado FROM vw_idEmpleado_vs_nombreUsuario WHERE emp_nombreUsuario = '"
+                + nombreUsuario + "';";
+            return ExecuteScalarReader(query);
+        }
+
+
+        public static IList<T> GetAllControls<T>(Control control) where T : Control
+        {
+            var lst = new List<T>();
+            foreach (Control item in control.Controls)
+            {
+                var ctr = item as T;
+                if (ctr != null)
+                    lst.Add(ctr);
+                else
+                    lst.AddRange(GetAllControls<T>(item));
+            }
+            return lst;
+        }
+
+
+        public static void quitarValoresNulosCajasDeTextoEnFormularioCompleto(Form FormularioRecibido)
+        {
+            var allTextBoxes = GetAllControls<TextBox>(FormularioRecibido);
+            foreach (TextBox box in allTextBoxes)
+                if (box.Text == "NULL")
+                    box.Text = "Sin valor para mostrar";
+        }
+
+        public static string rolActual, idEmpleadoRegistrado, nombreUsuarioActual;
 
         [STAThread]
         static void Main()
@@ -161,6 +297,9 @@ namespace WindowsFormsApplication2
             Application.SetCompatibleTextRenderingDefault(false);
             Form9 loginForm = new Form9();
             Application.Run(loginForm);
+            rolActual = loginForm.userRole;
+            nombreUsuarioActual = loginForm.userName;
+            idEmpleadoRegistrado = obtenerIDEmpleadoDadoNombreUsuario(nombreUsuarioActual);
 
             if (loginForm.UserSuccessfullyAuthenticated)
             {
