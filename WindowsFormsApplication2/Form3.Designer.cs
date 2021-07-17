@@ -29,7 +29,6 @@
          private void InitializeComponent()
          {
             this.groupBoxMuestra = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxTipoExploracion = new System.Windows.Forms.ComboBox();
             this.comboBoxTipoMuestra = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,7 @@
             this.btnSiguienteMuestra = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNumeroMuestra = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBoxPerforacion = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxAdminPerforacion = new System.Windows.Forms.GroupBox();
@@ -83,6 +83,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.txtNombreProyecto = new System.Windows.Forms.TextBox();
+            this.btnCrearEnsayoMuestra = new System.Windows.Forms.Button();
             this.groupBoxMuestra.SuspendLayout();
             this.groupBoxFiltroMuestra.SuspendLayout();
             this.groupBoxAdminMuestra.SuspendLayout();
@@ -101,6 +102,7 @@
             this.groupBoxMuestra.Controls.Add(this.comboBoxCondicionEmpaque);
             this.groupBoxMuestra.Controls.Add(this.groupBoxAdminMuestra);
             this.groupBoxMuestra.Controls.Add(this.label7);
+            this.groupBoxMuestra.Controls.Add(this.btnCrearEnsayoMuestra);
             this.groupBoxMuestra.Controls.Add(this.txtProfundidadMuestra);
             this.groupBoxMuestra.Controls.Add(this.label16);
             this.groupBoxMuestra.Controls.Add(this.txtDescripcionMuestra);
@@ -116,21 +118,11 @@
             this.groupBoxMuestra.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxMuestra.Location = new System.Drawing.Point(33, 297);
             this.groupBoxMuestra.Name = "groupBoxMuestra";
-            this.groupBoxMuestra.Size = new System.Drawing.Size(679, 261);
+            this.groupBoxMuestra.Size = new System.Drawing.Size(679, 288);
             this.groupBoxMuestra.TabIndex = 24;
             this.groupBoxMuestra.TabStop = false;
             this.groupBoxMuestra.Text = "Muestra";
             this.groupBoxMuestra.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(33, 296);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 23);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "Muestra +";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
@@ -396,6 +388,16 @@
             this.txtNumeroMuestra.Size = new System.Drawing.Size(164, 23);
             this.txtNumeroMuestra.TabIndex = 4;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(33, 296);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 23);
+            this.button2.TabIndex = 42;
+            this.button2.Text = "Muestra +";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // groupBoxPerforacion
             // 
             this.groupBoxPerforacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -648,6 +650,7 @@
             this.label19.Size = new System.Drawing.Size(150, 13);
             this.label19.TabIndex = 39;
             this.label19.Text = "Mostrando datos del proyecto:\r\n";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // txtNombreProyecto
             // 
@@ -655,13 +658,24 @@
             this.txtNombreProyecto.Name = "txtNombreProyecto";
             this.txtNombreProyecto.Size = new System.Drawing.Size(345, 20);
             this.txtNombreProyecto.TabIndex = 40;
+            this.txtNombreProyecto.TextChanged += new System.EventHandler(this.txtNombreProyecto_TextChanged);
+            // 
+            // btnCrearEnsayoMuestra
+            // 
+            this.btnCrearEnsayoMuestra.Location = new System.Drawing.Point(21, 249);
+            this.btnCrearEnsayoMuestra.Name = "btnCrearEnsayoMuestra";
+            this.btnCrearEnsayoMuestra.Size = new System.Drawing.Size(206, 33);
+            this.btnCrearEnsayoMuestra.TabIndex = 41;
+            this.btnCrearEnsayoMuestra.Text = "Crear ensayo para esta muestra";
+            this.btnCrearEnsayoMuestra.UseVisualStyleBackColor = true;
+            this.btnCrearEnsayoMuestra.Click += new System.EventHandler(this.btnCrearEnsayoMuestra_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsFormsApplication2.Properties.Resources.Charts1;
-            this.ClientSize = new System.Drawing.Size(724, 416);
+            this.ClientSize = new System.Drawing.Size(724, 428);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtNombreProyecto);
             this.Controls.Add(this.label19);
@@ -745,5 +759,6 @@
          private System.Windows.Forms.ComboBox comboBoxFiltroMuestra;
          private System.Windows.Forms.Button button2;
          private System.Windows.Forms.Button button1;
+         private System.Windows.Forms.Button btnCrearEnsayoMuestra;
      }
  }
