@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsApplication2
 {
@@ -161,6 +163,13 @@ namespace WindowsFormsApplication2
             actualizar_ID_TipoEnsayo();
             actualizar_ID_EnsayoMuestra();
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            btnSiguienteMuestra.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
+            btnAnteriorMuestra.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
+            btnSiguienteEnsayo.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
+            btnAnteriorEnsayo.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
+            btnSiguientePerforacion.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
+            btnAnteriorPerforacion.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
         }
     }
 }

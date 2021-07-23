@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsApplication2
 {
@@ -211,6 +213,7 @@ namespace WindowsFormsApplication2
         public Form12(string id_proyecto, string id_perforacion, string muestra_id, string ensayoMuestra_id, string tipoEnsayo_id, string accion)
         {
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             Proyecto_ID = id_proyecto;
             Perforacion_ID = id_perforacion;
             Muestra_ID = muestra_id;

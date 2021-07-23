@@ -589,6 +589,11 @@ namespace WindowsFormsApplication2
             }
             llenarLista();
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
     }
 }
 

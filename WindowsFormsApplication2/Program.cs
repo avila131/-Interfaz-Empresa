@@ -341,7 +341,8 @@ namespace WindowsFormsApplication2
                     menuForm = new Form8();
                     Application.Run(menuForm);
                 }
-                while(MenSelection != null){
+
+                if(MenSelection != null){
                     Application.Run(MenSelection);
                 }
 

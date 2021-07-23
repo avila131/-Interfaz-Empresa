@@ -950,5 +950,63 @@ namespace WindowsFormsApplication2
         {
             //Application.Exit();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (proyectos.Count > 0)
+            {
+                string query = "SELECT DATE_FORMAT(func_estimar_finalizacion(" +
+                    Program.Evaluar(proyectos[currentProyectoIndex].id, 1) +
+                "),'%Y/%m/%d')";
+                MySqlCommand mc = Program.getNewMySqlCommand(query);
+                try
+                {
+                    String retorno = mc.ExecuteScalar().ToString();
+                    if (retorno != null || retorno.ToUpper() == "NULL")
+                        MessageBox.Show("Se estima que el proyecto finalice en: " + retorno);
+                    else
+                        MessageBox.Show("Verifique que los datos permitan la operacion");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primer navegue hacia un proyecto");
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (proyectos.Count > 0)
+            {
+                string query = "SELECT func_contarEnsayosFaltantes(" +
+                    Program.Evaluar(proyectos[currentProyectoIndex].id, 1) + ")";
+                MySqlCommand mc = Program.getNewMySqlCommand(query);
+                try
+                {
+                    String retorno = mc.ExecuteScalar().ToString();
+                    if (retorno != null || retorno.ToUpper() == "NULL")
+                        MessageBox.Show("Faltan " + retorno + " ensayos sin realizar");
+                    else
+                        MessageBox.Show("Verifique que los datos permitan la operacion");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primer navegue hacia un proyecto");
+            }
+        }
     }
 }

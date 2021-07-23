@@ -295,5 +295,10 @@ namespace WindowsFormsApplication2
             actualizando = true;
             menuUpdate();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
     }
 }

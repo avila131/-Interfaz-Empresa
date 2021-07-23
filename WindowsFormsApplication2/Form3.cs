@@ -745,5 +745,52 @@ namespace WindowsFormsApplication2
             llenarListaMuestras();
             mostrarDatosMuestra(currentMuestraIndex);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (perforaciones.Count > 0)
+            {
+                string query = "CALL proc_proyectos_cerca_de("+
+                    Program.Evaluar(perforaciones[currentPerforacionIndex].per_latitud,1)+ ","+
+                    Program.Evaluar(perforaciones[currentPerforacionIndex].per_longitud,1)+ ",10);";
+                MySqlCommand mc = Program.getNewMySqlCommand(query);
+                try
+                {
+                    string response = "";
+                    MySqlDataReader rd = mc.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            if (!rd.IsDBNull(0) && !rd.IsDBNull(1))
+                            {
+                                response += rd.GetString(0) + "     ";
+                                response += rd.GetString(1) + "\n\n";
+                            }
+                        }
+                        MessageBox.Show("Se muestran los resultados Proyecto -- Localizacion\n" +
+                            response);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron proyectos cerca");
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primer navegue hacia una perforacion");
+            }
+        }
     }
 } 

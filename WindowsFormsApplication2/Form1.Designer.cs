@@ -59,6 +59,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -93,6 +95,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -414,6 +417,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.button18);
+            this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.textBox21);
             this.groupBox2.Controls.Add(this.label23);
@@ -444,10 +449,30 @@
             this.groupBox2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 336);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(654, 270);
+            this.groupBox2.Size = new System.Drawing.Size(654, 295);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Proyecto";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(23, 266);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(153, 23);
+            this.button18.TabIndex = 33;
+            this.button18.Text = "Contar Ensayos Faltantes";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(407, 132);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(153, 23);
+            this.button17.TabIndex = 26;
+            this.button17.Text = "Estimar Finalización";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // label25
             // 
@@ -636,7 +661,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(312, 108);
+            this.label16.Location = new System.Drawing.Point(312, 105);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 15);
             this.label16.TabIndex = 17;
@@ -654,7 +679,7 @@
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(407, 108);
+            this.textBox15.Location = new System.Drawing.Point(405, 102);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(164, 23);
@@ -707,7 +732,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(312, 79);
+            this.label11.Location = new System.Drawing.Point(306, 78);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(96, 15);
             this.label11.TabIndex = 7;
@@ -716,7 +741,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(407, 79);
+            this.textBox10.Location = new System.Drawing.Point(407, 74);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(164, 23);
@@ -762,6 +787,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.button16);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label26);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -769,6 +795,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(685, 100);
             this.panel1.TabIndex = 68;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(15, 71);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(122, 23);
+            this.button16.TabIndex = 49;
+            this.button16.Text = "Guardar cambios";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // pictureBox1
             // 
@@ -796,7 +832,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(685, 420);
+            this.ClientSize = new System.Drawing.Size(685, 643);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -886,6 +922,9 @@
           private System.Windows.Forms.Panel panel1;
           private System.Windows.Forms.PictureBox pictureBox1;
           private System.Windows.Forms.Label label26;
+          private System.Windows.Forms.Button button16;
+          private System.Windows.Forms.Button button17;
+          private System.Windows.Forms.Button button18;
       }
   }
 

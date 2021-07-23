@@ -299,5 +299,37 @@ namespace WindowsFormsApplication2
 
         private void Form4_Load(object sender, EventArgs e)
         { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (empleados.Count > 0)
+            {
+                string query = "SELECT func_contarParticipacionesEmpleado(" +
+                    Program.Evaluar(empleados[currentEmpleadoIndex].emp_idEmpleado, 1) + ")";
+                MessageBox.Show(query);
+                MySqlCommand mc = Program.getNewMySqlCommand(query);
+                try
+                {
+                    String retorno = mc.ExecuteScalar().ToString();
+                    if (retorno != null || retorno.ToUpper() == "NULL")
+                        MessageBox.Show("El empleado ha realizado "+retorno+" ensayos a muestras");
+                    else
+                        MessageBox.Show("Verifique que los datos permitan la operacion");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primer navegue hacia un empleado");
+            }
+        }
     }
 }
