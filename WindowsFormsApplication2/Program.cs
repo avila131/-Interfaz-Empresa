@@ -303,6 +303,16 @@ namespace WindowsFormsApplication2
 
             if (loginForm.UserSuccessfullyAuthenticated)
             {
+                string query = "START TRANSACTION";
+                MySqlCommand comando= getNewMySqlCommand(query);
+                try
+                {
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al iniciar transaccion: "+ex);
+                }
                 Form menuForm;
                 if (loginForm.userRole == "empleadoLaboratorista")
                 {
@@ -316,6 +326,25 @@ namespace WindowsFormsApplication2
                 }
                 if(MenSelection != null){
                     Application.Run(MenSelection);
+                }
+                DialogResult ds = MessageBox.Show("¿Desea guardar los cambios realizados?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds == DialogResult.Yes)
+                {
+                    query = "COMMIT";
+                }
+                else
+                {
+                    query = "ROLLBACK";
+                }
+                comando = getNewMySqlCommand(query);
+                try
+                {
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al terminar transaccion: " + ex);
                 }
 
             }
