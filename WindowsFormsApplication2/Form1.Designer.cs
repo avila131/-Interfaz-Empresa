@@ -462,7 +462,6 @@
             // 
             this.textBox21.Location = new System.Drawing.Point(389, 39);
             this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(143, 23);
             this.textBox21.TabIndex = 32;
             // 
@@ -488,7 +487,6 @@
             // 
             this.textBox19.Location = new System.Drawing.Point(389, 14);
             this.textBox19.Name = "textBox19";
-            this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(143, 23);
             this.textBox19.TabIndex = 25;
             // 
@@ -798,7 +796,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(685, 614);
+            this.ClientSize = new System.Drawing.Size(685, 420);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

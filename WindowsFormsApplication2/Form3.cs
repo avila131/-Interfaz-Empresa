@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using System.Drawing;
+using System.IO;
 namespace WindowsFormsApplication2
 {
     public partial class Form3 : Form
@@ -65,7 +66,7 @@ namespace WindowsFormsApplication2
         }
        
 
-        private void llenarListaPerforaciones(Boolean repeticion = false)
+        private void llenarListaPerforaciones()
         {
             perforaciones.Clear();  // Vaciar lista para ingresar nuevos valores
             string queryFiltrado = "SELECT * FROM Perforacion WHERE (" + filtroBusquedaPerforacion +
@@ -88,14 +89,12 @@ namespace WindowsFormsApplication2
                     }
                 else
                 {
-                    if(!repeticion)MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
+                    MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
                     mascaraBusquedaPerforacion = "";
                     filtroBusquedaPerforacion = "per_idPerforacion";
                     reader.Close();
                     vaciarPerforacion();
-                    vaciarMuestra();
-                    if(!repeticion)
-                    llenarListaPerforaciones(true);  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+                    vaciarMuestra(); // Como no se encontraron registros, regresa a los valores iniciales que sí existen
                 }
             }
             catch (Exception ex)
@@ -103,6 +102,7 @@ namespace WindowsFormsApplication2
                 MessageBox.Show(ex.Message);
             }
             finally { if(reader!=null) reader.Close(); }
+            currentPerforacionIndex = 0;
         }
 
 
@@ -110,13 +110,17 @@ namespace WindowsFormsApplication2
         {
             btnAnteriorPerforacion.Text = "Anterior";
             btnSiguientePerforacion.Text = "Siguiente";
-            groupBoxAdminPerforacion.Visible = true;
+            if (Program.rolActual != "empleadoLaboratorista")
+            {
+                groupBoxAdminPerforacion.Visible = true;
+            }
             foreach (TextBox box in groupBoxPerforacion.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
             groupBoxFiltroPerforacion.Visible = true;
             button1.Enabled = true;
             button2.Enabled = true;
             button3.Enabled = true;
+            btnCrearEnsayoMuestra.Enabled = true;
         }
 
 
@@ -131,6 +135,7 @@ namespace WindowsFormsApplication2
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
+            btnCrearEnsayoMuestra.Enabled = false;
         }
 
 
@@ -144,6 +149,11 @@ namespace WindowsFormsApplication2
 
         private void btnActualizarPerforacion_Click(object sender, EventArgs e)
         {
+            if (perforaciones.Count <= 0)
+            {
+                MessageBox.Show("No existe una perforación que actualizar");
+                return;
+            }
             menuUpdatePerforacion();
             actualizandoPerforacion = true;
         }
@@ -151,6 +161,7 @@ namespace WindowsFormsApplication2
 
         private void btnNuevaPerforacion_Click(object sender, EventArgs e)
         {
+
             menuAddPerforacion();
             agregandoPerforacion = true;
         }
@@ -171,6 +182,10 @@ namespace WindowsFormsApplication2
         {
             if (actualizandoPerforacion)
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar la perforacion?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
+                
                 string query =
                     "UPDATE perforacion SET per_nombrePerforacion = " + Program.Evaluar(textBoxNombrePerforacion.Text) + "," +
                     "per_localizacion = " + Program.Evaluar(textBoxLocalizacionPerforacion.Text) + "," +
@@ -191,9 +206,14 @@ namespace WindowsFormsApplication2
                 llenarListaPerforaciones();
                 mostrarDatosPerforacion(currentPerforacionIndex);
                 menuNormalPerforacion();
+                llenarListaMuestras();
+                mostrarDatosMuestra(currentMuestraIndex);
             }
             else if (agregandoPerforacion)
             {
+                DialogResult ds = MessageBox.Show("¿Desea agregar la perforacion?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 // INSERT INTO Perforacion VALUES(NUll, 'PZ-9', 'La Vega', 54.221321, -32.99832, 2);
                 string con = "SELECT MAX(per_idPerforacion) FROM Perforacion";
                 MySqlCommand cmAux = Program.getNewMySqlCommand(con);
@@ -222,6 +242,8 @@ namespace WindowsFormsApplication2
                     llenarListaPerforaciones();
                     mostrarDatosPerforacion(currentPerforacionIndex);
                     menuNormalPerforacion();
+                    llenarListaMuestras();
+                    mostrarDatosMuestra(currentMuestraIndex);
                 }
                 catch (Exception ex)
                 {
@@ -294,16 +316,22 @@ namespace WindowsFormsApplication2
 
         private void llenarListaMuestras()
         {
-            if (perforaciones.Count <= 0) return;
+            muestras.Clear();
+            currentMuestraIndex = 0;
+            if (perforaciones.Count <= 0)
+            {
+                vaciarMuestra();
+                return;
+            }
             string id_perforacion_actual = perforaciones[currentPerforacionIndex].per_idPerforacion;
             muestras.Clear();  // Vaciar lista para ingresar nuevos valores
             string queryFiltrado = "SELECT * FROM Muestra WHERE (" + filtroBusquedaMuestra +
-                " LIKE '" + mascaraBusquedaMuestra + "%') AND (per_idPerforacion = " + id_perforacion_actual + ");";
+                " LIKE '" + mascaraBusquedaMuestra + "%' AND per_idPerforacion = " + id_perforacion_actual + ");";
             MySqlCommand commandDatabase = Program.getNewMySqlCommand(queryFiltrado);
             try
             {
                 reader = commandDatabase.ExecuteReader();
-                if (reader.Read())
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
@@ -325,7 +353,6 @@ namespace WindowsFormsApplication2
                     MessageBox.Show("No hay muestras para esta perforación");
                     mascaraBusquedaMuestra = "";
                     filtroBusquedaMuestra = "mue_idMuestra";
-                    currentMuestraIndex = 0;
                     vaciarMuestra();
                     return; // Regresa el control para evitar un ciclo infinito donde busca datos pero no encuentra
                 }
@@ -335,7 +362,7 @@ namespace WindowsFormsApplication2
                 MessageBox.Show(ex.Message);
             }
             finally { reader.Close(); }
-            MessageBox.Show(muestras.Count.ToString());
+            
         }
 
         public void vaciarMuestra()
@@ -352,6 +379,7 @@ namespace WindowsFormsApplication2
             mascaraBusquedaMuestra = txtMascaraMuestra.Text;
             filtroBusquedaMuestra = comboBoxFiltroMuestra.Text == "Número de muestra" ? "mue_numeroMuestra" : "mue_profundidad";
             llenarListaMuestras();  // llenar con los nuevos valores filtrados
+            mostrarDatosMuestra(currentMuestraIndex);
         }
 
 
@@ -359,18 +387,27 @@ namespace WindowsFormsApplication2
         {
             btnAnteriorMuestra.Text = "Anterior";
             btnSiguienteMuestra.Text = "Siguiente";
-            groupBoxAdminMuestra.Visible = true;
+            if (Program.rolActual != "empleadoLaboratorista")
+                groupBoxAdminMuestra.Visible = true;
             foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
             comboBoxTipoMuestra.Enabled = false;
             comboBoxTipoExploracion.Enabled = false;
             comboBoxCondicionEmpaque.Enabled = false;
             groupBoxFiltroMuestra.Visible = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            btnCrearEnsayoMuestra.Enabled = true;
         }
 
 
         private void menuUpdateMuestra()
         {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            btnCrearEnsayoMuestra.Enabled = false;
             btnAnteriorMuestra.Text = "Cancelar";
             btnSiguienteMuestra.Text = "Aceptar";
             groupBoxAdminMuestra.Visible = false;
@@ -431,14 +468,22 @@ namespace WindowsFormsApplication2
             string CondicionDeEmpaque = comboBoxCondicionEmpaque.Text == "TUBO" ? "1" :
                                         comboBoxCondicionEmpaque.Text == "BOLSA" ? "2" : "3";
             string tipoDeExploracion = comboBoxTipoExploracion.Text == "SONDEO" ? "1" : "2";
-            string id_perforacion_actual = perforaciones[currentPerforacionIndex].per_idPerforacion;
             if (actualizandoMuestra)
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar la muestra?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
+                if (muestras.Count <= 0)
+                {
+                    MessageBox.Show("No existe una muestra para actualizar");
+                    return;
+                }
+                string id_perforacion_actual = perforaciones[currentPerforacionIndex].per_idPerforacion;
                 string query =
-                    "UPDATE muestra SET mue_numeroMuestra = " + Program.Evaluar(txtNumeroMuestra.Text) + "," +
+                    "UPDATE muestra SET mue_numeroMuestra = " + Program.Evaluar(txtNumeroMuestra.Text,1) + "," +
                     "mue_condicionEmpaque = " + Program.Evaluar(CondicionDeEmpaque, 1) + "," +
                     "mue_tipoMuestra = " + Program.Evaluar(tipoDeMuestra, 1) + "," +
-                    "mue_ubicacionBodega = " + Program.Evaluar(txtUbicacionBodega.Text, 1) + "," +
+                    "mue_ubicacionBodega = " + Program.Evaluar(txtUbicacionBodega.Text) + "," +
                     "mue_descripcionMuestra = " + Program.Evaluar(txtDescripcionMuestra.Text) + "," +
                     "mue_tipoExploracion = " + Program.Evaluar(tipoDeExploracion, 1) + "," +
                     "per_idPerforacion = " + Program.Evaluar(id_perforacion_actual, 1) + "," +
@@ -452,7 +497,7 @@ namespace WindowsFormsApplication2
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error al actualizar: " + ex);
+                    MessageBox.Show("Error al actualizar: " + ex.Message);
                 }
                 actualizandoMuestra = false;
                 llenarListaMuestras();
@@ -461,31 +506,51 @@ namespace WindowsFormsApplication2
             }
             else if (agregandoMuestra)
             {
+                DialogResult ds = MessageBox.Show("¿Desea agregar la muestra?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
+                if (perforaciones.Count <= 0)
+                {
+                    MessageBox.Show("No existe una perforacion padre para esta muestra.\nInserte una perforacion primero");
+                    return;
+                }
+                string id_perforacion_actual = perforaciones[currentPerforacionIndex].per_idPerforacion;
                 // INSERT INTO Perforacion VALUES(NUll, 'PZ-9', 'La Vega', 54.221321, -32.99832, 2);
-                string query =
-                        "INSERT INTO muestra VALUES (NULL, " + Program.Evaluar(txtNumeroMuestra.Text) + "," +
-                        Program.Evaluar(CondicionDeEmpaque, 1) +
+                string con = "SELECT MAX(mue_idMuestra) FROM Muestra";
+                MySqlCommand cmAux = Program.getNewMySqlCommand(con);
+                try
+                {
+                    int m_indice = Int32.Parse(cmAux.ExecuteScalar().ToString());
+                    string query =
+                        "INSERT INTO muestra VALUES ( " + (m_indice + 1).ToString() +
+                        "," + Program.Evaluar(txtNumeroMuestra.Text) +
+                        "," + Program.Evaluar(CondicionDeEmpaque, 1) +
                         "," + Program.Evaluar(tipoDeMuestra, 1) +
-                        "," + Program.Evaluar(txtUbicacionBodega.Text, 1) +
+                        "," + Program.Evaluar(txtUbicacionBodega.Text) +
                         "," + Program.Evaluar(tipoDeExploracion, 1) +
                         "," + Program.Evaluar(txtDescripcionMuestra.Text) +
                         "," + Program.Evaluar(id_perforacion_actual, 1) +
-                        "," + Program.Evaluar(txtUbicacionBodega.Text, 1) +
                         "," + Program.Evaluar(txtProfundidadMuestra.Text, 1) + ");";
-                MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
-                try
-                {
-                    commandDatabase.ExecuteNonQuery();
-                    llenarListaMuestras();
-                    mostrarDatosMuestra(currentMuestraIndex);
-                    MessageBox.Show("Agregado correctamente");
+                    MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                    try
+                    {
+                        commandDatabase.ExecuteNonQuery();
+                        MessageBox.Show("Agregado correctamente");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al agregar: " + ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al agregar: " + ex);
+                    MessageBox.Show("Error al agregar: " + ex.Message);
                 }
                 agregandoMuestra = false;
+                llenarListaMuestras();
+                mostrarDatosMuestra(currentMuestraIndex);
                 menuNormalMuestra();
+
             }
             else if (currentMuestraIndex + 1 >= muestras.Count)
                 MessageBox.Show("No puede avanzar más");
@@ -520,8 +585,13 @@ namespace WindowsFormsApplication2
         {
             id_proyectoRecibido = -1;
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             inicializarProyectoFiltro();
-            
+            if(Program.rolActual == "empleadoLaboratorista")
+            {
+                groupBoxAdminPerforacion.Visible = false;
+                groupBoxAdminMuestra.Visible = false;
+            }
             txtNombreProyecto.Text = nombre_proyectoRecibido;
 
             llenarListaPerforaciones();
@@ -618,6 +688,62 @@ namespace WindowsFormsApplication2
         private void txtNombreProyecto_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEliminarPerforacion_Click(object sender, EventArgs e)
+        {
+            DialogResult ds = MessageBox.Show("¿Desea eliminar la perforacion?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
+            if (perforaciones.Count <= 0)
+            {
+                MessageBox.Show("No hay perforaciones para borrar");
+                return;
+            }
+
+            string query = "DELETE FROM Perforacion WHERE per_idPerforacion = " + 
+                perforaciones[currentPerforacionIndex].per_idPerforacion;
+            MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+            try
+            {
+                commandDatabase.ExecuteNonQuery();
+                MessageBox.Show("Borrado correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            llenarListaPerforaciones();
+            llenarListaMuestras();
+            mostrarDatosMuestra(currentMuestraIndex);
+            mostrarDatosPerforacion(currentPerforacionIndex);
+        }
+
+        private void btnEliminarMuestra_Click(object sender, EventArgs e)
+        {
+            DialogResult ds = MessageBox.Show("¿Desea eliminar la muestra?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
+            if (muestras.Count <= 0)
+            {
+                MessageBox.Show("No hay muestras para borrar");
+                return;
+            }
+
+            string query = "DELETE FROM Muestra WHERE mue_idMuestra = " +
+                muestras[currentMuestraIndex].mue_idMuestra;
+            MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+            try
+            {
+                commandDatabase.ExecuteNonQuery();
+                MessageBox.Show("Borrado correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            llenarListaMuestras();
+            mostrarDatosMuestra(currentMuestraIndex);
         }
     }
 } 

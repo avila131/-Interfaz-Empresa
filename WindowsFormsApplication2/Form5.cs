@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.IO;
 
 // Listened to this while coding https://www.youtube.com/watch?v=AVK0BIVqLLc
 
@@ -46,7 +48,12 @@ namespace WindowsFormsApplication2
         public Form5()
         {
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             groupBox2.Show();
+            if (Program.rolActual == "empleadoLaboratorista")
+            {
+                groupBox2.Visible = false;
+            }
             string query = "SELECT * FROM tipoEnsayo";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
             commandDatabase.CommandTimeout = 60;
@@ -91,10 +98,13 @@ namespace WindowsFormsApplication2
             button4.Text = "Cancelar";
             button3.Text = "Aceptar";
             textBox11.ReadOnly = true;
-            button10.Visible = false;
+            /*button10.Visible = false;
             button9.Visible = false;
-            button11.Visible = false;
+            button11.Visible = false;*/
             textBox1.ReadOnly = false;
+            groupBox2.Visible = false;
+            btnBuscar.Enabled = false;
+
         }
 
         /// <summary>
@@ -103,11 +113,16 @@ namespace WindowsFormsApplication2
         /// </summary>
         private void menuNormal()
         {
-            button10.Visible = true;
+            /*button10.Visible = true;*/
             textBox11.ReadOnly = false;
             textBox1.ReadOnly = true;
-            button9.Visible = true;
-            button11.Visible = true;
+            /*button9.Visible = true;
+            button11.Visible = true;*/
+            if (Program.rolActual != "empleadoLaboratorista")
+            {
+                groupBox2.Visible = true;
+            }
+            btnBuscar.Enabled = true;
             button4.Text = "Anterior";
             button3.Text = "Siguiente";
             textBox1.Text = tiposEnsayoFiltrados[currentTipoEnsayoIndex].tip_nombreTipoEnsayo;
@@ -142,6 +157,14 @@ namespace WindowsFormsApplication2
         {
             if (actualizando)
             {
+                if (tiposEnsayo.Count <= 0)
+                {
+                    MessageBox.Show("No existe algún tipo de ensayo para actualizar");
+                    return;
+                }
+                DialogResult ds = MessageBox.Show("¿Desea actualizar el tipo de ensayo?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query = "UPDATE tipoensayo SET tip_nombreTipoEnsayo = " + Evaluar(textBox1.Text) +
                     " WHERE tip_idTipoEnsayo = " + tiposEnsayoFiltrados[currentTipoEnsayoIndex].tip_idTipoEnsayo + " ;";
                 MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
@@ -164,6 +187,9 @@ namespace WindowsFormsApplication2
             }
             else if (agregando)
             {
+                DialogResult ds = MessageBox.Show("¿Desea agregar el tipo de ensayo?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query = "INSERT INTO tipoensayo(tip_nombreTipoEnsayo) VALUES(" + Evaluar(textBox1.Text) + ");";
                 MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
                 commandDatabase.CommandTimeout = 60;
@@ -203,6 +229,15 @@ namespace WindowsFormsApplication2
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (tiposEnsayo.Count <= 0)
+            {
+                MessageBox.Show("No existe algún tipo de ensayo para borrar");
+                return;
+            }
+            DialogResult ds = MessageBox.Show("¿Desea borrar el tipo de ensayo?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
+            
             string query = "DELETE FROM tipoensayo WHERE tip_idTipoEnsayo = " +
                 tiposEnsayoFiltrados[currentTipoEnsayoIndex].tip_idTipoEnsayo + ";";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);

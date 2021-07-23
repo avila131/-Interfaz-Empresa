@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsApplication2
 {
@@ -38,7 +40,11 @@ namespace WindowsFormsApplication2
             button3.Text = "Aceptar";
         }
 
-
+        private void borrarDatos()
+        {
+            foreach (TextBox box in groupBox1.Controls.OfType<TextBox>())
+                box.Text = "";
+        }
         private void menuAdd()
         {
             groupBox2.Visible = false;
@@ -58,15 +64,18 @@ namespace WindowsFormsApplication2
         /// <param name="given_index">Índice en la tabla de empleadosFiltrados</param>
         private void mostrarDatosEmpleado(int given_index)
         {
-            textBox1.Text = empleados[given_index].emp_idEmpleado;
-            textBox2.Text = empleados[given_index].emp_nombreEmpleado;
-            textBox4.Text = empleados[given_index].emp_apellidoEmpleado;
-            textBox5.Text = empleados[given_index].emp_oficioEmpleado;
-            textBox6.Text = empleados[given_index].emp_salario;
-            textBox7.Text = empleados[given_index].emp_nombreUsuario;
-            textBox8.Text = empleados[given_index].emp_nombreEPS;
-            textBox9.Text = empleados[given_index].emp_nombreARL;
-            textBox10.Text = empleados[given_index].emp_nombreFondoPension;
+            if (empleados.Count > 0)
+            {
+                textBox1.Text = empleados[given_index].emp_idEmpleado;
+                textBox2.Text = empleados[given_index].emp_nombreEmpleado;
+                textBox4.Text = empleados[given_index].emp_apellidoEmpleado;
+                textBox5.Text = empleados[given_index].emp_oficioEmpleado;
+                textBox6.Text = empleados[given_index].emp_salario;
+                textBox7.Text = empleados[given_index].emp_nombreUsuario;
+                textBox8.Text = empleados[given_index].emp_nombreEPS;
+                textBox9.Text = empleados[given_index].emp_nombreARL;
+                textBox10.Text = empleados[given_index].emp_nombreFondoPension;
+            }
         }
 
 
@@ -97,9 +106,11 @@ namespace WindowsFormsApplication2
                 else
                 {
                     MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
-                    mascaraBusqueda = "";
-                    filtroBusqueda = "emp_idEmpleado";
-                    actualizarListaEmpleados();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+                    //mascaraBusqueda = "";
+                    //filtroBusqueda = "emp_idEmpleado";
+                    borrarDatos();
+                    //actualizarListaEmpleados();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+
                 }
             }
             catch (Exception ex)
@@ -107,6 +118,7 @@ namespace WindowsFormsApplication2
                 MessageBox.Show(ex.Message);
             }
             finally { reader.Close(); }
+            currentEmpleadoIndex = 0;
         }
 
 
@@ -131,6 +143,7 @@ namespace WindowsFormsApplication2
         public Form4()
         {
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             actualizarListaEmpleados();
             mostrarDatosEmpleado(currentEmpleadoIndex);
         }
@@ -139,9 +152,12 @@ namespace WindowsFormsApplication2
         {
             if (actualizando || agregando)  // Cancela la operación
             {
-                menuNormal();
                 actualizando = false;
                 agregando = false;
+                actualizarListaEmpleados();
+                mostrarDatosEmpleado(currentEmpleadoIndex);
+                menuNormal();
+                
             }
             else if (currentEmpleadoIndex - 1 < 0)  // Revisa límites del arreglo
                 MessageBox.Show("No puede retroceder más");
@@ -153,6 +169,14 @@ namespace WindowsFormsApplication2
         {
             if (actualizando)
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar el empleado?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
+                if (empleados.Count <= 0)
+                {
+                    MessageBox.Show("No existe un empleado a modificar");
+                    return;
+                }
                 string query =
                     "UPDATE empleado SET emp_idEmpleado = " + Program.Evaluar(textBox1.Text, 1) + "," +
                     "emp_nombreEmpleado = " + Program.Evaluar(textBox2.Text) + "," +
@@ -197,15 +221,15 @@ namespace WindowsFormsApplication2
                 try
                 {
                     commandDatabase.ExecuteNonQuery();
-                    actualizarListaEmpleados();
-                    mostrarDatosEmpleado(currentEmpleadoIndex);
                     MessageBox.Show("Agregado correctamente");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al agregar: " + ex);
+                    MessageBox.Show("Error al agregar: " + ex.Message);
                 }
                 agregando = false;
+                actualizarListaEmpleados();
+                mostrarDatosEmpleado(currentEmpleadoIndex);
                 menuNormal();
             }
             else if (currentEmpleadoIndex + 1 >= empleados.Count)
@@ -242,6 +266,14 @@ namespace WindowsFormsApplication2
 
         private void button9_Click(object sender, EventArgs e)
         {
+            DialogResult ds = MessageBox.Show("¿Desea borrar el empleado?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
+            if (empleados.Count <= 0)
+            {
+                MessageBox.Show("No existe un empleado a borrar");
+                return;
+            }
             string query = "DELETE FROM EMPLEADO WHERE emp_idEmpleado = " + textBox1.Text + ";";
             MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
             try

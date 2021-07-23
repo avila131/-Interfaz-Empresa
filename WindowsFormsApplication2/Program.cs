@@ -148,6 +148,7 @@ namespace WindowsFormsApplication2
                 return "'" + objeto.Replace("\\", "\\\\") + "'";
             if (tipo == 3)
                 return "'%" + objeto + "%'";
+            objeto = objeto.Replace(",", "."); //Para evitar problemas con decimales
             return objeto;
         }
 
@@ -288,6 +289,31 @@ namespace WindowsFormsApplication2
                     box.Text = "Sin valor para mostrar";
         }
 
+        public static void GuardarCambios()
+        {
+            string query = "COMMIT";
+            MySqlCommand nuevo = getNewMySqlCommand(query);
+            try
+            {
+                nuevo.ExecuteNonQuery();
+                MessageBox.Show("Guardado correctamente");
+                query = "START TRANSACTION";
+                nuevo = getNewMySqlCommand(query);
+                try
+                {
+                    nuevo.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public static string rolActual, idEmpleadoRegistrado, nombreUsuarioActual;
 
         [STAThread]
@@ -303,16 +329,7 @@ namespace WindowsFormsApplication2
 
             if (loginForm.UserSuccessfullyAuthenticated)
             {
-                string query = "START TRANSACTION";
-                MySqlCommand comando= getNewMySqlCommand(query);
-                try
-                {
-                    comando.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al iniciar transaccion: "+ex);
-                }
+                GuardarCambios();
                 Form menuForm;
                 if (loginForm.userRole == "empleadoLaboratorista")
                 {
@@ -324,11 +341,14 @@ namespace WindowsFormsApplication2
                     menuForm = new Form8();
                     Application.Run(menuForm);
                 }
-                if(MenSelection != null){
+                while(MenSelection != null){
                     Application.Run(MenSelection);
                 }
+
+
                 DialogResult ds = MessageBox.Show("¿Desea guardar los cambios realizados?",
                     "Importante", MessageBoxButtons.YesNo);
+                string query;
                 if (ds == DialogResult.Yes)
                 {
                     query = "COMMIT";
@@ -337,7 +357,7 @@ namespace WindowsFormsApplication2
                 {
                     query = "ROLLBACK";
                 }
-                comando = getNewMySqlCommand(query);
+                MySqlCommand comando = getNewMySqlCommand(query);
                 try
                 {
                     comando.ExecuteNonQuery();

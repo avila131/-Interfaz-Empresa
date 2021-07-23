@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsApplication2
 {
@@ -13,6 +15,7 @@ namespace WindowsFormsApplication2
         public Form9()
         {
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath,"Imagenes\\logoEmpresa.png"));
         }
 
         public bool canOpenConnection()

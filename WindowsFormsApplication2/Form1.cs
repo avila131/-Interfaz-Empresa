@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsApplication2
 {
@@ -24,6 +26,7 @@ namespace WindowsFormsApplication2
             agregandoPro = false;
             actualizandoPro = false;
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             groupBox1.Controls.Remove(button13);
             this.Controls.Add(button13);
             groupBox2.Controls.Remove(button14);
@@ -281,7 +284,7 @@ namespace WindowsFormsApplication2
                             " AND " + Program.Evaluar(textBox21.Text);
                         break;
                     case 3:
-                        filtrado = " AND esp_fechaPagoTotal = NULL";
+                        filtrado = " AND esp_fechaPagoTotal is NULL ";
                         break;
                 }
                 string query = "SELECT pro_idProyecto, pro_cantidadEnsayos, pro_valorTotal, pro_nombreProyecto," +

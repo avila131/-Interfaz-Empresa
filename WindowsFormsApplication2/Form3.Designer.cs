@@ -278,6 +278,7 @@
             this.btnEliminarMuestra.TabIndex = 20;
             this.btnEliminarMuestra.Text = "Eliminar";
             this.btnEliminarMuestra.UseVisualStyleBackColor = true;
+            this.btnEliminarMuestra.Click += new System.EventHandler(this.btnEliminarMuestra_Click);
             // 
             // label7
             // 
@@ -489,6 +490,7 @@
             this.btnEliminarPerforacion.TabIndex = 20;
             this.btnEliminarPerforacion.Text = "Eliminar";
             this.btnEliminarPerforacion.UseVisualStyleBackColor = true;
+            this.btnEliminarPerforacion.Click += new System.EventHandler(this.btnEliminarPerforacion_Click);
             // 
             // label6
             // 

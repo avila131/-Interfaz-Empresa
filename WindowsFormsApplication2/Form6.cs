@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,13 @@ namespace WindowsFormsApplication2
         public Boolean actualizandoInf;
         public Form6()
         {
+            if (Program.rolActual == "empleadoLaboratorista")
+            {
+                groupBox4.Visible = false;
+                button6.Visible = false;
+            }
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             id_proyectoRecibido = -1;
             groupBox5.Controls.Remove(button8);
             this.Controls.Add(button8);

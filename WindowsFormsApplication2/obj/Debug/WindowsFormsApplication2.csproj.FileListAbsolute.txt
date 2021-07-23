@@ -31,4 +31,5 @@ C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form9.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
+C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form11.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
