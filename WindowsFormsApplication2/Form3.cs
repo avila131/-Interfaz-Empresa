@@ -88,11 +88,12 @@ namespace WindowsFormsApplication2
                     }
                 else
                 {
-                    MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
+                    if(!repeticion)MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
                     mascaraBusquedaPerforacion = "";
                     filtroBusquedaPerforacion = "per_idPerforacion";
                     reader.Close();
                     vaciarPerforacion();
+                    vaciarMuestra();
                     if(!repeticion)
                     llenarListaPerforaciones(true);  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
                 }
@@ -325,6 +326,7 @@ namespace WindowsFormsApplication2
                     mascaraBusquedaMuestra = "";
                     filtroBusquedaMuestra = "mue_idMuestra";
                     currentMuestraIndex = 0;
+                    vaciarMuestra();
                     return; // Regresa el control para evitar un ciclo infinito donde busca datos pero no encuentra
                 }
             }
@@ -333,16 +335,23 @@ namespace WindowsFormsApplication2
                 MessageBox.Show(ex.Message);
             }
             finally { reader.Close(); }
+            MessageBox.Show(muestras.Count.ToString());
+        }
+
+        public void vaciarMuestra()
+        {
+            foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
+                box.Text = "";
+            foreach (ComboBox box in groupBoxMuestra.Controls.OfType<ComboBox>())
+                box.Text = "";
         }
 
 
         private void btnFiltrarMuestra_Click(object sender, EventArgs e)
         {
-            foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
-                box.Text = "";  // Vaciar las cajas de texto para los nuevos valores filtrados
             mascaraBusquedaMuestra = txtMascaraMuestra.Text;
             filtroBusquedaMuestra = comboBoxFiltroMuestra.Text == "Número de muestra" ? "mue_numeroMuestra" : "mue_profundidad";
-            llenarListaPerforaciones();  // llenar con los nuevos valores filtrados
+            llenarListaMuestras();  // llenar con los nuevos valores filtrados
         }
 
 
@@ -353,6 +362,9 @@ namespace WindowsFormsApplication2
             groupBoxAdminMuestra.Visible = true;
             foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
+            comboBoxTipoMuestra.Enabled = false;
+            comboBoxTipoExploracion.Enabled = false;
+            comboBoxCondicionEmpaque.Enabled = false;
             groupBoxFiltroMuestra.Visible = true;
         }
 
@@ -364,6 +376,9 @@ namespace WindowsFormsApplication2
             groupBoxAdminMuestra.Visible = false;
             foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
                 box.ReadOnly = false;
+            comboBoxTipoMuestra.Enabled = true;
+            comboBoxTipoExploracion.Enabled = true;
+            comboBoxCondicionEmpaque.Enabled = true;
             groupBoxFiltroMuestra.Visible = false;
         }
 
@@ -380,10 +395,7 @@ namespace WindowsFormsApplication2
         {
             if (muestras.Count == 0)
             {
-                foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
-                    box.Text = "";
-                foreach (ComboBox box in groupBoxMuestra.Controls.OfType<ComboBox>())
-                    box.Text = "";
+                vaciarMuestra();
             }
             else
             {
@@ -517,6 +529,7 @@ namespace WindowsFormsApplication2
             llenarListaMuestras();
             mostrarDatosMuestra(0);
             menuNormalPerforacion();
+            menuNormalMuestra();
 
             if (id_proyectoRecibido == -1)
             {
@@ -534,8 +547,8 @@ namespace WindowsFormsApplication2
             groupBoxMuestra.Controls.Remove(button2);
             this.Controls.Add(button2);
 
-            button1.Location = new System.Drawing.Point(31, 83);
-            button2.Location = new System.Drawing.Point(31, 296);
+            button1.Location = new System.Drawing.Point(9, 140);
+            button2.Location = new System.Drawing.Point(9, 355);
 
             button1.BringToFront();
             button2.BringToFront();
@@ -574,8 +587,8 @@ namespace WindowsFormsApplication2
             groupBoxMuestra.Visible = true;
             button1.Text = "Perforación +";
             button2.Text = "Muestra -";
-            button2.Location = new System.Drawing.Point(31, 123);
-            groupBoxMuestra.Location = new System.Drawing.Point(31, 123);
+            button2.Location = new System.Drawing.Point(9, 160);
+            groupBoxMuestra.Location = new System.Drawing.Point(9, 160);
         }
         private void esconderMuestra()
         {
@@ -583,8 +596,8 @@ namespace WindowsFormsApplication2
             groupBoxPerforacion.Visible = true;
             button1.Text = "Perforación -";
             button2.Text = "Muestra +";
-            button2.Location = new System.Drawing.Point(31, 296);
-            groupBoxMuestra.Location = new System.Drawing.Point(33, 297);
+            button2.Location = new System.Drawing.Point(9, 355);
+            groupBoxMuestra.Location = new System.Drawing.Point(9, 355);
         }
 
         private void Form3_Load(object sender, EventArgs e)

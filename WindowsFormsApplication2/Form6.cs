@@ -31,8 +31,8 @@ namespace WindowsFormsApplication2
             groupBox3.Controls.Remove(button12);
             this.Controls.Add(button12);
 
-            button8.Location = new System.Drawing.Point(15, 69);
-            button12.Location = new System.Drawing.Point(15, 244);
+            button8.Location = new System.Drawing.Point(31, 140);
+            button12.Location = new System.Drawing.Point(31, 319);
 
             button8.BringToFront();
             button12.BringToFront();
@@ -256,8 +256,8 @@ namespace WindowsFormsApplication2
             groupBox3.Visible = true;
             button8.Text = "Informe +";
             button12.Text = "Ensayos -";
-            button12.Location = new System.Drawing.Point(15, 119);
-            groupBox3.Location = new System.Drawing.Point(15, 119);
+            button12.Location = new System.Drawing.Point(31, 180);
+            groupBox3.Location = new System.Drawing.Point(31, 180);
         }
         private void esconderEnsayo()
         {
@@ -265,8 +265,8 @@ namespace WindowsFormsApplication2
             groupBox5.Visible = true;
             button8.Text = "Informe -";
             button12.Text = "Ensayos +";
-            button12.Location = new System.Drawing.Point(15, 244);
-            groupBox3.Location = new System.Drawing.Point(15, 244);
+            button12.Location = new System.Drawing.Point(31, 319);
+            groupBox3.Location = new System.Drawing.Point(31, 319);
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)

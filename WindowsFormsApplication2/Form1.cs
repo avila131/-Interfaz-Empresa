@@ -29,8 +29,8 @@ namespace WindowsFormsApplication2
             groupBox2.Controls.Remove(button14);
             this.Controls.Add(button14);
             groupBox2.Visible = false;
-            button13.Location = new System.Drawing.Point(12, 24);
-            button14.Location = new System.Drawing.Point(12, 238);
+            button13.Location = new System.Drawing.Point(12, 122);
+            button14.Location = new System.Drawing.Point(12, 336);
             button13.BringToFront();
             button14.BringToFront();
             comboBox1.SelectedIndex = 0;
@@ -129,6 +129,8 @@ namespace WindowsFormsApplication2
             foreach (TextBox box in groupBox2.Controls.OfType<TextBox>())
                 box.ReadOnly = enabled;
             textBox12.ReadOnly = false;
+            textBox19.ReadOnly = false;
+            textBox21.ReadOnly = false;
         }
 
         /// <summary>
@@ -199,7 +201,7 @@ namespace WindowsFormsApplication2
                 button8.Enabled = false;
                 label20.Visible = false;
                 comboBox2.Visible = false;
-                label25.Visible = false;
+                button15.Visible = false;
                 comboBox2_SelectedIndexChanged_1(null, null);
             }
             else
@@ -213,6 +215,7 @@ namespace WindowsFormsApplication2
                 label20.Visible = true;
                 comboBox2.Visible = true;
                 label25.Visible = true;
+                button15.Visible = true;
                 comboBox2_SelectedIndexChanged_1(null, null);
             }
         }
@@ -397,6 +400,9 @@ namespace WindowsFormsApplication2
             }
             else if (agregandoPro)
             {
+                DialogResult ds = MessageBox.Show("¿Desea agregar el proyecto?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string con = "SELECT MAX(pro_idProyecto) FROM Proyecto";
                 MySqlCommand cmAux = new MySqlCommand(con, Program.databaseConnection);
                 try
@@ -447,12 +453,15 @@ namespace WindowsFormsApplication2
                 groupBox1.Enabled = true;
                 readOnlyProyectoTextBoxes(true);
                 readOnlyEstadoPagoTextBoxes(true);
-                menuAddUpdateProyecto(false);
                 agregandoPro = false;
+                menuAddUpdateProyecto(false);
                 upd_proyectos();
             }
             else
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar el proyecto?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                     "UPDATE Proyecto SET pro_nombreProyecto = " + Program.Evaluar(textBox3.Text) + "," +
                     "pro_cantidadEnsayos = " + Program.Evaluar(textBox10.Text, 1) + "," +
@@ -466,7 +475,15 @@ namespace WindowsFormsApplication2
                 {
                     commandDatabase.ExecuteNonQuery();
                     MessageBox.Show("Actualizado correctamente un proyecto");
-                    query =
+                    if(proyectos[currentProyectoIndex].valorAbonado == "")
+                        query = 
+                            "INSERT INTO EstadoPago VALUES ("+
+                            Program.Evaluar(proyectos[currentProyectoIndex].id,1) +","+
+                            Program.Evaluar(textBox16.Text, 1)+","+
+                            Program.Evaluar(textBox17.Text)+","+
+                            Program.Evaluar(textBox18.Text)+");";
+                    else
+                        query =
                         "UPDATE EstadoPago SET esp_valorAbonado = " +
                         Program.Evaluar(textBox16.Text, 1) + "," +
                         "esp_fechaAbono = " + Program.Evaluar(textBox17.Text) + "," +
@@ -491,8 +508,8 @@ namespace WindowsFormsApplication2
                 groupBox1.Enabled = true;
                 readOnlyProyectoTextBoxes(true);
                 readOnlyEstadoPagoTextBoxes(true);
-                menuAddUpdateProyecto(false);
                 actualizandoPro = false;
+                menuAddUpdateProyecto(false);
                 upd_proyectos();
             }
         }
@@ -514,9 +531,9 @@ namespace WindowsFormsApplication2
                 groupBox1.Enabled = true;
                 readOnlyProyectoTextBoxes(true);
                 readOnlyEstadoPagoTextBoxes(true);
-                menuAddUpdateProyecto(false);
                 agregandoPro = false;
                 actualizandoPro = false;
+                menuAddUpdateProyecto(false);
                 upd_proyectos();
             }
         }
@@ -565,6 +582,9 @@ namespace WindowsFormsApplication2
             }
             else if (!actualizando)
             {
+                DialogResult ds = MessageBox.Show("¿Desea insertar al cliente?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                     "INSERT INTO Cliente VALUES (" +
                     Program.Evaluar(textBox1.Text, 1) +
@@ -597,6 +617,9 @@ namespace WindowsFormsApplication2
             }
             else //Osea actualizando :D
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar al cliente?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                     "UPDATE Cliente SET cli_razonSocial = " + Program.Evaluar(textBox2.Text) + "," +
                     "cli_telefono = " + Program.Evaluar(textBox4.Text) + "," +
@@ -640,6 +663,9 @@ namespace WindowsFormsApplication2
             }
             else if (!agregando && !actualizando)
             {
+                DialogResult ds = MessageBox.Show("¿Desea borrar el cliente?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query = "DELETE FROM Cliente WHERE cli_NIT = " + textBox1.Text;
                 MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
                 commandDatabase.CommandTimeout = 60;
@@ -684,8 +710,8 @@ namespace WindowsFormsApplication2
             emptyEstadoPagoTextBoxes();
             readOnlyProyectoTextBoxes(false);
             readOnlyEstadoPagoTextBoxes(false);
-            menuAddUpdateProyecto(true);
             agregandoPro = true;
+            menuAddUpdateProyecto(true);
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -717,12 +743,16 @@ namespace WindowsFormsApplication2
         {
             readOnlyProyectoTextBoxes(false);
             readOnlyEstadoPagoTextBoxes(false);
-            menuAddUpdateProyecto(true);
             actualizandoPro = true;
+            menuAddUpdateProyecto(true);
+            
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
+            DialogResult ds = MessageBox.Show("¿Desea borrar el proyecto?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
             string query = "DELETE FROM EstadoPago WHERE pro_idProyecto = " +
                 proyectos[currentProyectoIndex].id; ;
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
@@ -768,8 +798,8 @@ namespace WindowsFormsApplication2
             groupBox2.Visible = true;
             button13.Text = "Cliente +";
             button14.Text = "Proyecto -";
-            button14.Location = new System.Drawing.Point(12, 73);
-            groupBox2.Location = new System.Drawing.Point(14, 73);
+            button14.Location = new System.Drawing.Point(12, 152);
+            groupBox2.Location = new System.Drawing.Point(14, 152);
         }
         private void esconderProyecto()
         {
@@ -777,8 +807,8 @@ namespace WindowsFormsApplication2
             groupBox1.Visible = true;
             button13.Text = "Cliente -";
             button14.Text = "Proyecto +";
-            button14.Location = new System.Drawing.Point(12, 248);
-            groupBox2.Location = new System.Drawing.Point(14, 248);
+            button14.Location = new System.Drawing.Point(12, 336);
+            groupBox2.Location = new System.Drawing.Point(14, 336);
         }
         private void button14_Click(object sender, EventArgs e)
         {
@@ -860,6 +890,18 @@ namespace WindowsFormsApplication2
         private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             int ind = comboBox2.SelectedIndex;
+
+            if (agregandoPro || actualizandoPro)
+            {
+                label25.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                textBox19.Visible = false;
+                textBox21.Visible = false;
+                textBox12.Visible = false;
+                return;
+            }
             if (ind == 0)
             {
                 textBox19.Visible = false;
@@ -868,8 +910,9 @@ namespace WindowsFormsApplication2
                 label23.Visible = false;
                 textBox12.Visible = true;
                 label21.Visible = true;
+                return;
             }
-            else if (ind == 1 || ind == 2)
+            if (ind == 1 || ind == 2)
             {
                 textBox19.Visible = true;
                 textBox21.Visible = true;
@@ -877,16 +920,17 @@ namespace WindowsFormsApplication2
                 label23.Visible = true;
                 textBox12.Visible = false;
                 label21.Visible = false;
+                return;
             }
-            else
-            {
+            
+            
                 textBox19.Visible = false;
                 textBox21.Visible = false;
                 label22.Visible = false;
                 label23.Visible = false;
                 textBox12.Visible = false;
                 label21.Visible = false;
-            }
+            
         }
 
         private void button15_Click_1(object sender, EventArgs e)
@@ -901,7 +945,7 @@ namespace WindowsFormsApplication2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }

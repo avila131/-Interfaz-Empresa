@@ -41,6 +41,7 @@ namespace WindowsFormsApplication2
 
         public Form10()
         {
+            id_asignado = -1;
             InitializeComponent();
             display();
         }

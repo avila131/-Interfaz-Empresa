@@ -1,33 +1,33 @@
-﻿﻿namespace WindowsFormsApplication2
- {
-     partial class Form3
-     {
-         /// <summary>
-         /// Required designer variable.
-         /// </summary>
-         private System.ComponentModel.IContainer components = null;
+﻿﻿﻿namespace WindowsFormsApplication2
+  {
+      partial class Form3
+      {
+          /// <summary>
+          /// Required designer variable.
+          /// </summary>
+          private System.ComponentModel.IContainer components = null;
 
-         /// <summary>
-         /// Clean up any resources being used.
-         /// </summary>
-         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-         protected override void Dispose(bool disposing)
-         {
-             if (disposing && (components != null))
-             {
-                 components.Dispose();
-             }
-             base.Dispose(disposing);
-         }
+          /// <summary>
+          /// Clean up any resources being used.
+          /// </summary>
+          /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+          protected override void Dispose(bool disposing)
+          {
+              if (disposing && (components != null))
+              {
+                  components.Dispose();
+              }
+              base.Dispose(disposing);
+          }
 
-         #region Windows Form Designer generated code
+          #region Windows Form Designer generated code
 
-         /// <summary>
-         /// Required method for Designer support - do not modify
-         /// the contents of this method with the code editor.
-         /// </summary>
-         private void InitializeComponent()
-         {
+          /// <summary>
+          /// Required method for Designer support - do not modify
+          /// the contents of this method with the code editor.
+          /// </summary>
+          private void InitializeComponent()
+          {
             this.groupBoxMuestra = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxTipoExploracion = new System.Windows.Forms.ComboBox();
@@ -44,6 +44,7 @@
             this.btnNuevaMuestra = new System.Windows.Forms.Button();
             this.btnEliminarMuestra = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnCrearEnsayoMuestra = new System.Windows.Forms.Button();
             this.txtProfundidadMuestra = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtDescripcionMuestra = new System.Windows.Forms.TextBox();
@@ -79,22 +80,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxLocalizacionPerforacion = new System.Windows.Forms.TextBox();
             this.textBoxNombrePerforacion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.txtNombreProyecto = new System.Windows.Forms.TextBox();
-            this.btnCrearEnsayoMuestra = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBoxMuestra.SuspendLayout();
             this.groupBoxFiltroMuestra.SuspendLayout();
             this.groupBoxAdminMuestra.SuspendLayout();
             this.groupBoxPerforacion.SuspendLayout();
             this.groupBoxAdminPerforacion.SuspendLayout();
             this.groupBoxFiltroPerforacion.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMuestra
             // 
-            this.groupBoxMuestra.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBoxMuestra.BackColor = System.Drawing.Color.White;
             this.groupBoxMuestra.Controls.Add(this.label8);
             this.groupBoxMuestra.Controls.Add(this.comboBoxTipoExploracion);
             this.groupBoxMuestra.Controls.Add(this.comboBoxTipoMuestra);
@@ -116,7 +120,7 @@
             this.groupBoxMuestra.Controls.Add(this.label4);
             this.groupBoxMuestra.Controls.Add(this.txtNumeroMuestra);
             this.groupBoxMuestra.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxMuestra.Location = new System.Drawing.Point(33, 297);
+            this.groupBoxMuestra.Location = new System.Drawing.Point(9, 355);
             this.groupBoxMuestra.Name = "groupBoxMuestra";
             this.groupBoxMuestra.Size = new System.Drawing.Size(679, 288);
             this.groupBoxMuestra.TabIndex = 24;
@@ -235,7 +239,7 @@
             // 
             // groupBoxAdminMuestra
             // 
-            this.groupBoxAdminMuestra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBoxAdminMuestra.BackColor = System.Drawing.Color.White;
             this.groupBoxAdminMuestra.Controls.Add(this.btnActualizarMuestra);
             this.groupBoxAdminMuestra.Controls.Add(this.btnNuevaMuestra);
             this.groupBoxAdminMuestra.Controls.Add(this.btnEliminarMuestra);
@@ -245,7 +249,6 @@
             this.groupBoxAdminMuestra.TabIndex = 22;
             this.groupBoxAdminMuestra.TabStop = false;
             this.groupBoxAdminMuestra.Text = "Administración";
-            this.groupBoxAdminMuestra.Visible = false;
             // 
             // btnActualizarMuestra
             // 
@@ -284,6 +287,18 @@
             this.label7.Size = new System.Drawing.Size(70, 15);
             this.label7.TabIndex = 24;
             this.label7.Text = "Profundidad";
+            // 
+            // btnCrearEnsayoMuestra
+            // 
+            this.btnCrearEnsayoMuestra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.btnCrearEnsayoMuestra.ForeColor = System.Drawing.Color.White;
+            this.btnCrearEnsayoMuestra.Location = new System.Drawing.Point(124, 249);
+            this.btnCrearEnsayoMuestra.Name = "btnCrearEnsayoMuestra";
+            this.btnCrearEnsayoMuestra.Size = new System.Drawing.Size(401, 33);
+            this.btnCrearEnsayoMuestra.TabIndex = 41;
+            this.btnCrearEnsayoMuestra.Text = "Crear ensayo para esta muestra";
+            this.btnCrearEnsayoMuestra.UseVisualStyleBackColor = false;
+            this.btnCrearEnsayoMuestra.Click += new System.EventHandler(this.btnCrearEnsayoMuestra_Click);
             // 
             // txtProfundidadMuestra
             // 
@@ -390,7 +405,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(33, 296);
+            this.button2.Location = new System.Drawing.Point(9, 354);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 23);
             this.button2.TabIndex = 42;
@@ -400,7 +415,7 @@
             // 
             // groupBoxPerforacion
             // 
-            this.groupBoxPerforacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBoxPerforacion.BackColor = System.Drawing.Color.White;
             this.groupBoxPerforacion.Controls.Add(this.button1);
             this.groupBoxPerforacion.Controls.Add(this.groupBoxAdminPerforacion);
             this.groupBoxPerforacion.Controls.Add(this.label6);
@@ -415,7 +430,7 @@
             this.groupBoxPerforacion.Controls.Add(this.textBoxLocalizacionPerforacion);
             this.groupBoxPerforacion.Controls.Add(this.textBoxNombrePerforacion);
             this.groupBoxPerforacion.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxPerforacion.Location = new System.Drawing.Point(33, 82);
+            this.groupBoxPerforacion.Location = new System.Drawing.Point(9, 140);
             this.groupBoxPerforacion.Name = "groupBoxPerforacion";
             this.groupBoxPerforacion.Size = new System.Drawing.Size(679, 209);
             this.groupBoxPerforacion.TabIndex = 23;
@@ -434,7 +449,7 @@
             // 
             // groupBoxAdminPerforacion
             // 
-            this.groupBoxAdminPerforacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBoxAdminPerforacion.BackColor = System.Drawing.Color.White;
             this.groupBoxAdminPerforacion.Controls.Add(this.btnActualizarPerforacion);
             this.groupBoxAdminPerforacion.Controls.Add(this.btnNuevaPerforacion);
             this.groupBoxAdminPerforacion.Controls.Add(this.btnEliminarPerforacion);
@@ -622,19 +637,9 @@
             this.textBoxNombrePerforacion.Size = new System.Drawing.Size(143, 23);
             this.textBoxNombrePerforacion.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(230, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 23);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "PERFORACIÓN - MUESTRA";
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(608, 53);
+            this.button3.Location = new System.Drawing.Point(584, 111);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 36;
@@ -645,7 +650,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(36, 58);
+            this.label19.Location = new System.Drawing.Point(12, 116);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(150, 13);
             this.label19.TabIndex = 39;
@@ -654,35 +659,57 @@
             // 
             // txtNombreProyecto
             // 
-            this.txtNombreProyecto.Location = new System.Drawing.Point(213, 56);
+            this.txtNombreProyecto.Location = new System.Drawing.Point(189, 114);
             this.txtNombreProyecto.Name = "txtNombreProyecto";
             this.txtNombreProyecto.Size = new System.Drawing.Size(345, 20);
             this.txtNombreProyecto.TabIndex = 40;
             this.txtNombreProyecto.TextChanged += new System.EventHandler(this.txtNombreProyecto_TextChanged);
             // 
-            // btnCrearEnsayoMuestra
+            // panel1
             // 
-            this.btnCrearEnsayoMuestra.Location = new System.Drawing.Point(21, 249);
-            this.btnCrearEnsayoMuestra.Name = "btnCrearEnsayoMuestra";
-            this.btnCrearEnsayoMuestra.Size = new System.Drawing.Size(206, 33);
-            this.btnCrearEnsayoMuestra.TabIndex = 41;
-            this.btnCrearEnsayoMuestra.Text = "Crear ensayo para esta muestra";
-            this.btnCrearEnsayoMuestra.UseVisualStyleBackColor = true;
-            this.btnCrearEnsayoMuestra.Click += new System.EventHandler(this.btnCrearEnsayoMuestra_Click);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(700, 100);
+            this.panel1.TabIndex = 43;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(575, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(142, 25);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(402, 40);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "PERFORACIÓN - MUESTRA";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsFormsApplication2.Properties.Resources.Charts1;
-            this.ClientSize = new System.Drawing.Size(724, 428);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(700, 649);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtNombreProyecto);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBoxMuestra);
             this.Controls.Add(this.groupBoxPerforacion);
-            this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Perforacion - Muestra";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);
@@ -697,68 +724,73 @@
             this.groupBoxAdminPerforacion.ResumeLayout(false);
             this.groupBoxFiltroPerforacion.ResumeLayout(false);
             this.groupBoxFiltroPerforacion.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-         }
+          }
 
-         #endregion
+          #endregion
 
-         private System.Windows.Forms.GroupBox groupBoxMuestra;
-         private System.Windows.Forms.Label label16;
-         private System.Windows.Forms.TextBox txtDescripcionMuestra;
-         private System.Windows.Forms.Label label14;
-         private System.Windows.Forms.Label label13;
-         private System.Windows.Forms.TextBox txtUbicacionBodega;
-         private System.Windows.Forms.Label label12;
-         private System.Windows.Forms.Label label11;
-         private System.Windows.Forms.Button btnAnteriorMuestra;
-         private System.Windows.Forms.Button btnSiguienteMuestra;
-         private System.Windows.Forms.Label label4;
-         private System.Windows.Forms.TextBox txtNumeroMuestra;
-         private System.Windows.Forms.GroupBox groupBoxPerforacion;
-         private System.Windows.Forms.Button btnEliminarPerforacion;
-         private System.Windows.Forms.Button btnActualizarPerforacion;
-         private System.Windows.Forms.Button btnNuevaPerforacion;
-         private System.Windows.Forms.Label label6;
-         private System.Windows.Forms.TextBox textBoxLongitudPerforacion;
-         private System.Windows.Forms.Label label5;
-         private System.Windows.Forms.TextBox textBoxLatitudPerforacion;
-         private System.Windows.Forms.Button btnAnteriorPerforacion;
-         private System.Windows.Forms.Button btnSiguientePerforacion;
-         private System.Windows.Forms.Label label3;
-         private System.Windows.Forms.Label label2;
-         private System.Windows.Forms.TextBox textBoxLocalizacionPerforacion;
-         private System.Windows.Forms.TextBox textBoxNombrePerforacion;
-         private System.Windows.Forms.Label label1;
-         private System.Windows.Forms.GroupBox groupBoxAdminPerforacion;
-         private System.Windows.Forms.Label label7;
-         private System.Windows.Forms.TextBox txtProfundidadMuestra;
-         private System.Windows.Forms.GroupBox groupBoxAdminMuestra;
-         private System.Windows.Forms.Button btnActualizarMuestra;
-         private System.Windows.Forms.Button btnNuevaMuestra;
-         private System.Windows.Forms.Button btnEliminarMuestra;
-         private System.Windows.Forms.ComboBox comboBoxTipoExploracion;
-         private System.Windows.Forms.ComboBox comboBoxTipoMuestra;
-         private System.Windows.Forms.ComboBox comboBoxCondicionEmpaque;
-         private System.Windows.Forms.Label label8;
-         private System.Windows.Forms.Label label9;
-         private System.Windows.Forms.TextBox txtMascaraPerforacion;
-         private System.Windows.Forms.Label label10;
-         private System.Windows.Forms.Button btnFiltrarPerforacion;
-         private System.Windows.Forms.GroupBox groupBoxFiltroPerforacion;
-         private System.Windows.Forms.GroupBox groupBoxFiltroMuestra;
-         private System.Windows.Forms.Label label17;
-         private System.Windows.Forms.Button btnFiltrarMuestra;
-         private System.Windows.Forms.TextBox txtMascaraMuestra;
-         private System.Windows.Forms.Label label18;
-         private System.Windows.Forms.Button button3;
-         private System.Windows.Forms.Label label19;
-         private System.Windows.Forms.TextBox txtNombreProyecto;
-         private System.Windows.Forms.ComboBox comboBoxFiltroProyecto;
-         private System.Windows.Forms.ComboBox comboBoxFiltroMuestra;
-         private System.Windows.Forms.Button button2;
-         private System.Windows.Forms.Button button1;
-         private System.Windows.Forms.Button btnCrearEnsayoMuestra;
-     }
- }
+          private System.Windows.Forms.GroupBox groupBoxMuestra;
+          private System.Windows.Forms.Label label16;
+          private System.Windows.Forms.TextBox txtDescripcionMuestra;
+          private System.Windows.Forms.Label label14;
+          private System.Windows.Forms.Label label13;
+          private System.Windows.Forms.TextBox txtUbicacionBodega;
+          private System.Windows.Forms.Label label12;
+          private System.Windows.Forms.Label label11;
+          private System.Windows.Forms.Button btnAnteriorMuestra;
+          private System.Windows.Forms.Button btnSiguienteMuestra;
+          private System.Windows.Forms.Label label4;
+          private System.Windows.Forms.TextBox txtNumeroMuestra;
+          private System.Windows.Forms.GroupBox groupBoxPerforacion;
+          private System.Windows.Forms.Button btnEliminarPerforacion;
+          private System.Windows.Forms.Button btnActualizarPerforacion;
+          private System.Windows.Forms.Button btnNuevaPerforacion;
+          private System.Windows.Forms.Label label6;
+          private System.Windows.Forms.TextBox textBoxLongitudPerforacion;
+          private System.Windows.Forms.Label label5;
+          private System.Windows.Forms.TextBox textBoxLatitudPerforacion;
+          private System.Windows.Forms.Button btnAnteriorPerforacion;
+          private System.Windows.Forms.Button btnSiguientePerforacion;
+          private System.Windows.Forms.Label label3;
+          private System.Windows.Forms.Label label2;
+          private System.Windows.Forms.TextBox textBoxLocalizacionPerforacion;
+          private System.Windows.Forms.TextBox textBoxNombrePerforacion;
+          private System.Windows.Forms.GroupBox groupBoxAdminPerforacion;
+          private System.Windows.Forms.Label label7;
+          private System.Windows.Forms.TextBox txtProfundidadMuestra;
+          private System.Windows.Forms.GroupBox groupBoxAdminMuestra;
+          private System.Windows.Forms.Button btnActualizarMuestra;
+          private System.Windows.Forms.Button btnNuevaMuestra;
+          private System.Windows.Forms.Button btnEliminarMuestra;
+          private System.Windows.Forms.ComboBox comboBoxTipoExploracion;
+          private System.Windows.Forms.ComboBox comboBoxTipoMuestra;
+          private System.Windows.Forms.ComboBox comboBoxCondicionEmpaque;
+          private System.Windows.Forms.Label label8;
+          private System.Windows.Forms.Label label9;
+          private System.Windows.Forms.TextBox txtMascaraPerforacion;
+          private System.Windows.Forms.Label label10;
+          private System.Windows.Forms.Button btnFiltrarPerforacion;
+          private System.Windows.Forms.GroupBox groupBoxFiltroPerforacion;
+          private System.Windows.Forms.GroupBox groupBoxFiltroMuestra;
+          private System.Windows.Forms.Label label17;
+          private System.Windows.Forms.Button btnFiltrarMuestra;
+          private System.Windows.Forms.TextBox txtMascaraMuestra;
+          private System.Windows.Forms.Label label18;
+          private System.Windows.Forms.Button button3;
+          private System.Windows.Forms.Label label19;
+          private System.Windows.Forms.TextBox txtNombreProyecto;
+          private System.Windows.Forms.ComboBox comboBoxFiltroProyecto;
+          private System.Windows.Forms.ComboBox comboBoxFiltroMuestra;
+          private System.Windows.Forms.Button button2;
+          private System.Windows.Forms.Button button1;
+          private System.Windows.Forms.Button btnCrearEnsayoMuestra;
+          private System.Windows.Forms.Panel panel1;
+          private System.Windows.Forms.PictureBox pictureBox1;
+          private System.Windows.Forms.Label label23;
+      }
+  }
