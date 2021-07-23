@@ -7,7 +7,7 @@ namespace WindowsFormsApplication2
     public partial class Form9 : Form
     {
         public bool UserSuccessfullyAuthenticated { get; private set; }
-        public string userRole;
+        public string userRole, userName;
 
         public MySqlDataReader reader;
         public Form9()
@@ -45,11 +45,12 @@ namespace WindowsFormsApplication2
                     string query = "SELECT CURRENT_ROLE()";
                     MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
                     userRole = (String)commandDatabase.ExecuteScalar();
-                }catch
+                }
+                catch
                 {
                     MessageBox.Show("No se pudo hacer la lectura del rol del usuario");
                 }
-            }   
+            }
             else
                 MessageBox.Show("Usuario o contraseña incorrectos");
             this.Close();

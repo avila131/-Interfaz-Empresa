@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +26,6 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             id_proyectoRecibido = -1;
-
             groupBox5.Controls.Remove(button8);
             this.Controls.Add(button8);
             groupBox3.Controls.Remove(button12);
@@ -51,22 +50,28 @@ namespace WindowsFormsApplication2
 
         }
 
+        public void vaciar()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+        }
         private void llenarLista(Boolean aviso = true)
         {
             ensayos.Clear();  // Vaciar lista para ingresar nuevos valores
             archivos.Clear();
             informe = null;
-            string queryFiltrado = "SELECT ens_idEnsayoMuestra, ens_fechaEnsayoMuestra," +
+            string queryFiltrado = "SELECT EnsayoMuestra.ens_idEnsayoMuestra, ens_fechaEnsayoMuestra," +
                 "ens_hayResiduo, ens_condicionesParticularesEstudio," +
-                "emp_idEmpleado, mue_idMuestra, tip_idTipoEnsayo,ens_estado," +
-                "ens_rutaArchivo, pro_idProyecto," +
-                "DATE_FORMAT(inf_fechaRemisionInforme,'%Y/%m/%d')," +
-                "inf_observacionesInforme, inf_rutaInformeFinal, mue_numeroMuestra, tip_nombreTipoEnsayo" +
-                " FROM Muestra" +
-                " NATURAL JOIN TipoEnsayo NATURAL JOIN EnsayoMuestra NATURAL LEFT JOIN ArchivoResultado"+
-                " NATURAL RIGHT JOIN (" +
-                "SELECT * FROM InformeFinal WHERE pro_idProyecto = " +
-                id_proyectoRecibido.ToString() + ") as t1";
+                "emp_idEmpleado, mue_idMuestra, tip_idTipoEnsayo,ens_estado,"+
+                "mue_numeroMuestra, tip_nombreTipoEnsayo, ArchivoResultado.ens_idEnsayoMuestra," +
+                "ens_rutaArchivo FROM" +
+                " TipoEnsayo NATURAL JOIN EnsayoMuestra NATURAL JOIN Muestra"+
+                " NATURAL JOIN (" +
+                "SELECT * FROM  Perforacion WHERE pro_idProyecto = " +
+                id_proyectoRecibido.ToString() + ") as t1 LEFT JOIN ArchivoResultado USING(ens_idEnsayoMuestra)";
             MySqlCommand commandDatabase = Program.getNewMySqlCommand(queryFiltrado);
             try
             {
@@ -76,35 +81,75 @@ namespace WindowsFormsApplication2
                     while (reader.Read())
                     {
                         EnsayoMuestra nuevoEnsayo = new EnsayoMuestra();
-                        nuevoEnsayo.ens_idEnsayoMuestra = !reader.IsDBNull(0) ? reader.GetString(0) : "";
+                        nuevoEnsayo.ens_idEnsayoMuestra = reader.GetString(0);
                         nuevoEnsayo.ens_fechaEnsayoMuestra = !reader.IsDBNull(1) ? reader.GetString(1) : "";
                         nuevoEnsayo.ens_hayResiduo = !reader.IsDBNull(2) ? reader.GetString(2) : "";
                         nuevoEnsayo.ens_condicionesParticularesEstudio = !reader.IsDBNull(3) ? reader.GetString(3) : "";
                         nuevoEnsayo.emp_idEmpleado = !reader.IsDBNull(4) ? reader.GetString(4) : "";
-                        nuevoEnsayo.mue_idMuestra = !reader.IsDBNull(5) ? reader.GetString(5) : "";
-                        nuevoEnsayo.tip_idTipoEnsayo = !reader.IsDBNull(6) ? reader.GetString(6) : "";
+                        nuevoEnsayo.mue_idMuestra = reader.GetString(5);
+                        nuevoEnsayo.tip_idTipoEnsayo = reader.GetString(6);
                         nuevoEnsayo.ens_estado = !reader.IsDBNull(7) ? reader.GetString(7) : "";
-                        nuevoEnsayo.tip_nombreTipoEnsayo = !reader.IsDBNull(14) ? reader.GetString(14) : "";
-                        nuevoEnsayo.mue_numeroMuestra = !reader.IsDBNull(13) ? reader.GetString(13) : "";
+                        nuevoEnsayo.mue_numeroMuestra = !reader.IsDBNull(8) ? reader.GetString(8) : "";
+                        nuevoEnsayo.tip_nombreTipoEnsayo = !reader.IsDBNull(9) ? reader.GetString(9) : "";
+
                         ArchivoResultado archivoRes = new ArchivoResultado();
-                        archivoRes.ens_idEnsayoMuestra = !reader.IsDBNull(0) ? reader.GetString(0) : "";
-                        archivoRes.ens_rutaArchivo = !reader.IsDBNull(8) ? reader.GetString(8) : "";
-                        archivoRes.pro_idProyecto = !reader.IsDBNull(9) ? reader.GetString(9) : "";
+                        archivoRes.ens_idEnsayoMuestra = !reader.IsDBNull(10) ? reader.GetString(10) : null;
+                        archivoRes.ens_rutaArchivo = !reader.IsDBNull(11) ? reader.GetString(11) : "";
+                        archivoRes.pro_idProyecto = id_proyectoRecibido.ToString();
+                        /*
                         informe = new InformeFinal();
                         informe.inf_fechaRemisionInforme = !reader.IsDBNull(10) ?  reader.GetString(10) : "";
                         informe.inf_observacionesInforme = !reader.IsDBNull(11) ? reader.GetString(11) : "";
                         informe.pro_idProyecto = !reader.IsDBNull(9) ? reader.GetString(9) : "";
-                        informe.inf_rutaInformeFinal = !reader.IsDBNull(12) ? reader.GetString(12) : "";
+                        informe.inf_rutaInformeFinal = !reader.IsDBNull(12) ? reader.GetString(12) : "";*/
                         ensayos.Add(nuevoEnsayo);
                         archivos.Add(archivoRes);
                     }
-                    groupBox5.Enabled = true;
-                    groupBox3.Enabled = true;
                 }
                 else
                 {
-                    if (aviso) MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
-                    llenarLista();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+                    vaciar();
+                    if (aviso) MessageBox.Show("No hay ensayos realizados para el proyecto");
+                    //llenarLista();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+                    //Causa un ciclo infinito la primera vez de uso :(
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                if (reader != null) reader.Close();
+            }
+
+
+            queryFiltrado = "SELECT DATE_FORMAT(inf_fechaRemisionInforme,'%Y/%m/%d')," +
+                "inf_observacionesInforme, inf_rutaInformeFinal FROM" +
+                " InformeFinal WHERE pro_idProyecto = " +
+                id_proyectoRecibido.ToString();
+            commandDatabase = Program.getNewMySqlCommand(queryFiltrado);
+            try
+            {
+                reader = commandDatabase.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        informe = new InformeFinal();
+                        informe.inf_fechaRemisionInforme = !reader.IsDBNull(0) ?  reader.GetString(0) : "";
+                        informe.inf_observacionesInforme = !reader.IsDBNull(1) ? reader.GetString(1) : "";
+                        informe.pro_idProyecto = id_proyectoRecibido.ToString();
+                        informe.inf_rutaInformeFinal = !reader.IsDBNull(2) ? reader.GetString(2) : "";
+                    }
+                }
+                else
+                {
+                    textBox8.Text = "";
+                    textBox3.Text = "";
+                    textBox7.Text = "";
+                    if (aviso) MessageBox.Show("No hay informe final para el proyecto");
+                    //llenarLista();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+                    //Causa un ciclo infinito la primera vez de uso :(
+
                 }
                 reader.Close();
             }
@@ -122,22 +167,39 @@ namespace WindowsFormsApplication2
                 textBox8.Text = informe.inf_fechaRemisionInforme;
                 textBox3.Text = informe.inf_rutaInformeFinal;
                 textBox7.Text = informe.inf_observacionesInforme;
+            }
+            if (ensayos.Count > 0)
+            {
                 textBox1.Text = ensayos[index].emp_idEmpleado;
                 textBox2.Text = ensayos[index].mue_numeroMuestra;
                 textBox4.Text = ensayos[index].tip_nombreTipoEnsayo;
                 textBox5.Text = ensayos[index].ens_fechaEnsayoMuestra;
-                textBox6.Text = archivos[index].ens_rutaArchivo;
+                if (archivos[index].ens_idEnsayoMuestra != null)
+                    textBox6.Text = archivos[index].ens_rutaArchivo;
+                else
+                    textBox6.Text = "";
             }
-
         }
         private void button7_Click(object sender, EventArgs e)
         {
+            id_proyectoRecibido = -1;
             var form = new Form10();
             form.ShowDialog();
             id_proyectoRecibido = form.id_asignado;
             nombre_proyectoRecibido = form.nombre_asignado;
             currentEnsayoMuestraindex = 0;
             txtNombreProyecto.Text = nombre_proyectoRecibido;
+            if (id_proyectoRecibido == -1)
+            {
+                groupBox5.Enabled = false;
+                groupBox3.Enabled = false;
+            }
+            else
+            {
+                groupBox5.Enabled = true;
+                groupBox3.Enabled = true;
+            }
+
             llenarLista();
             mostrarDatos(currentEnsayoMuestraindex);
         }
@@ -277,11 +339,11 @@ namespace WindowsFormsApplication2
         }
         private void actu_add_prep(Boolean enable)
         {
-            textBox7.ReadOnly = enable;
-            textBox8.ReadOnly = enable;
-            button5.Enabled = !enable;
+            textBox7.ReadOnly = !enable;
+            textBox8.ReadOnly = !enable;
+            button5.Visible = enable;
             button8.Enabled = !enable;
-            button12.Enabled = !enable;
+            button12.Enabled =  !enable;
             button7.Enabled = !enable;
             if (enable)
             {
@@ -300,6 +362,9 @@ namespace WindowsFormsApplication2
         {
             if (agregandoInf)
             {
+                DialogResult ds = MessageBox.Show("¿Desea guardar el informe?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                     "INSERT INTO InformeFinal VALUES(" + Program.Evaluar(textBox8.Text)
                     + "," + Program.Evaluar(textBox7.Text)
@@ -310,10 +375,26 @@ namespace WindowsFormsApplication2
                 {
                     commandDatabase.ExecuteNonQuery();
                     MessageBox.Show("Agregado correctamente");
+                    query =
+                        "UPDATE ArchivoResultado SET pro_idProyecto = " + id_proyectoRecibido.ToString() +
+                        " WHERE ens_idEnsayoMuestra in ( SELECT ens_idEnsayoMuestra FROM EnsayoMuestra " +
+                        " NATURAL JOIN Muestra NATURAL JOIN ( SELECT per_idPerforacion FROM Perforacion " +
+                        " WHERE pro_idProyecto = " + id_proyectoRecibido.ToString() + ") as t1 );";
+                    commandDatabase = Program.getNewMySqlCommand(query);
+                    try
+                    {
+                        commandDatabase.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al actualizar archivos: " + ex);
+                        MessageBox.Show("Digite datos validos");
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error al agregar: " + ex);
+                    MessageBox.Show("Digite datos validos");
                 }
                 agregandoInf = false;
                 actu_add_prep(false);
@@ -323,6 +404,9 @@ namespace WindowsFormsApplication2
             }
             else if (actualizandoInf)
             {
+                DialogResult ds = MessageBox.Show("¿Desea actualizar el informe?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                     "UPDATE InformeFinal SET inf_fechaRemisionInforme = " + Program.Evaluar(textBox8.Text)
                     + ",inf_observacionesInforme = " + Program.Evaluar(textBox7.Text)
@@ -337,6 +421,7 @@ namespace WindowsFormsApplication2
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error al actualizar: " + ex);
+                    MessageBox.Show("Digite datos validos");
                 }
                 actualizandoInf = false;
                 actu_add_prep(false);
@@ -346,7 +431,7 @@ namespace WindowsFormsApplication2
             }
             else
             {
-                if (informe != null)
+                if (informe == null)
                 {
                     actu_add_prep(true);
                     agregandoInf = true;
@@ -364,6 +449,11 @@ namespace WindowsFormsApplication2
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (informe == null)
+            {
+                MessageBox.Show("No existe un proyecto que editar");
+                return;
+            }
             actu_add_prep(true);
             actualizandoInf = true;
         }
@@ -372,6 +462,14 @@ namespace WindowsFormsApplication2
         {
             if (!agregandoInf && !actualizandoInf)
             {
+                if (informe == null)
+                {
+                    MessageBox.Show("No hay informes para borrar");
+                    return;
+                }
+                DialogResult ds = MessageBox.Show("¿Está seguro de que desea borrar el informe y los archivos?",
+                    "Importante", MessageBoxButtons.YesNo);
+                if (ds != DialogResult.Yes) return;
                 string query =
                         "DELETE FROM ArchivoResultado WHERE pro_idProyecto = " +
                         id_proyectoRecibido.ToString();
@@ -397,6 +495,7 @@ namespace WindowsFormsApplication2
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error al borrar: " + ex);
+                    MessageBox.Show("Digite datos validos");
                 }
                 llenarLista(false);
             }
@@ -413,37 +512,75 @@ namespace WindowsFormsApplication2
 
         private void button4_Click(object sender, EventArgs e)
         {
+            DialogResult ds = MessageBox.Show("¿Desea guardar/actualizar el archivo para éste ensayo?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
             if (id_proyectoRecibido == -1) return;
-            string query = "UPDATE ArchivoResultado SET ens_rutaArchivo = "
-                + Program.Evaluar(textBox6.Text, 2)
-                + " WHERE ens_idEnsayoMuestra = "+ensayos[currentEnsayoMuestraindex].ens_idEnsayoMuestra;
-            MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
-            try
+            string query;
+            if (archivos[currentEnsayoMuestraindex].ens_idEnsayoMuestra == null)
             {
-                commandDatabase.ExecuteNonQuery();
-                MessageBox.Show("Actualizado archivo resultado");
+                query = "INSERT INTO ArchivoResultado VALUES (" +
+                    Program.Evaluar(ensayos[currentEnsayoMuestraindex].ens_idEnsayoMuestra, 1) + "," +
+                    Program.Evaluar(textBox6.Text, 2) + "," +
+                    ((informe == null) ? "NULL" : id_proyectoRecibido.ToString()) +
+                    ");";
+                MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                try
+                {
+                    commandDatabase.ExecuteNonQuery();
+                    MessageBox.Show("Insertado archivo resultado");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al insertar: " + ex);
+                    MessageBox.Show("Digite datos validos");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Error al actualizar: " + ex);
+                query = "UPDATE ArchivoResultado SET ens_rutaArchivo = "
+                    + Program.Evaluar(textBox6.Text, 2)
+                    + " WHERE ens_idEnsayoMuestra = " + archivos[currentEnsayoMuestraindex].ens_idEnsayoMuestra;
+                MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                try
+                {
+                    commandDatabase.ExecuteNonQuery();
+                    MessageBox.Show("Actualizado archivo resultado");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al actualizar: " + ex);
+                    MessageBox.Show("Digite datos validos");
+                }
             }
+            llenarLista();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             if (id_proyectoRecibido == -1) return;
+            if (archivos[currentEnsayoMuestraindex].ens_idEnsayoMuestra == null)
+            {
+                MessageBox.Show("No hay un archivo resultado que borrar");
+                return;
+            }
+            DialogResult ds = MessageBox.Show("¿Desea borrar el registro de archivo?",
+                    "Importante", MessageBoxButtons.YesNo);
+            if (ds != DialogResult.Yes) return;
             string query = "DELETE FROM ArchivoResultado"
                 + " WHERE ens_idEnsayoMuestra = " + ensayos[currentEnsayoMuestraindex].ens_idEnsayoMuestra;
             MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
             try
             {
                 commandDatabase.ExecuteNonQuery();
-                MessageBox.Show("Actualizado archivo resultado");
+                MessageBox.Show("Borrado archivo resultado");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al actualizar: " + ex);
+                MessageBox.Show("Digite datos validos");
             }
+            llenarLista();
         }
     }
 }

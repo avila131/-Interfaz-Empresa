@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +11,16 @@ namespace WindowsFormsApplication2
         public MySqlDataReader reader;
         public List<Perforacion> perforaciones = new List<Perforacion>();
         public List<Muestra> muestras = new List<Muestra>();
-        public static int id_proyectoRecibido;
-        public static string nombre_proyectoRecibido;
+        public int id_proyectoRecibido;
+        public string nombre_proyectoRecibido;
         public string mascaraBusquedaPerforacion = "", filtroBusquedaPerforacion = "per_idPerforacion";
         public string mascaraBusquedaMuestra = "", filtroBusquedaMuestra = "mue_idMuestra";
-        public static int currentPerforacionIndex = 0, currentMuestraIndex = 0;
+        public int currentPerforacionIndex = 0, currentMuestraIndex = 0;
         public bool actualizandoPerforacion, agregandoPerforacion;
         public bool actualizandoMuestra, agregandoMuestra;
 
-
         public static string String_ID_MuestraActual, String_ID_PerforacionActual,
                             String_ID_ProyectoActual;
-
 
         public bool creandoEnsayoMuestra;
 
@@ -43,22 +41,32 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Al parecer no existen proyectos...");
             }
-            finally { reader.Close(); }
+            finally { if(reader!=null)reader.Close(); }
         }
         private void mostrarDatosPerforacion(int given_index)
         {
-            textBoxNombrePerforacion.Text = perforaciones[given_index].per_nombrePerforacion;
-            textBoxLatitudPerforacion.Text = perforaciones[given_index].per_latitud;
-            textBoxLongitudPerforacion.Text = perforaciones[given_index].per_longitud;
-            textBoxLocalizacionPerforacion.Text = perforaciones[given_index].per_localizacion;
+            if (perforaciones.Count > 0)
+            {
+                textBoxNombrePerforacion.Text = perforaciones[given_index].per_nombrePerforacion;
+                textBoxLatitudPerforacion.Text = perforaciones[given_index].per_latitud;
+                textBoxLongitudPerforacion.Text = perforaciones[given_index].per_longitud;
+                textBoxLocalizacionPerforacion.Text = perforaciones[given_index].per_localizacion;
+            }
         }
 
+        private void vaciarPerforacion()
+        {
+            textBoxNombrePerforacion.Text = "";
+            textBoxLatitudPerforacion.Text = "";
+            textBoxLongitudPerforacion.Text = "";
+            textBoxLocalizacionPerforacion.Text = "";
+        }
 
         private void llenarListaPerforaciones()
         {
             perforaciones.Clear();  // Vaciar lista para ingresar nuevos valores
             string queryFiltrado = "SELECT * FROM Perforacion WHERE (" + filtroBusquedaPerforacion +
-                " LIKE '" + mascaraBusquedaPerforacion + "%') AND (pro_idProyecto = " + id_proyectoRecibido + ");";
+                " LIKE '" + mascaraBusquedaPerforacion + "%' AND pro_idProyecto = " + id_proyectoRecibido + ");";
             MySqlCommand commandDatabase = Program.getNewMySqlCommand(queryFiltrado);
             try
             {
@@ -80,14 +88,16 @@ namespace WindowsFormsApplication2
                     MessageBox.Show("No hay registros que cumplan su criterio de búsqueda");
                     mascaraBusquedaPerforacion = "";
                     filtroBusquedaPerforacion = "per_idPerforacion";
+                    reader.Close();
                     llenarListaPerforaciones();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { reader.Close(); }
+            finally { if(reader!=null) reader.Close(); }
         }
 
 
@@ -99,6 +109,9 @@ namespace WindowsFormsApplication2
             foreach (TextBox box in groupBoxPerforacion.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
             groupBoxFiltroPerforacion.Visible = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
         }
 
 
@@ -110,6 +123,9 @@ namespace WindowsFormsApplication2
             foreach (TextBox box in groupBoxPerforacion.Controls.OfType<TextBox>())
                 box.ReadOnly = false;
             groupBoxFiltroPerforacion.Visible = false;
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
         }
 
 
@@ -174,26 +190,38 @@ namespace WindowsFormsApplication2
             else if (agregandoPerforacion)
             {
                 // INSERT INTO Perforacion VALUES(NUll, 'PZ-9', 'La Vega', 54.221321, -32.99832, 2);
-                string query =
-                        "INSERT INTO perforacion VALUES (NULL, " + Program.Evaluar(textBoxNombrePerforacion.Text) + "," +
-                        Program.Evaluar(textBoxLocalizacionPerforacion.Text) +
-                        "," + Program.Evaluar(textBoxLatitudPerforacion.Text, 1) +
-                        "," + Program.Evaluar(textBoxLongitudPerforacion.Text, 1) +
-                        "," + id_proyectoRecibido.ToString() + ");";
-                MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                string con = "SELECT MAX(per_idPerforacion) FROM Perforacion";
+                MySqlCommand cmAux = Program.getNewMySqlCommand(con);
                 try
                 {
-                    commandDatabase.ExecuteNonQuery();
+                    int m_indice = Int32.Parse(cmAux.ExecuteScalar().ToString());
+                    string query =
+                            "INSERT INTO perforacion VALUES ("+(m_indice+1).ToString()+", " + Program.Evaluar(textBoxNombrePerforacion.Text) + "," +
+                            Program.Evaluar(textBoxLocalizacionPerforacion.Text) +
+                            "," + Program.Evaluar(textBoxLatitudPerforacion.Text, 1) +
+                            "," + Program.Evaluar(textBoxLongitudPerforacion.Text, 1) +
+                            "," + id_proyectoRecibido.ToString() + ");";
+                    MySqlCommand commandDatabase = Program.getNewMySqlCommand(query);
+                    try
+                    {
+                        commandDatabase.ExecuteNonQuery();
+                        llenarListaPerforaciones();
+                        mostrarDatosPerforacion(currentPerforacionIndex);
+                        MessageBox.Show("Agregado correctamente");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al agregar: " + ex);
+                    }
+                    agregandoPerforacion = false;
                     llenarListaPerforaciones();
                     mostrarDatosPerforacion(currentPerforacionIndex);
-                    MessageBox.Show("Agregado correctamente");
+                    menuNormalPerforacion();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al agregar: " + ex);
                 }
-                agregandoPerforacion = false;
-                menuNormalPerforacion();
             }
             else if (currentPerforacionIndex + 1 >= perforaciones.Count)
                 MessageBox.Show("No puede avanzar más");
@@ -241,6 +269,7 @@ namespace WindowsFormsApplication2
             txtNombreProyecto.Text = nombre_proyectoRecibido;
             llenarListaPerforaciones();
             llenarListaMuestras();
+            mostrarDatosPerforacion(currentPerforacionIndex);
             mostrarDatosMuestra(currentMuestraIndex);
         }
 
@@ -351,14 +380,6 @@ namespace WindowsFormsApplication2
             }
         }
 
-        private void btnCrearEnsayoMuestra_Click(object sender, EventArgs e)
-        {
-            String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
-            String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
-            var form = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual, id_proyectoRecibido.ToString());
-            this.Hide();     
-            form.ShowDialog();
-        }
 
         private void btnAnteriorMuestra_Click(object sender, EventArgs e)
         {
@@ -457,6 +478,15 @@ namespace WindowsFormsApplication2
             agregandoMuestra = true;
         }
 
+        private void btnCrearEnsayoMuestra_Click(object sender, EventArgs e)
+        {
+            String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
+            String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
+            var form = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual, id_proyectoRecibido.ToString());
+            this.Hide();
+            form.ShowDialog();
+        }
+
         public Form3()
         {
             InitializeComponent();
@@ -467,6 +497,81 @@ namespace WindowsFormsApplication2
             llenarListaMuestras();
             mostrarDatosMuestra(0);
             menuNormalPerforacion();
+
+            groupBoxPerforacion.Controls.Remove(button1);
+            this.Controls.Add(button1);
+            groupBoxMuestra.Controls.Remove(button2);
+            this.Controls.Add(button2);
+
+            button1.Location = new System.Drawing.Point(31, 83);
+            button2.Location = new System.Drawing.Point(31, 296);
+
+            button1.BringToFront();
+            button2.BringToFront();
+
+            groupBoxMuestra.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (button1.Text == "Perforación +")
+            {
+                esconderMuestra();
+            }
+            else
+            {
+                esconderPerforacion();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button1.Text == "Perforación +")
+            {
+                esconderMuestra();
+            }
+            else
+            {
+                esconderPerforacion();
+            }
+        }
+        private void esconderPerforacion()
+        {
+            groupBoxPerforacion.Visible = false;
+            groupBoxMuestra.Visible = true;
+            button1.Text = "Perforación +";
+            button2.Text = "Muestra -";
+            button2.Location = new System.Drawing.Point(31, 123);
+            groupBoxMuestra.Location = new System.Drawing.Point(31, 123);
+        }
+        private void esconderMuestra()
+        {
+            groupBoxMuestra.Visible = false;
+            groupBoxPerforacion.Visible = true;
+            button1.Text = "Perforación -";
+            button2.Text = "Muestra +";
+            button2.Location = new System.Drawing.Point(31, 296);
+            groupBoxMuestra.Location = new System.Drawing.Point(33, 297);
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Application.Exit();
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombreProyecto_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
-}
+} 

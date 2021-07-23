@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,7 @@ namespace WindowsFormsApplication2
     {
         public MySqlDataReader reader;
         private int projectIndexSelected;
-        
+
         public Form2()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication2
         private void setProyectos(string filtro)
         {
             string query = "SELECT * FROM vw_proyecto_lab WHERE pro_nombreProyecto LIKE "
-                + " '%"+filtro+"%'";
+                + " '%" + filtro + "%'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.databaseConnection);
             commandDatabase.CommandTimeout = 60;
             try

@@ -1,34 +1,33 @@
-﻿namespace WindowsFormsApplication2
-{
-    partial class Form1
-    {
-        /// <summary>
-        /// Variable del diseñador requerida.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+﻿﻿namespace WindowsFormsApplication2
+ {
+     partial class Form1
+     {
+         /// <summary>
+         /// Variable del diseñador requerida.
+         /// </summary>
+         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Limpiar los recursos que se estén utilizando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben eliminar; false en caso contrario.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+         /// <summary>
+         /// Limpiar los recursos que se estén utilizando.
+         /// </summary>
+         /// <param name="disposing">true si los recursos administrados se deben eliminar; false en caso contrario.</param>
+         protected override void Dispose(bool disposing)
+         {
+             if (disposing && (components != null))
+             {
+                 components.Dispose();
+             }
+             base.Dispose(disposing);
+         }
 
-        #region Código generado por el Diseñador de Windows Forms
+         #region Código generado por el Diseñador de Windows Forms
 
-        /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido del método con el editor de código.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.label1 = new System.Windows.Forms.Label();
+         /// <summary>
+         /// Método necesario para admitir el Diseñador. No se puede modificar
+         /// el contenido del método con el editor de código.
+         /// </summary>
+         private void InitializeComponent()
+         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -93,25 +92,19 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(238, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CLIENTE - PROYECTO";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label13);
@@ -142,7 +135,7 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 35);
+            this.groupBox1.Location = new System.Drawing.Point(12, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(654, 213);
             this.groupBox1.TabIndex = 1;
@@ -153,9 +146,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(20, 189);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(25, 15);
+            this.label24.Size = new System.Drawing.Size(37, 15);
             this.label24.TabIndex = 25;
-            this.label24.Text = "Ola";
+            this.label24.Text = "..........";
             this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // comboBox1
@@ -420,7 +413,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.textBox21);
             this.groupBox2.Controls.Add(this.label23);
@@ -449,7 +442,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 249);
+            this.groupBox2.Location = new System.Drawing.Point(12, 336);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(654, 270);
             this.groupBox2.TabIndex = 2;
@@ -461,9 +454,9 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(20, 243);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(25, 15);
+            this.label25.Size = new System.Drawing.Size(37, 15);
             this.label25.TabIndex = 26;
-            this.label25.Text = "Ola";
+            this.label25.Text = "..........";
             // 
             // textBox21
             // 
@@ -545,7 +538,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.textBox18);
             this.groupBox3.Controls.Add(this.label18);
@@ -557,11 +550,11 @@
             this.groupBox3.Size = new System.Drawing.Size(613, 74);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Estado de Pago";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(132, 42);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(93, 15);
@@ -579,6 +572,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(266, 19);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 15);
@@ -598,6 +592,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(13, 19);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 15);
@@ -766,15 +761,49 @@
             this.textBox3.Size = new System.Drawing.Size(164, 23);
             this.textBox3.TabIndex = 4;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label26);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(685, 100);
+            this.panel1.TabIndex = 68;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
+            this.pictureBox1.InitialImage = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
+            this.pictureBox1.Location = new System.Drawing.Point(557, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(199, 30);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(271, 33);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "CLIENTE - PROYECTO";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsFormsApplication2.Properties.Resources.Charts1;
-            this.ClientSize = new System.Drawing.Size(678, 359);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(685, 614);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Cliente-Proyecto";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -786,78 +815,81 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
-        }
+         }
 
-        #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
+         #endregion
+         private System.Windows.Forms.GroupBox groupBox1;
+         private System.Windows.Forms.Label label3;
+         private System.Windows.Forms.Label label2;
+         private System.Windows.Forms.TextBox textBox2;
+         private System.Windows.Forms.TextBox textBox1;
+         private System.Windows.Forms.GroupBox groupBox2;
+         private System.Windows.Forms.Label label4;
+         private System.Windows.Forms.TextBox textBox3;
+         private System.Windows.Forms.Button button2;
+         private System.Windows.Forms.Button button1;
+         private System.Windows.Forms.Button button4;
+         private System.Windows.Forms.Button button3;
+         private System.Windows.Forms.Label label10;
+         private System.Windows.Forms.TextBox textBox9;
+         private System.Windows.Forms.Label label9;
+         private System.Windows.Forms.TextBox textBox8;
+         private System.Windows.Forms.Label label8;
+         private System.Windows.Forms.TextBox textBox7;
+         private System.Windows.Forms.Label label7;
+         private System.Windows.Forms.TextBox textBox6;
+         private System.Windows.Forms.Label label6;
+         private System.Windows.Forms.TextBox textBox5;
+         private System.Windows.Forms.Label label5;
+         private System.Windows.Forms.TextBox textBox4;
+         private System.Windows.Forms.Label label16;
+         private System.Windows.Forms.TextBox textBox15;
+         private System.Windows.Forms.Label label14;
+         private System.Windows.Forms.TextBox textBox13;
+         private System.Windows.Forms.Label label12;
+         private System.Windows.Forms.TextBox textBox11;
+         private System.Windows.Forms.Label label11;
+         private System.Windows.Forms.TextBox textBox10;
+         private System.Windows.Forms.Label label15;
+         private System.Windows.Forms.TextBox textBox14;
+         private System.Windows.Forms.Button button7;
+         private System.Windows.Forms.Button button6;
+         private System.Windows.Forms.Button button5;
+         private System.Windows.Forms.Button button8;
+         private System.Windows.Forms.Button button9;
+         private System.Windows.Forms.Button button10;
+         private System.Windows.Forms.Button button11;
+         private System.Windows.Forms.GroupBox groupBox3;
+         private System.Windows.Forms.Label label18;
+         private System.Windows.Forms.TextBox textBox17;
+         private System.Windows.Forms.Label label17;
+         private System.Windows.Forms.TextBox textBox16;
+         private System.Windows.Forms.Label label19;
+         private System.Windows.Forms.TextBox textBox18;
+         private System.Windows.Forms.Button button12;
+         private System.Windows.Forms.Button button13;
+         private System.Windows.Forms.Button button14;
+         private System.Windows.Forms.Label label13;
+         private System.Windows.Forms.ComboBox comboBox1;
+         private System.Windows.Forms.ComboBox comboBox2;
+         private System.Windows.Forms.Label label20;
+         private System.Windows.Forms.Button button15;
+         private System.Windows.Forms.TextBox textBox12;
+         private System.Windows.Forms.Label label21;
+         private System.Windows.Forms.TextBox textBox21;
+         private System.Windows.Forms.Label label23;
+         private System.Windows.Forms.Label label22;
+         private System.Windows.Forms.TextBox textBox19;
+         private System.Windows.Forms.Label label24;
+         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label26;
     }
-}
+ }
 

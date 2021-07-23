@@ -243,7 +243,8 @@ namespace WindowsFormsApplication2
             try
             {
                 textBox1.Text = tiposEnsayoFiltrados[currentTipoEnsayoIndex].tip_nombreTipoEnsayo;
-            }catch(ArgumentOutOfRangeException)  // No se encuentran registros que coincidan con la expresión regular
+            }
+            catch (ArgumentOutOfRangeException)  // No se encuentran registros que coincidan con la expresión regular
             {
                 MessageBox.Show("No hay tipos de ensayo que coincidan con el nombre " + textBox11.Text);
                 // Inicializa la lista filtrada como una referencia
