@@ -79,5 +79,25 @@ namespace WindowsFormsApplication2.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap photo_2021_07_22_20_29_42 {
+            get {
+                object obj = ResourceManager.GetObject("photo_2021-07-22_20-29-42", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap photo_2021_07_22_20_30_06 {
+            get {
+                object obj = ResourceManager.GetObject("photo_2021-07-22_20-30-06", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
