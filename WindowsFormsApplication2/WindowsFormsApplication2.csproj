@@ -189,6 +189,12 @@
   <ItemGroup>
     <None Include="Resources\bases-de-datos-empresas.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="photo_2021-07-22_20-29-42.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="photo_2021-07-22_20-30-06.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

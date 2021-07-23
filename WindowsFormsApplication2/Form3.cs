@@ -36,6 +36,8 @@ namespace WindowsFormsApplication2
                 reader.Read();
                 id_proyectoRecibido = Int32.Parse(reader.GetString(0));
                 nombre_proyectoRecibido = reader.GetString(1);
+
+
             }
             catch (Exception)
             {
@@ -61,8 +63,9 @@ namespace WindowsFormsApplication2
             textBoxLongitudPerforacion.Text = "";
             textBoxLocalizacionPerforacion.Text = "";
         }
+       
 
-        private void llenarListaPerforaciones()
+        private void llenarListaPerforaciones(Boolean repeticion = false)
         {
             perforaciones.Clear();  // Vaciar lista para ingresar nuevos valores
             string queryFiltrado = "SELECT * FROM Perforacion WHERE (" + filtroBusquedaPerforacion +
@@ -89,8 +92,9 @@ namespace WindowsFormsApplication2
                     mascaraBusquedaPerforacion = "";
                     filtroBusquedaPerforacion = "per_idPerforacion";
                     reader.Close();
-                    llenarListaPerforaciones();  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
-
+                    vaciarPerforacion();
+                    if(!repeticion)
+                    llenarListaPerforaciones(true);  // Como no se encontraron registros, regresa a los valores iniciales que sí existen
                 }
             }
             catch (Exception ex)
@@ -260,6 +264,7 @@ namespace WindowsFormsApplication2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            id_proyectoRecibido = -1;
             var form = new Form10();
             form.ShowDialog();
             id_proyectoRecibido = form.id_asignado;
@@ -267,6 +272,16 @@ namespace WindowsFormsApplication2
             currentPerforacionIndex = 0;
             currentMuestraIndex = 0;
             txtNombreProyecto.Text = nombre_proyectoRecibido;
+            if (id_proyectoRecibido == -1)
+            {
+                groupBoxPerforacion.Enabled = false;
+                groupBoxMuestra.Enabled = false;
+            }
+            else
+            {
+                groupBoxPerforacion.Enabled = true;
+                groupBoxMuestra.Enabled = true;
+            }
             llenarListaPerforaciones();
             llenarListaMuestras();
             mostrarDatosPerforacion(currentPerforacionIndex);
@@ -278,6 +293,7 @@ namespace WindowsFormsApplication2
 
         private void llenarListaMuestras()
         {
+            if (perforaciones.Count <= 0) return;
             string id_perforacion_actual = perforaciones[currentPerforacionIndex].per_idPerforacion;
             muestras.Clear();  // Vaciar lista para ingresar nuevos valores
             string queryFiltrado = "SELECT * FROM Muestra WHERE (" + filtroBusquedaMuestra +
@@ -308,6 +324,7 @@ namespace WindowsFormsApplication2
                     MessageBox.Show("No hay muestras para esta perforación");
                     mascaraBusquedaMuestra = "";
                     filtroBusquedaMuestra = "mue_idMuestra";
+                    currentMuestraIndex = 0;
                     return; // Regresa el control para evitar un ciclo infinito donde busca datos pero no encuentra
                 }
             }
@@ -489,14 +506,28 @@ namespace WindowsFormsApplication2
 
         public Form3()
         {
+            id_proyectoRecibido = -1;
             InitializeComponent();
             inicializarProyectoFiltro();
+            
             txtNombreProyecto.Text = nombre_proyectoRecibido;
+
             llenarListaPerforaciones();
             mostrarDatosPerforacion(currentPerforacionIndex);
             llenarListaMuestras();
             mostrarDatosMuestra(0);
             menuNormalPerforacion();
+
+            if (id_proyectoRecibido == -1)
+            {
+                groupBoxPerforacion.Enabled = false;
+                groupBoxMuestra.Enabled = false;
+            }
+            else
+            {
+                groupBoxPerforacion.Enabled = true;
+                groupBoxMuestra.Enabled = true;
+            }
 
             groupBoxPerforacion.Controls.Remove(button1);
             this.Controls.Add(button1);
@@ -510,6 +541,8 @@ namespace WindowsFormsApplication2
             button2.BringToFront();
 
             groupBoxMuestra.Visible = false;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
