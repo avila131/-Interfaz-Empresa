@@ -47,8 +47,8 @@ namespace WindowsFormsApplication2
             {
                 Program.databaseConnection.Close();
             }
-            Program.closed_by_user = false;
-            Program.MenSelection = new Form9();
+            Program.closed_by_user = true;
+            Program.loop_logueo = true;
             this.Close();
         }
 

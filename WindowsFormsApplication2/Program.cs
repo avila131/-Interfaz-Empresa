@@ -316,62 +316,68 @@ namespace WindowsFormsApplication2
 
         public static string rolActual, idEmpleadoRegistrado, nombreUsuarioActual;
         public static Boolean closed_by_user = true;
+        public static Boolean loop_logueo = true;
 
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form9 loginForm = new Form9();
-            Application.Run(loginForm);
-            rolActual = loginForm.userRole;
-            nombreUsuarioActual = loginForm.userName;
-            idEmpleadoRegistrado = obtenerIDEmpleadoDadoNombreUsuario(nombreUsuarioActual);
 
-            if (loginForm.UserSuccessfullyAuthenticated)
+            while (loop_logueo)
             {
-                GuardarCambios();
-                Form menuForm;
-                if (loginForm.userRole == "empleadoLaboratorista")
+                loop_logueo = false;
+                Form9 loginForm = new Form9();
+                Application.Run(loginForm);
+                rolActual = loginForm.userRole;
+                nombreUsuarioActual = loginForm.userName;
+                idEmpleadoRegistrado = obtenerIDEmpleadoDadoNombreUsuario(nombreUsuarioActual);
+                if (loginForm.UserSuccessfullyAuthenticated)
                 {
-                    menuForm = new Form7();
-                    Application.Run(menuForm);
-                }
-                else
-                {
-                    menuForm = new Form8();
-                    Application.Run(menuForm);
-                }
+                    GuardarCambios();
+                    Form menuForm;
+                    if (loginForm.userRole == "empleadoLaboratorista")
+                    {
+                        menuForm = new Form7();
+                        Application.Run(menuForm);
+                    }
+                    else
+                    {
+                        menuForm = new Form8();
+                        Application.Run(menuForm);
+                    }
 
-                while(MenSelection != null){
-                    closed_by_user = true;
-                    Application.Run(MenSelection);
-                    if (closed_by_user)
-                        break;
-                }
+                    while (MenSelection != null)
+                    {
+                        closed_by_user = true;
+                        Application.Run(MenSelection);
+                        if (closed_by_user)
+                            break;
+                    }
 
 
-                DialogResult ds = MessageBox.Show("¿Desea guardar los cambios realizados?",
-                    "Importante", MessageBoxButtons.YesNo);
-                string query;
-                if (ds == DialogResult.Yes)
-                {
-                    query = "COMMIT";
-                }
-                else
-                {
-                    query = "ROLLBACK";
-                }
-                MySqlCommand comando = getNewMySqlCommand(query);
-                try
-                {
-                    comando.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al terminar transaccion: " + ex);
-                }
+                    DialogResult ds = MessageBox.Show("¿Desea guardar los cambios realizados?",
+                        "Importante", MessageBoxButtons.YesNo);
+                    string query;
+                    if (ds == DialogResult.Yes)
+                    {
+                        query = "COMMIT";
+                    }
+                    else
+                    {
+                        query = "ROLLBACK";
+                    }
+                    MySqlCommand comando = getNewMySqlCommand(query);
+                    try
+                    {
+                        comando.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al terminar transaccion: " + ex);
+                    }
 
+                }
             }
         }
     }
