@@ -245,5 +245,10 @@ namespace WindowsFormsApplication2
             Program.MenSelection = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
             this.Close();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Program.GuardarCambios();
+        }
     }
 }

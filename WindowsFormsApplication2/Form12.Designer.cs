@@ -63,9 +63,10 @@ namespace WindowsFormsApplication2
             this.textBoxReadOnlyTipoEnsayo = new System.Windows.Forms.TextBox();
             this.groupBoxParametrosMuestra = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button16 = new System.Windows.Forms.Button();
             this.groupBoxEnsayoMuestraRealizado.SuspendLayout();
             this.groupBoxCondicionesParticulares.SuspendLayout();
             this.groupBoxFechaEjecucion.SuspendLayout();
@@ -75,8 +76,8 @@ namespace WindowsFormsApplication2
             this.groupBoxTipoEnsayo.SuspendLayout();
             this.groupBoxParametrosMuestra.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labeProyecto
@@ -422,6 +423,7 @@ namespace WindowsFormsApplication2
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.button16);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label26);
@@ -430,6 +432,16 @@ namespace WindowsFormsApplication2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(810, 100);
             this.panel1.TabIndex = 69;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(38, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 91);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -446,21 +458,21 @@ namespace WindowsFormsApplication2
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(199, 30);
+            this.label26.Location = new System.Drawing.Point(254, 23);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(340, 33);
             this.label26.TabIndex = 6;
             this.label26.Text = "DETALLES DE LA MUESTRA";
             // 
-            // pictureBox2
+            // button16
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(28, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 91);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.button16.Location = new System.Drawing.Point(162, 77);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(122, 23);
+            this.button16.TabIndex = 50;
+            this.button16.Text = "Guardar cambios";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // Form12
             // 
@@ -498,8 +510,8 @@ namespace WindowsFormsApplication2
             this.groupBoxParametrosMuestra.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -543,5 +555,6 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button16;
     }
 }
