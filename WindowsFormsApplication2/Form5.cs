@@ -51,7 +51,7 @@ namespace WindowsFormsApplication2
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             groupBox2.Show();
-            if (Program.rolActual == "empleadoLaboratorista")
+            if (Program.rolActual == "Laboratorista")
             {
                 groupBox2.Visible = false;
             }
@@ -105,7 +105,6 @@ namespace WindowsFormsApplication2
             textBox1.ReadOnly = false;
             groupBox2.Visible = false;
             btnBuscar.Enabled = false;
-
         }
 
         /// <summary>
@@ -119,7 +118,7 @@ namespace WindowsFormsApplication2
             textBox1.ReadOnly = true;
             /*button9.Visible = true;
             button11.Visible = true;*/
-            if (Program.rolActual != "empleadoLaboratorista")
+            if (Program.rolActual != "Laboratorista")
             {
                 groupBox2.Visible = true;
             }
@@ -310,7 +309,7 @@ namespace WindowsFormsApplication2
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Program.closed_by_user = false;
-            if (Program.rolActual == "empleadoLaboratorista")
+            if (Program.rolActual == "Laboratorista")
             {
                 Program.MenSelection = new Form7();
             }

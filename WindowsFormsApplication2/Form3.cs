@@ -110,7 +110,7 @@ namespace WindowsFormsApplication2
         {
             btnAnteriorPerforacion.Text = "Anterior";
             btnSiguientePerforacion.Text = "Siguiente";
-            if (Program.rolActual != "empleadoLaboratorista")
+            if (Program.rolActual != "Laboratorista")
             {
                 groupBoxAdminPerforacion.Visible = true;
             }
@@ -387,7 +387,7 @@ namespace WindowsFormsApplication2
         {
             btnAnteriorMuestra.Text = "Anterior";
             btnSiguienteMuestra.Text = "Siguiente";
-            if (Program.rolActual != "empleadoLaboratorista")
+            if (Program.rolActual != "Laboratorista")
                 groupBoxAdminMuestra.Visible = true;
             foreach (TextBox box in groupBoxMuestra.Controls.OfType<TextBox>())
                 box.ReadOnly = true;
@@ -588,7 +588,7 @@ namespace WindowsFormsApplication2
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             inicializarProyectoFiltro();
-            if(Program.rolActual == "empleadoLaboratorista")
+            if(Program.rolActual == "Laboratorista")
             {
                 groupBoxAdminPerforacion.Visible = false;
                 groupBoxAdminMuestra.Visible = false;
@@ -797,7 +797,7 @@ namespace WindowsFormsApplication2
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Program.closed_by_user = false;
-            if (Program.rolActual == "empleadoLaboratorista")
+            if (Program.rolActual == "Laboratorista")
             {
                 Program.MenSelection = new Form7();
             }else

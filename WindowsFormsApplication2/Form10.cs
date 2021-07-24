@@ -1,12 +1,6 @@
-﻿﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // Para estilizar DataGridView: https://www.youtube.com/watch?v=HDcdX2endE8
@@ -18,8 +12,6 @@ namespace WindowsFormsApplication2
     {
         public int id_asignado { get; set; }
         public string nombre_asignado { get; set; }
-
-
 
         public void display()
         {
@@ -61,7 +53,6 @@ namespace WindowsFormsApplication2
             {
                 this.id_asignado = -1;
             }
-
         }
     }
 }

@@ -336,7 +336,7 @@ namespace WindowsFormsApplication2
                 {
                     GuardarCambios();
                     Form menuForm;
-                    if (loginForm.userRole == "empleadoLaboratorista")
+                    if (loginForm.userRole == "Laboratorista")
                     {
                         menuForm = new Form7();
                         Application.Run(menuForm);

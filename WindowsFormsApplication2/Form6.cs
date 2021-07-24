@@ -25,7 +25,7 @@ namespace WindowsFormsApplication2
         public Boolean actualizandoInf;
         public Form6()
         {
-            if (Program.rolActual == "empleadoLaboratorista")
+            if (Program.rolActual == "Laboratorista")
             {
                 groupBox4.Visible = false;
                 button6.Visible = false;
@@ -604,7 +604,7 @@ namespace WindowsFormsApplication2
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Program.closed_by_user = false;
-            if (Program.rolActual == "empleadoLaboratorista")
+            if (Program.rolActual == "Laboratorista")
             {
                 Program.MenSelection = new Form7();
             }

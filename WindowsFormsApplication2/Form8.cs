@@ -71,5 +71,11 @@ namespace WindowsFormsApplication2
             //Program.MenSelection = null;
         }
 
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form14();
+            this.Close();
+        }
     }
 }
