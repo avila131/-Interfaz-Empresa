@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+﻿using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication2
 {
@@ -76,6 +77,41 @@ namespace WindowsFormsApplication2
             Program.closed_by_user = false;
             Program.MenSelection = new Form14();
             this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            String[] arg = new String[3];
+            MySqlDataReader mr = null;
+            string query = "SELECT pro_idProyecto, mue_idMuestra, per_idPerforacion FROM " +
+                "Perforacion NATURAL JOIN Muestra LIMIT 1;";
+            MySqlCommand cmd = Program.getNewMySqlCommand(query);
+            try
+            {
+                mr = cmd.ExecuteReader();
+                if (mr.HasRows)
+                {
+                    mr.Read();
+                    arg[0] = mr.GetString(0);
+                    arg[1] = mr.GetString(1);
+                    arg[2] = mr.GetString(2);
+                    Program.closed_by_user = false;
+                    Program.MenSelection = new Form11(arg[1],arg[2],arg[0]);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No hay registros de muestras");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No fue posible iniciar el formulario");
+                MessageBox.Show(ex.Message);
+            }
+            finally { if (mr != null)mr.Close(); }
+            
         }
     }
 }

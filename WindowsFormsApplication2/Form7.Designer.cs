@@ -49,7 +49,7 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(40, 120);
+            this.groupBox1.Location = new System.Drawing.Point(89, 120);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(302, 214);
             this.groupBox1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.Red;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button4.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(14, 73);
             this.button4.Name = "button4";
@@ -65,6 +65,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Ensayos a Muestras";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -106,7 +107,7 @@
             // 
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(108, 358);
+            this.button5.Location = new System.Drawing.Point(157, 358);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(142, 32);
             this.button5.TabIndex = 4;

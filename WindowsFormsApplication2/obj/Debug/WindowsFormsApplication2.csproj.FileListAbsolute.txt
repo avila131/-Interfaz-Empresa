@@ -32,7 +32,6 @@ C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form11.resources
-C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form12.resources
 C:\Users\josel\Music\-Interfaz-Empresa-nuevoBranch\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
 C:\Users\josel\Music\-Interfaz-Empresa-nuevoBranch\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
@@ -101,7 +100,7 @@ C:\Users\josel\Music\Interfaz\WindowsFormsApplication2\obj\Debug\WindowsFormsApp
 C:\Users\PERSONAL\Desktop\-Interfaz-Empresa-NuevoJose (1)\-Interfaz-Empresa-NuevoJose\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
 C:\Users\PERSONAL\Desktop\-Interfaz-Empresa-NuevoJose (1)\-Interfaz-Empresa-NuevoJose\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 C:\Users\PERSONAL\Desktop\-Interfaz-Empresa-NuevoJose (1)\-Interfaz-Empresa-NuevoJose\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
-C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\bin\Debug\System.Memory.dll
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form10.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form13.resources
 C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form14.resources
+C:\Users\PERSONAL\Documents\Visual Studio 2012\Projects\WindowsFormsApplication2 - copia\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache

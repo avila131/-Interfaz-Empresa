@@ -37,7 +37,14 @@ namespace WindowsFormsApplication2
             comboBoxTipoEnsayo.Text = Program.obtenerNombreTipoEnsayoDadoID(TipoEnsayo_ID);
             comboBoxEstadoEnsayo.Text = Program.obtenerEstadoEnsayoMuestraDadoID(EnsayoMuestra_ID);
             groupBoxEnsayoMuestraRealizado.Visible = true;
-            dateTimePickerFechaEjecucion.Value = Convert.ToDateTime(Program.obtenerDateTimeFechaEjecucion(EnsayoMuestra_ID));
+            try
+            {
+                dateTimePickerFechaEjecucion.Value = Convert.ToDateTime(Program.obtenerDateTimeFechaEjecucion(EnsayoMuestra_ID));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo obtener el valor de la fecha de ejecución del ensayo muestra");
+            }
             txtEjecutor.Text = Program.obtenerNombreEjecutorEnsayoMuestra(Empleado_ID);
 
             if (Program.hayResiduoMuestra(EnsayoMuestra_ID) == "1")

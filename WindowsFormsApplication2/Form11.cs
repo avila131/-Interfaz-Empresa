@@ -11,6 +11,7 @@ namespace WindowsFormsApplication2
     {
         public MySqlDataReader reader;
         public string Perforacion_ID, Muestra_ID, tipoEnsayo_ID, ensayoMuestra_ID, Proyecto_ID;
+        public Boolean vacio;
 
         private void MostrarDatosActualizadosEnPantalla()
         {
@@ -20,6 +21,17 @@ namespace WindowsFormsApplication2
             txtNumeroMuestraSeleccionada.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
             txtTipoEnsayoSeleccionado.Text = Program.obtenerNombreTipoEnsayoDadoID(tipoEnsayo_ID);
             txtEstadoEnsayoMuestraSeleccionado.Text = Program.obtenerEstadoEnsayoMuestraDadoID(ensayoMuestra_ID);
+            /*
+            if (txtNombreProyectoSeleccionado.Text == "NULL" ||
+                txtNombrePerforacionSeleccionada.Text == "NULL" ||
+                txtNumeroMuestraSeleccionada.Text == "NULL" ||
+                txtTipoEnsayoSeleccionado.Text == "NULL" ||
+                txtEstadoEnsayoMuestraSeleccionado.Text == "NULL")
+             * */
+            if(txtNombreProyectoSeleccionado.Text == "NULL")
+                vacio = true;
+            else
+                vacio = false;
             Program.quitarValoresNulosCajasDeTextoEnFormularioCompleto(this);
             
         }
@@ -105,6 +117,11 @@ namespace WindowsFormsApplication2
 
         private void btnMostrarDetalles_Click(object sender, EventArgs e)
         {
+            if (vacio)
+            {
+                MessageBox.Show("No existe un ensayo a muestra que examinar");
+                return;
+            }
             Program.closed_by_user = false;
             Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Leer");
             this.Close();
@@ -112,6 +129,11 @@ namespace WindowsFormsApplication2
 
         private void btnActualizaEnsayoMuestra_Click(object sender, EventArgs e)
         {
+            if (vacio)
+            {
+                MessageBox.Show("No existe un ensayo a muestra que examinar");
+                return;
+            }
             Program.closed_by_user = false;
             Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Actualizar");
             this.Close();
@@ -119,6 +141,11 @@ namespace WindowsFormsApplication2
 
         private void btnAgregarSinRealizar_Click(object sender, EventArgs e)
         {
+            if (vacio)
+            {
+                MessageBox.Show("No existe un ensayo a muestra que examinar");
+                return;
+            }
             Program.closed_by_user = false;
             Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "AgregarSinRealizar");
             this.Close();
@@ -158,6 +185,7 @@ namespace WindowsFormsApplication2
 
         public Form11(string given_muestra_ID, string given_perforacion_ID, string given_proyecto_ID)
         {
+            vacio = false;
             Muestra_ID = given_muestra_ID;
             Perforacion_ID = given_perforacion_ID;
             Proyecto_ID = given_proyecto_ID;
