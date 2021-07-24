@@ -53,7 +53,6 @@ namespace WindowsFormsApplication2
             {
                 this.id_asignado = -1;
             }
-
         }
     }
 }

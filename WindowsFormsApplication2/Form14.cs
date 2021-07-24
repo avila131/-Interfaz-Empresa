@@ -41,12 +41,24 @@ namespace WindowsFormsApplication2
         public Form14()
         {
             InitializeComponent();
+            dataGridView1.Visible = true;
             lblEmptyDataGridView.Visible = false;
             display();       
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            dataGridView1.Update();
+            dataGridView1.Update();
+            dataGridView1.Visible = true;
+            lblEmptyDataGridView.Visible = false;
+            dataGridView1.Refresh();
+            dataGridView1.Update();
+            dataGridView1.Update();
+            dataGridView1.Update();
+            dataGridView1.Update();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
             display();
         }
     }
