@@ -32,6 +32,7 @@ namespace WindowsFormsApplication2
             }
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             id_proyectoRecibido = -1;
             groupBox5.Controls.Remove(button8);
             this.Controls.Add(button8);
@@ -593,6 +594,23 @@ namespace WindowsFormsApplication2
         private void button13_Click(object sender, EventArgs e)
         {
             Program.GuardarCambios();
+        }
+
+        private void Form6_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.MenSelection = null;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            if (Program.rolActual == "empleadoLaboratorista")
+            {
+                Program.MenSelection = new Form7();
+            }
+            else
+                Program.MenSelection = new Form8();
+            this.Close();
         }
     }
 }

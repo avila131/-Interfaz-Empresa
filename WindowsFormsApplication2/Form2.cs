@@ -190,5 +190,10 @@ namespace WindowsFormsApplication2
         {
 
         }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.MenSelection = null;
+        }
     }
 }

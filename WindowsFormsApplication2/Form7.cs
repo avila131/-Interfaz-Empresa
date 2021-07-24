@@ -22,18 +22,21 @@ namespace WindowsFormsApplication2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.closed_by_user = false;
             Program.MenSelection = new Form6();
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Program.closed_by_user = false;
             Program.MenSelection = new Form3();
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Program.closed_by_user = false;
             Program.MenSelection = new Form5();
             this.Close();
         }
@@ -44,8 +47,14 @@ namespace WindowsFormsApplication2
             {
                 Program.databaseConnection.Close();
             }
+            Program.closed_by_user = false;
             Program.MenSelection = new Form9();
             this.Close();
+        }
+
+        private void Form7_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.MenSelection = null;
         }
     }
 }

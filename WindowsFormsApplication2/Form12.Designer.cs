@@ -378,7 +378,7 @@ namespace WindowsFormsApplication2
             // txtEstadoEnsayoReadOnly
             // 
             this.txtEstadoEnsayoReadOnly.Location = new System.Drawing.Point(101, 21);
-            this.txtEstadoEnsayoReadOnly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstadoEnsayoReadOnly.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstadoEnsayoReadOnly.Name = "txtEstadoEnsayoReadOnly";
             this.txtEstadoEnsayoReadOnly.Size = new System.Drawing.Size(99, 20);
             this.txtEstadoEnsayoReadOnly.TabIndex = 16;
@@ -397,7 +397,7 @@ namespace WindowsFormsApplication2
             // textBoxReadOnlyTipoEnsayo
             // 
             this.textBoxReadOnlyTipoEnsayo.Location = new System.Drawing.Point(109, 24);
-            this.textBoxReadOnlyTipoEnsayo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxReadOnlyTipoEnsayo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReadOnlyTipoEnsayo.Name = "textBoxReadOnlyTipoEnsayo";
             this.textBoxReadOnlyTipoEnsayo.Size = new System.Drawing.Size(153, 20);
             this.textBoxReadOnlyTipoEnsayo.TabIndex = 9;
@@ -429,8 +429,6 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
-            //this.pictureBox1.InitialImage = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
             this.pictureBox1.Location = new System.Drawing.Point(674, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(99, 94);
@@ -466,6 +464,7 @@ namespace WindowsFormsApplication2
             this.Controls.Add(this.groupBoxEnsayoMuestraRealizado);
             this.Name = "Form12";
             this.Text = "Form12";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form12_FormClosing);
             this.Load += new System.EventHandler(this.Form12_Load);
             this.groupBoxEnsayoMuestraRealizado.ResumeLayout(false);
             this.groupBoxEnsayoMuestraRealizado.PerformLayout();

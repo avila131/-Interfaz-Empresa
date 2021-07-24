@@ -12,15 +12,16 @@ namespace WindowsFormsApplication2
         public MySqlDataReader reader;
         public string Perforacion_ID, Muestra_ID, tipoEnsayo_ID, ensayoMuestra_ID, Proyecto_ID;
 
-
         private void MostrarDatosActualizadosEnPantalla()
         {
+            
             txtNombreProyectoSeleccionado.Text = Program.obtenerNombreProyectoDadoID(Proyecto_ID);
             txtNombrePerforacionSeleccionada.Text = Program.obtenerNombrePerforacionDadoID(Perforacion_ID);
             txtNumeroMuestraSeleccionada.Text = Program.obtenerNumeroMuestraDadoID(Muestra_ID);
             txtTipoEnsayoSeleccionado.Text = Program.obtenerNombreTipoEnsayoDadoID(tipoEnsayo_ID);
             txtEstadoEnsayoMuestraSeleccionado.Text = Program.obtenerEstadoEnsayoMuestraDadoID(ensayoMuestra_ID);
             Program.quitarValoresNulosCajasDeTextoEnFormularioCompleto(this);
+            
         }
 
 
@@ -46,6 +47,7 @@ namespace WindowsFormsApplication2
             if (Program.ExecuteScalarReader(query) == "NULL")
                 return;
             Perforacion_ID = Program.ExecuteScalarReader(query);
+            MessageBox.Show(Perforacion_ID);
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
             actualizar_ID_EnsayoMuestra();
@@ -170,6 +172,11 @@ namespace WindowsFormsApplication2
             btnAnteriorEnsayo.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
             btnSiguientePerforacion.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
             btnAnteriorPerforacion.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
+        }
+
+        private void Form11_FormClosed(object sender, FormClosedEventArgs e)
+        {
+//            Program.MenSelection = null;
         }
     }
 }

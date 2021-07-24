@@ -315,6 +315,7 @@ namespace WindowsFormsApplication2
         }
 
         public static string rolActual, idEmpleadoRegistrado, nombreUsuarioActual;
+        public static Boolean closed_by_user = true;
 
         [STAThread]
         static void Main()
@@ -342,8 +343,11 @@ namespace WindowsFormsApplication2
                     Application.Run(menuForm);
                 }
 
-                if(MenSelection != null){
+                while(MenSelection != null){
+                    closed_by_user = true;
                     Application.Run(MenSelection);
+                    if (closed_by_user)
+                        break;
                 }
 
 

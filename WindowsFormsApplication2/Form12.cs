@@ -225,5 +225,10 @@ namespace WindowsFormsApplication2
             TipoEnsayo_ID = tipoEnsayo_id;
             accionSeleccionada = accion;
         }
+
+        private void Form12_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

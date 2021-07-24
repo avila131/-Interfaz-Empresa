@@ -58,5 +58,10 @@ namespace WindowsFormsApplication2
                 MessageBox.Show("Usuario o contraseña incorrectos");
             this.Close();
         }
+
+        private void Form9_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.MenSelection = null;
+        }
     }
 }

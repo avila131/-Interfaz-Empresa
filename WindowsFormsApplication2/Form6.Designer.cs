@@ -64,9 +64,10 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,6 +75,7 @@
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -437,6 +439,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label23);
@@ -445,27 +448,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(649, 107);
             this.panel1.TabIndex = 66;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(535, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(22, 29);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(506, 33);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "ARCHIVO RESULTADO - INFORME FINAL";
             // 
             // button13
             // 
@@ -476,6 +458,37 @@
             this.button13.Text = "Guardar cambios";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(559, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(78, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(46, 45);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(506, 33);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "ARCHIVO RESULTADO - INFORME FINAL";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 68;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form6
             // 
@@ -491,6 +504,7 @@
             this.Controls.Add(this.groupBox5);
             this.Name = "Form6";
             this.Text = "INFORME";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form6_FormClosed);
             this.Load += new System.EventHandler(this.Form6_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -503,6 +517,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,5 +563,6 @@
           private System.Windows.Forms.PictureBox pictureBox1;
           private System.Windows.Forms.Label label23;
           private System.Windows.Forms.Button button13;
+          private System.Windows.Forms.PictureBox pictureBox2;
       }
   }

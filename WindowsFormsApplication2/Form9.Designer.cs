@@ -139,6 +139,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Form9";
             this.Text = "Iniciar Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form9_FormClosed);
             this.Load += new System.EventHandler(this.Form9_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

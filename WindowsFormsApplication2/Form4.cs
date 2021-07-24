@@ -144,6 +144,7 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             actualizarListaEmpleados();
             mostrarDatosEmpleado(currentEmpleadoIndex);
         }
@@ -330,6 +331,18 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Primer navegue hacia un empleado");
             }
+        }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.MenSelection = null;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form8();
+            this.Close();
         }
     }
 }

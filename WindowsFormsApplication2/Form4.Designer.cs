@@ -49,6 +49,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -65,12 +66,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -267,6 +269,16 @@
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(14, 190);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 23);
+            this.button2.TabIndex = 48;
+            this.button2.Text = "Contar participaciones de empleado";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button10);
@@ -401,6 +413,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label23);
@@ -441,15 +454,15 @@
             this.label23.TabIndex = 6;
             this.label23.Text = "EMPLEADO";
             // 
-            // button2
+            // pictureBox2
             // 
-            this.button2.Location = new System.Drawing.Point(14, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 23);
-            this.button2.TabIndex = 48;
-            this.button2.Text = "Contar participaciones de empleado";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(32, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 59);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 49;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form4
             // 
@@ -462,6 +475,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form4";
             this.Text = "Empleado";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form4_FormClosed);
             this.Load += new System.EventHandler(this.Form4_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -471,6 +485,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
          }
@@ -514,5 +529,6 @@
          private System.Windows.Forms.Label label23;
          private System.Windows.Forms.Button button1;
          private System.Windows.Forms.Button button2;
+         private System.Windows.Forms.PictureBox pictureBox2;
      }
  }

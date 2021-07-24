@@ -586,6 +586,7 @@ namespace WindowsFormsApplication2
             id_proyectoRecibido = -1;
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             inicializarProyectoFiltro();
             if(Program.rolActual == "empleadoLaboratorista")
             {
@@ -677,7 +678,7 @@ namespace WindowsFormsApplication2
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Application.Exit();
+            //Program.MenSelection = null;
         }
 
         private void label19_Click(object sender, EventArgs e)
@@ -791,6 +792,17 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Primer navegue hacia una perforacion");
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            if (Program.rolActual == "empleadoLaboratorista")
+            {
+                Program.MenSelection = new Form7();
+            }else
+                Program.MenSelection = new Form8();
+            this.Close();
         }
     }
 } 

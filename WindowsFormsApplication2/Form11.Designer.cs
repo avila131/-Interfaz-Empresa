@@ -175,7 +175,7 @@ namespace WindowsFormsApplication2
             // 
             this.btnAgregarSinRealizar.BackColor = System.Drawing.Color.SpringGreen;
             this.btnAgregarSinRealizar.Location = new System.Drawing.Point(244, 19);
-            this.btnAgregarSinRealizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarSinRealizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarSinRealizar.Name = "btnAgregarSinRealizar";
             this.btnAgregarSinRealizar.Size = new System.Drawing.Size(163, 32);
             this.btnAgregarSinRealizar.TabIndex = 23;
@@ -187,7 +187,7 @@ namespace WindowsFormsApplication2
             // 
             this.btnAgregarEnsayoRealizado.BackColor = System.Drawing.Color.LightGreen;
             this.btnAgregarEnsayoRealizado.Location = new System.Drawing.Point(25, 9);
-            this.btnAgregarEnsayoRealizado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarEnsayoRealizado.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarEnsayoRealizado.Name = "btnAgregarEnsayoRealizado";
             this.btnAgregarEnsayoRealizado.Size = new System.Drawing.Size(187, 52);
             this.btnAgregarEnsayoRealizado.TabIndex = 24;
@@ -197,7 +197,6 @@ namespace WindowsFormsApplication2
             // 
             // btnSiguienteMuestra
             // 
-            //this.btnSiguienteMuestra.Image = global::WindowsFormsApplication2.Properties.Resources.triangleRight;
             this.btnSiguienteMuestra.InitialImage = null;
             this.btnSiguienteMuestra.Location = new System.Drawing.Point(685, 178);
             this.btnSiguienteMuestra.Name = "btnSiguienteMuestra";
@@ -209,7 +208,6 @@ namespace WindowsFormsApplication2
             // 
             // btnAnteriorEnsayo
             // 
-            //this.btnAnteriorEnsayo.Image = global::WindowsFormsApplication2.Properties.Resources.triangleLeft;
             this.btnAnteriorEnsayo.InitialImage = null;
             this.btnAnteriorEnsayo.Location = new System.Drawing.Point(150, 225);
             this.btnAnteriorEnsayo.Name = "btnAnteriorEnsayo";
@@ -221,7 +219,6 @@ namespace WindowsFormsApplication2
             // 
             // btnSiguienteEnsayo
             // 
-            //this.btnSiguienteEnsayo.Image = global::WindowsFormsApplication2.Properties.Resources.triangleRight;
             this.btnSiguienteEnsayo.InitialImage = null;
             this.btnSiguienteEnsayo.Location = new System.Drawing.Point(343, 228);
             this.btnSiguienteEnsayo.Name = "btnSiguienteEnsayo";
@@ -233,7 +230,6 @@ namespace WindowsFormsApplication2
             // 
             // btnAnteriorMuestra
             // 
-            //this.btnAnteriorMuestra.Image = global::WindowsFormsApplication2.Properties.Resources.triangleLeft;
             this.btnAnteriorMuestra.InitialImage = null;
             this.btnAnteriorMuestra.Location = new System.Drawing.Point(492, 175);
             this.btnAnteriorMuestra.Name = "btnAnteriorMuestra";
@@ -245,7 +241,6 @@ namespace WindowsFormsApplication2
             // 
             // btnAnteriorPerforacion
             // 
-            //this.btnAnteriorPerforacion.Image = global::WindowsFormsApplication2.Properties.Resources.triangleLeft;
             this.btnAnteriorPerforacion.InitialImage = null;
             this.btnAnteriorPerforacion.Location = new System.Drawing.Point(150, 173);
             this.btnAnteriorPerforacion.Name = "btnAnteriorPerforacion";
@@ -257,7 +252,6 @@ namespace WindowsFormsApplication2
             // 
             // btnSiguientePerforacion
             // 
-            //this.btnSiguientePerforacion.Image = global::WindowsFormsApplication2.Properties.Resources.triangleRight;
             this.btnSiguientePerforacion.InitialImage = null;
             this.btnSiguientePerforacion.Location = new System.Drawing.Point(343, 176);
             this.btnSiguientePerforacion.Name = "btnSiguientePerforacion";
@@ -280,8 +274,6 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
-            //this.pictureBox1.InitialImage = global::WindowsFormsApplication2.Properties.Resources.logoEmpresa;
             this.pictureBox1.Location = new System.Drawing.Point(758, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(99, 94);
@@ -347,6 +339,7 @@ namespace WindowsFormsApplication2
             this.Controls.Add(this.labelTituloFijoProyecto);
             this.Name = "Form11";
             this.Text = "Form11";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form11_FormClosed);
             this.Load += new System.EventHandler(this.Form11_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnSiguienteMuestra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAnteriorEnsayo)).EndInit();

@@ -27,6 +27,7 @@ namespace WindowsFormsApplication2
             actualizandoPro = false;
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             groupBox1.Controls.Remove(button13);
             this.Controls.Add(button13);
             groupBox2.Controls.Remove(button14);
@@ -948,7 +949,7 @@ namespace WindowsFormsApplication2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Application.Exit();
+            //Program.MenSelection = null;
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -1007,6 +1008,13 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Primer navegue hacia un proyecto");
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form8();
+            this.Close();
         }
     }
 }

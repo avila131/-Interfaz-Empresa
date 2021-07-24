@@ -59,6 +59,7 @@
             this.txtNumeroMuestra = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBoxPerforacion = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxAdminPerforacion = new System.Windows.Forms.GroupBox();
             this.btnActualizarPerforacion = new System.Windows.Forms.Button();
@@ -87,7 +88,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBoxMuestra.SuspendLayout();
             this.groupBoxFiltroMuestra.SuspendLayout();
             this.groupBoxAdminMuestra.SuspendLayout();
@@ -96,6 +97,7 @@
             this.groupBoxFiltroPerforacion.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMuestra
@@ -441,6 +443,16 @@
             this.groupBoxPerforacion.TabStop = false;
             this.groupBoxPerforacion.Text = "Perforación";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(531, 105);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(104, 23);
+            this.button5.TabIndex = 44;
+            this.button5.Text = "Proyectos cerca";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(0, 0);
@@ -673,6 +685,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label23);
@@ -713,22 +726,22 @@
             this.label23.TabIndex = 6;
             this.label23.Text = "PERFORACIÓN - MUESTRA";
             // 
-            // button5
+            // pictureBox2
             // 
-            this.button5.Location = new System.Drawing.Point(531, 105);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(104, 23);
-            this.button5.TabIndex = 44;
-            this.button5.Text = "Proyectos cerca";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(24, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 50;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(700, 418);
+            this.ClientSize = new System.Drawing.Size(700, 468);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtNombreProyecto);
@@ -753,6 +766,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -820,5 +834,6 @@
           private System.Windows.Forms.Label label23;
           private System.Windows.Forms.Button button4;
           private System.Windows.Forms.Button button5;
+          private System.Windows.Forms.PictureBox pictureBox2;
       }
   }
