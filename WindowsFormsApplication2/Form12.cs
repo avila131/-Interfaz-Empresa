@@ -75,9 +75,9 @@ namespace WindowsFormsApplication2
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            Form11 formularioEnsayoMuestra = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
-            this.Hide();
-            formularioEnsayoMuestra.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
+            this.Close();
         }
 
 
@@ -134,9 +134,9 @@ namespace WindowsFormsApplication2
 
         private void btnCambiarMuestra_Click(object sender, EventArgs e)
         {
-            Form3 formularioPerforacionesMuestras = new Form3();
-            this.Hide();
-            formularioPerforacionesMuestras.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form3();
+            this.Close();
         }
 
 
@@ -201,9 +201,9 @@ namespace WindowsFormsApplication2
             {
                 command.ExecuteNonQuery();
                 MessageBox.Show("Operación ejecutada correctamente");
-                Form11 formEnsayoMuestra = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
-                this.Hide();
-                formEnsayoMuestra.Show();
+                Program.closed_by_user = false;
+                Program.MenSelection = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
+                this.Close();
             }
             catch (Exception)
             { MessageBox.Show("Error en la ejecución de la operación"); }
@@ -214,6 +214,7 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             Proyecto_ID = id_proyecto;
             Perforacion_ID = id_perforacion;
             Muestra_ID = muestra_id;
@@ -229,6 +230,13 @@ namespace WindowsFormsApplication2
         private void Form12_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
+            this.Close();
         }
     }
 }

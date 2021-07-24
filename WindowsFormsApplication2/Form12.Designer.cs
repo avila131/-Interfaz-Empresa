@@ -65,6 +65,7 @@ namespace WindowsFormsApplication2
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBoxEnsayoMuestraRealizado.SuspendLayout();
             this.groupBoxCondicionesParticulares.SuspendLayout();
             this.groupBoxFechaEjecucion.SuspendLayout();
@@ -75,6 +76,7 @@ namespace WindowsFormsApplication2
             this.groupBoxParametrosMuestra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // labeProyecto
@@ -327,18 +329,19 @@ namespace WindowsFormsApplication2
             // btnRegresar
             // 
             this.btnRegresar.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.Location = new System.Drawing.Point(637, 172);
+            this.btnRegresar.Location = new System.Drawing.Point(637, 229);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(136, 32);
             this.btnRegresar.TabIndex = 12;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Visible = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // btnConfirmarEnsayoMuestra
             // 
             this.btnConfirmarEnsayoMuestra.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarEnsayoMuestra.Location = new System.Drawing.Point(637, 222);
+            this.btnConfirmarEnsayoMuestra.Location = new System.Drawing.Point(637, 175);
             this.btnConfirmarEnsayoMuestra.Name = "btnConfirmarEnsayoMuestra";
             this.btnConfirmarEnsayoMuestra.Size = new System.Drawing.Size(136, 32);
             this.btnConfirmarEnsayoMuestra.TabIndex = 13;
@@ -419,6 +422,7 @@ namespace WindowsFormsApplication2
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label26);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -447,6 +451,16 @@ namespace WindowsFormsApplication2
             this.label26.Size = new System.Drawing.Size(340, 33);
             this.label26.TabIndex = 6;
             this.label26.Text = "DETALLES DE LA MUESTRA";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(28, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 91);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form12
             // 
@@ -485,6 +499,7 @@ namespace WindowsFormsApplication2
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -527,5 +542,6 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

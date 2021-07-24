@@ -47,7 +47,6 @@ namespace WindowsFormsApplication2
             if (Program.ExecuteScalarReader(query) == "NULL")
                 return;
             Perforacion_ID = Program.ExecuteScalarReader(query);
-            MessageBox.Show(Perforacion_ID);
             actualizar_ID_Muestra();
             actualizar_ID_TipoEnsayo();
             actualizar_ID_EnsayoMuestra();
@@ -106,30 +105,30 @@ namespace WindowsFormsApplication2
 
         private void btnMostrarDetalles_Click(object sender, EventArgs e)
         {
-            Form12 formularioDetalles = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Leer");
-            this.Hide();
-            formularioDetalles.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Leer");
+            this.Close();
         }
 
         private void btnActualizaEnsayoMuestra_Click(object sender, EventArgs e)
         {
-            Form12 formularioActualizar = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Actualizar");
-            this.Hide();
-            formularioActualizar.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Actualizar");
+            this.Close();
         }
 
         private void btnAgregarSinRealizar_Click(object sender, EventArgs e)
         {
-            Form12 formularioAgregarSinRealizar = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "AgregarSinRealizar");
-            this.Hide();
-            formularioAgregarSinRealizar.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "AgregarSinRealizar");
+            this.Close();
         }
 
         private void btnAgregarEnsayoRealizado_Click(object sender, EventArgs e)
         {
-            Form12 formularioAgregarEnsayoMuestraRealizado = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Agregar");
-            this.Hide();
-            formularioAgregarEnsayoMuestraRealizado.Show();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form12(Proyecto_ID, Perforacion_ID, Muestra_ID, ensayoMuestra_ID, tipoEnsayo_ID, "Agregar");
+            this.Close();
         }
 
         private void actualizar_ID_TipoEnsayo()
@@ -166,6 +165,7 @@ namespace WindowsFormsApplication2
             actualizar_ID_EnsayoMuestra();
             InitializeComponent();
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
+            pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             btnSiguienteMuestra.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
             btnAnteriorMuestra.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-30-06.jpg"));
             btnSiguienteEnsayo.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\photo_2021-07-22_20-29-42.jpg"));
@@ -177,6 +177,13 @@ namespace WindowsFormsApplication2
         private void Form11_FormClosed(object sender, FormClosedEventArgs e)
         {
 //            Program.MenSelection = null;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form3();
+            this.Close();
         }
     }
 }

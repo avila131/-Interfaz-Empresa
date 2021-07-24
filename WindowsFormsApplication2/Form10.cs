@@ -2,6 +2,8 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 // Para estilizar DataGridView: https://www.youtube.com/watch?v=HDcdX2endE8
 
@@ -35,6 +37,7 @@ namespace WindowsFormsApplication2
         {
             id_asignado = -1;
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             display();
         }
 

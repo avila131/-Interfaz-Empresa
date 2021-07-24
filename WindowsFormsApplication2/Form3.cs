@@ -576,9 +576,10 @@ namespace WindowsFormsApplication2
         {
             String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
             String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
-            var form = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual, id_proyectoRecibido.ToString());
-            this.Hide();
-            form.ShowDialog();
+            Program.closed_by_user = false;
+            Program.MenSelection = new Form11(String_ID_MuestraActual, String_ID_PerforacionActual,
+                id_proyectoRecibido.ToString());
+            this.Close();
         }
 
         public Form3()
