@@ -63,10 +63,10 @@ namespace WindowsFormsApplication2
             this.textBoxReadOnlyTipoEnsayo = new System.Windows.Forms.TextBox();
             this.groupBoxParametrosMuestra = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
             this.groupBoxEnsayoMuestraRealizado.SuspendLayout();
             this.groupBoxCondicionesParticulares.SuspendLayout();
             this.groupBoxFechaEjecucion.SuspendLayout();
@@ -84,7 +84,8 @@ namespace WindowsFormsApplication2
             // 
             this.labeProyecto.AutoSize = true;
             this.labeProyecto.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeProyecto.Location = new System.Drawing.Point(6, 22);
+            this.labeProyecto.Location = new System.Drawing.Point(9, 34);
+            this.labeProyecto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labeProyecto.Name = "labeProyecto";
             this.labeProyecto.Size = new System.Drawing.Size(74, 23);
             this.labeProyecto.TabIndex = 1;
@@ -94,7 +95,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelPerforacion.AutoSize = true;
             this.labelPerforacion.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelPerforacion.Location = new System.Drawing.Point(6, 70);
+            this.labelPerforacion.Location = new System.Drawing.Point(9, 108);
+            this.labelPerforacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPerforacion.Name = "labelPerforacion";
             this.labelPerforacion.Size = new System.Drawing.Size(100, 23);
             this.labelPerforacion.TabIndex = 2;
@@ -104,7 +106,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelMuestra.AutoSize = true;
             this.labelMuestra.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelMuestra.Location = new System.Drawing.Point(340, 70);
+            this.labelMuestra.Location = new System.Drawing.Point(510, 108);
+            this.labelMuestra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMuestra.Name = "labelMuestra";
             this.labelMuestra.Size = new System.Drawing.Size(76, 23);
             this.labelMuestra.TabIndex = 4;
@@ -114,7 +117,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelTipoEnsayo.AutoSize = true;
             this.labelTipoEnsayo.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelTipoEnsayo.Location = new System.Drawing.Point(-4, 25);
+            this.labelTipoEnsayo.Location = new System.Drawing.Point(-6, 38);
+            this.labelTipoEnsayo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTipoEnsayo.Name = "labelTipoEnsayo";
             this.labelTipoEnsayo.Size = new System.Drawing.Size(65, 23);
             this.labelTipoEnsayo.TabIndex = 5;
@@ -122,16 +126,18 @@ namespace WindowsFormsApplication2
             // 
             // txtPerforacion
             // 
-            this.txtPerforacion.Location = new System.Drawing.Point(109, 70);
+            this.txtPerforacion.Location = new System.Drawing.Point(164, 108);
+            this.txtPerforacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPerforacion.Name = "txtPerforacion";
-            this.txtPerforacion.Size = new System.Drawing.Size(153, 20);
+            this.txtPerforacion.Size = new System.Drawing.Size(228, 26);
             this.txtPerforacion.TabIndex = 6;
             // 
             // txtMuestra
             // 
-            this.txtMuestra.Location = new System.Drawing.Point(419, 72);
+            this.txtMuestra.Location = new System.Drawing.Point(628, 111);
+            this.txtMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMuestra.Name = "txtMuestra";
-            this.txtMuestra.Size = new System.Drawing.Size(153, 20);
+            this.txtMuestra.Size = new System.Drawing.Size(228, 26);
             this.txtMuestra.TabIndex = 7;
             // 
             // comboBoxTipoEnsayo
@@ -155,9 +161,10 @@ namespace WindowsFormsApplication2
             "Peso unitario",
             "Granulometría",
             "Hidrometría"});
-            this.comboBoxTipoEnsayo.Location = new System.Drawing.Point(109, 25);
+            this.comboBoxTipoEnsayo.Location = new System.Drawing.Point(164, 38);
+            this.comboBoxTipoEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxTipoEnsayo.Name = "comboBoxTipoEnsayo";
-            this.comboBoxTipoEnsayo.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxTipoEnsayo.Size = new System.Drawing.Size(228, 28);
             this.comboBoxTipoEnsayo.TabIndex = 8;
             // 
             // groupBoxEnsayoMuestraRealizado
@@ -167,9 +174,11 @@ namespace WindowsFormsApplication2
             this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxEmpleado);
             this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.groupBoxResiduo);
             this.groupBoxEnsayoMuestraRealizado.Controls.Add(this.labelResiduo);
-            this.groupBoxEnsayoMuestraRealizado.Location = new System.Drawing.Point(22, 275);
+            this.groupBoxEnsayoMuestraRealizado.Location = new System.Drawing.Point(33, 423);
+            this.groupBoxEnsayoMuestraRealizado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxEnsayoMuestraRealizado.Name = "groupBoxEnsayoMuestraRealizado";
-            this.groupBoxEnsayoMuestraRealizado.Size = new System.Drawing.Size(772, 366);
+            this.groupBoxEnsayoMuestraRealizado.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxEnsayoMuestraRealizado.Size = new System.Drawing.Size(1158, 563);
             this.groupBoxEnsayoMuestraRealizado.TabIndex = 9;
             this.groupBoxEnsayoMuestraRealizado.TabStop = false;
             // 
@@ -177,9 +186,11 @@ namespace WindowsFormsApplication2
             // 
             this.groupBoxCondicionesParticulares.Controls.Add(this.labelCondicionesParticulares);
             this.groupBoxCondicionesParticulares.Controls.Add(this.txtCondicionesParticulares);
-            this.groupBoxCondicionesParticulares.Location = new System.Drawing.Point(309, 118);
+            this.groupBoxCondicionesParticulares.Location = new System.Drawing.Point(464, 182);
+            this.groupBoxCondicionesParticulares.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxCondicionesParticulares.Name = "groupBoxCondicionesParticulares";
-            this.groupBoxCondicionesParticulares.Size = new System.Drawing.Size(442, 238);
+            this.groupBoxCondicionesParticulares.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxCondicionesParticulares.Size = new System.Drawing.Size(663, 366);
             this.groupBoxCondicionesParticulares.TabIndex = 17;
             this.groupBoxCondicionesParticulares.TabStop = false;
             // 
@@ -187,7 +198,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelCondicionesParticulares.AutoSize = true;
             this.labelCondicionesParticulares.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelCondicionesParticulares.Location = new System.Drawing.Point(24, 16);
+            this.labelCondicionesParticulares.Location = new System.Drawing.Point(36, 25);
+            this.labelCondicionesParticulares.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCondicionesParticulares.Name = "labelCondicionesParticulares";
             this.labelCondicionesParticulares.Size = new System.Drawing.Size(188, 23);
             this.labelCondicionesParticulares.TabIndex = 10;
@@ -196,19 +208,22 @@ namespace WindowsFormsApplication2
             // txtCondicionesParticulares
             // 
             this.txtCondicionesParticulares.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCondicionesParticulares.Location = new System.Drawing.Point(28, 51);
+            this.txtCondicionesParticulares.Location = new System.Drawing.Point(42, 78);
+            this.txtCondicionesParticulares.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCondicionesParticulares.Multiline = true;
             this.txtCondicionesParticulares.Name = "txtCondicionesParticulares";
-            this.txtCondicionesParticulares.Size = new System.Drawing.Size(400, 160);
+            this.txtCondicionesParticulares.Size = new System.Drawing.Size(598, 244);
             this.txtCondicionesParticulares.TabIndex = 13;
             // 
             // groupBoxFechaEjecucion
             // 
             this.groupBoxFechaEjecucion.Controls.Add(this.labelFechaEjecucion);
             this.groupBoxFechaEjecucion.Controls.Add(this.dateTimePickerFechaEjecucion);
-            this.groupBoxFechaEjecucion.Location = new System.Drawing.Point(6, 33);
+            this.groupBoxFechaEjecucion.Location = new System.Drawing.Point(9, 51);
+            this.groupBoxFechaEjecucion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxFechaEjecucion.Name = "groupBoxFechaEjecucion";
-            this.groupBoxFechaEjecucion.Size = new System.Drawing.Size(360, 63);
+            this.groupBoxFechaEjecucion.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFechaEjecucion.Size = new System.Drawing.Size(540, 97);
             this.groupBoxFechaEjecucion.TabIndex = 16;
             this.groupBoxFechaEjecucion.TabStop = false;
             // 
@@ -216,7 +231,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelFechaEjecucion.AutoSize = true;
             this.labelFechaEjecucion.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelFechaEjecucion.Location = new System.Drawing.Point(6, 16);
+            this.labelFechaEjecucion.Location = new System.Drawing.Point(9, 25);
+            this.labelFechaEjecucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFechaEjecucion.Name = "labelFechaEjecucion";
             this.labelFechaEjecucion.Size = new System.Drawing.Size(124, 23);
             this.labelFechaEjecucion.TabIndex = 10;
@@ -224,9 +240,10 @@ namespace WindowsFormsApplication2
             // 
             // dateTimePickerFechaEjecucion
             // 
-            this.dateTimePickerFechaEjecucion.Location = new System.Drawing.Point(150, 16);
+            this.dateTimePickerFechaEjecucion.Location = new System.Drawing.Point(225, 25);
+            this.dateTimePickerFechaEjecucion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePickerFechaEjecucion.Name = "dateTimePickerFechaEjecucion";
-            this.dateTimePickerFechaEjecucion.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerFechaEjecucion.Size = new System.Drawing.Size(298, 26);
             this.dateTimePickerFechaEjecucion.TabIndex = 11;
             // 
             // groupBoxEmpleado
@@ -234,9 +251,11 @@ namespace WindowsFormsApplication2
             this.groupBoxEmpleado.Controls.Add(this.labelEjecutor);
             this.groupBoxEmpleado.Controls.Add(this.txtEjecutor);
             this.groupBoxEmpleado.Controls.Add(this.btnSeleccionarEmpleado);
-            this.groupBoxEmpleado.Location = new System.Drawing.Point(407, 37);
+            this.groupBoxEmpleado.Location = new System.Drawing.Point(610, 57);
+            this.groupBoxEmpleado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxEmpleado.Name = "groupBoxEmpleado";
-            this.groupBoxEmpleado.Size = new System.Drawing.Size(318, 59);
+            this.groupBoxEmpleado.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxEmpleado.Size = new System.Drawing.Size(477, 91);
             this.groupBoxEmpleado.TabIndex = 15;
             this.groupBoxEmpleado.TabStop = false;
             // 
@@ -244,7 +263,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelEjecutor.AutoSize = true;
             this.labelEjecutor.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelEjecutor.Location = new System.Drawing.Point(16, 16);
+            this.labelEjecutor.Location = new System.Drawing.Point(24, 25);
+            this.labelEjecutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEjecutor.Name = "labelEjecutor";
             this.labelEjecutor.Size = new System.Drawing.Size(73, 23);
             this.labelEjecutor.TabIndex = 10;
@@ -252,16 +272,18 @@ namespace WindowsFormsApplication2
             // 
             // txtEjecutor
             // 
-            this.txtEjecutor.Location = new System.Drawing.Point(91, 17);
+            this.txtEjecutor.Location = new System.Drawing.Point(136, 26);
+            this.txtEjecutor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEjecutor.Name = "txtEjecutor";
-            this.txtEjecutor.Size = new System.Drawing.Size(112, 20);
+            this.txtEjecutor.Size = new System.Drawing.Size(166, 26);
             this.txtEjecutor.TabIndex = 14;
             // 
             // btnSeleccionarEmpleado
             // 
-            this.btnSeleccionarEmpleado.Location = new System.Drawing.Point(223, 17);
+            this.btnSeleccionarEmpleado.Location = new System.Drawing.Point(334, 26);
+            this.btnSeleccionarEmpleado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSeleccionarEmpleado.Name = "btnSeleccionarEmpleado";
-            this.btnSeleccionarEmpleado.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionarEmpleado.Size = new System.Drawing.Size(112, 35);
             this.btnSeleccionarEmpleado.TabIndex = 10;
             this.btnSeleccionarEmpleado.Text = "Seleccionar";
             this.btnSeleccionarEmpleado.UseVisualStyleBackColor = true;
@@ -271,18 +293,21 @@ namespace WindowsFormsApplication2
             // 
             this.groupBoxResiduo.Controls.Add(this.radioBtnHayResiduo_NO);
             this.groupBoxResiduo.Controls.Add(this.radioBtnHayResiduo_SI);
-            this.groupBoxResiduo.Location = new System.Drawing.Point(16, 144);
+            this.groupBoxResiduo.Location = new System.Drawing.Point(24, 222);
+            this.groupBoxResiduo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxResiduo.Name = "groupBoxResiduo";
-            this.groupBoxResiduo.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxResiduo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxResiduo.Size = new System.Drawing.Size(300, 154);
             this.groupBoxResiduo.TabIndex = 12;
             this.groupBoxResiduo.TabStop = false;
             // 
             // radioBtnHayResiduo_NO
             // 
             this.radioBtnHayResiduo_NO.AutoSize = true;
-            this.radioBtnHayResiduo_NO.Location = new System.Drawing.Point(21, 61);
+            this.radioBtnHayResiduo_NO.Location = new System.Drawing.Point(32, 94);
+            this.radioBtnHayResiduo_NO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioBtnHayResiduo_NO.Name = "radioBtnHayResiduo_NO";
-            this.radioBtnHayResiduo_NO.Size = new System.Drawing.Size(39, 17);
+            this.radioBtnHayResiduo_NO.Size = new System.Drawing.Size(47, 24);
             this.radioBtnHayResiduo_NO.TabIndex = 1;
             this.radioBtnHayResiduo_NO.TabStop = true;
             this.radioBtnHayResiduo_NO.Text = "No";
@@ -291,9 +316,10 @@ namespace WindowsFormsApplication2
             // radioBtnHayResiduo_SI
             // 
             this.radioBtnHayResiduo_SI.AutoSize = true;
-            this.radioBtnHayResiduo_SI.Location = new System.Drawing.Point(21, 28);
+            this.radioBtnHayResiduo_SI.Location = new System.Drawing.Point(32, 43);
+            this.radioBtnHayResiduo_SI.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioBtnHayResiduo_SI.Name = "radioBtnHayResiduo_SI";
-            this.radioBtnHayResiduo_SI.Size = new System.Drawing.Size(36, 17);
+            this.radioBtnHayResiduo_SI.Size = new System.Drawing.Size(41, 24);
             this.radioBtnHayResiduo_SI.TabIndex = 0;
             this.radioBtnHayResiduo_SI.TabStop = true;
             this.radioBtnHayResiduo_SI.Text = "Sí";
@@ -303,7 +329,8 @@ namespace WindowsFormsApplication2
             // 
             this.labelResiduo.AutoSize = true;
             this.labelResiduo.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.labelResiduo.Location = new System.Drawing.Point(12, 118);
+            this.labelResiduo.Location = new System.Drawing.Point(18, 182);
+            this.labelResiduo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelResiduo.Name = "labelResiduo";
             this.labelResiduo.Size = new System.Drawing.Size(124, 23);
             this.labelResiduo.TabIndex = 10;
@@ -312,9 +339,10 @@ namespace WindowsFormsApplication2
             // btnCambiarMuestra
             // 
             this.btnCambiarMuestra.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarMuestra.Location = new System.Drawing.Point(637, 124);
+            this.btnCambiarMuestra.Location = new System.Drawing.Point(956, 191);
+            this.btnCambiarMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCambiarMuestra.Name = "btnCambiarMuestra";
-            this.btnCambiarMuestra.Size = new System.Drawing.Size(136, 32);
+            this.btnCambiarMuestra.Size = new System.Drawing.Size(204, 49);
             this.btnCambiarMuestra.TabIndex = 10;
             this.btnCambiarMuestra.Text = "Cambiar Muestra";
             this.btnCambiarMuestra.UseVisualStyleBackColor = true;
@@ -322,17 +350,19 @@ namespace WindowsFormsApplication2
             // 
             // txtProyecto
             // 
-            this.txtProyecto.Location = new System.Drawing.Point(109, 21);
+            this.txtProyecto.Location = new System.Drawing.Point(164, 32);
+            this.txtProyecto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProyecto.Name = "txtProyecto";
-            this.txtProyecto.Size = new System.Drawing.Size(239, 20);
+            this.txtProyecto.Size = new System.Drawing.Size(356, 26);
             this.txtProyecto.TabIndex = 11;
             // 
             // btnRegresar
             // 
             this.btnRegresar.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.Location = new System.Drawing.Point(637, 229);
+            this.btnRegresar.Location = new System.Drawing.Point(956, 352);
+            this.btnRegresar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(136, 32);
+            this.btnRegresar.Size = new System.Drawing.Size(204, 49);
             this.btnRegresar.TabIndex = 12;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
@@ -342,9 +372,10 @@ namespace WindowsFormsApplication2
             // btnConfirmarEnsayoMuestra
             // 
             this.btnConfirmarEnsayoMuestra.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarEnsayoMuestra.Location = new System.Drawing.Point(637, 175);
+            this.btnConfirmarEnsayoMuestra.Location = new System.Drawing.Point(956, 269);
+            this.btnConfirmarEnsayoMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnConfirmarEnsayoMuestra.Name = "btnConfirmarEnsayoMuestra";
-            this.btnConfirmarEnsayoMuestra.Size = new System.Drawing.Size(136, 32);
+            this.btnConfirmarEnsayoMuestra.Size = new System.Drawing.Size(204, 49);
             this.btnConfirmarEnsayoMuestra.TabIndex = 13;
             this.btnConfirmarEnsayoMuestra.Text = "Confirmar";
             this.btnConfirmarEnsayoMuestra.UseVisualStyleBackColor = true;
@@ -354,7 +385,8 @@ namespace WindowsFormsApplication2
             // 
             this.lblEstadoEnsayo.AutoSize = true;
             this.lblEstadoEnsayo.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblEstadoEnsayo.Location = new System.Drawing.Point(22, 17);
+            this.lblEstadoEnsayo.Location = new System.Drawing.Point(33, 26);
+            this.lblEstadoEnsayo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstadoEnsayo.Name = "lblEstadoEnsayo";
             this.lblEstadoEnsayo.Size = new System.Drawing.Size(64, 23);
             this.lblEstadoEnsayo.TabIndex = 14;
@@ -363,9 +395,10 @@ namespace WindowsFormsApplication2
             // comboBoxEstadoEnsayo
             // 
             this.comboBoxEstadoEnsayo.FormattingEnabled = true;
-            this.comboBoxEstadoEnsayo.Location = new System.Drawing.Point(101, 20);
+            this.comboBoxEstadoEnsayo.Location = new System.Drawing.Point(152, 31);
+            this.comboBoxEstadoEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxEstadoEnsayo.Name = "comboBoxEstadoEnsayo";
-            this.comboBoxEstadoEnsayo.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxEstadoEnsayo.Size = new System.Drawing.Size(228, 28);
             this.comboBoxEstadoEnsayo.TabIndex = 15;
             // 
             // groupBoxEstadoEnsayo
@@ -373,18 +406,19 @@ namespace WindowsFormsApplication2
             this.groupBoxEstadoEnsayo.Controls.Add(this.comboBoxEstadoEnsayo);
             this.groupBoxEstadoEnsayo.Controls.Add(this.lblEstadoEnsayo);
             this.groupBoxEstadoEnsayo.Controls.Add(this.txtEstadoEnsayoReadOnly);
-            this.groupBoxEstadoEnsayo.Location = new System.Drawing.Point(340, 212);
+            this.groupBoxEstadoEnsayo.Location = new System.Drawing.Point(510, 326);
+            this.groupBoxEstadoEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxEstadoEnsayo.Name = "groupBoxEstadoEnsayo";
-            this.groupBoxEstadoEnsayo.Size = new System.Drawing.Size(264, 57);
+            this.groupBoxEstadoEnsayo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxEstadoEnsayo.Size = new System.Drawing.Size(396, 88);
             this.groupBoxEstadoEnsayo.TabIndex = 18;
             this.groupBoxEstadoEnsayo.TabStop = false;
             // 
             // txtEstadoEnsayoReadOnly
             // 
-            this.txtEstadoEnsayoReadOnly.Location = new System.Drawing.Point(101, 21);
-            this.txtEstadoEnsayoReadOnly.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEstadoEnsayoReadOnly.Location = new System.Drawing.Point(152, 32);
             this.txtEstadoEnsayoReadOnly.Name = "txtEstadoEnsayoReadOnly";
-            this.txtEstadoEnsayoReadOnly.Size = new System.Drawing.Size(99, 20);
+            this.txtEstadoEnsayoReadOnly.Size = new System.Drawing.Size(146, 26);
             this.txtEstadoEnsayoReadOnly.TabIndex = 16;
             // 
             // groupBoxTipoEnsayo
@@ -392,18 +426,19 @@ namespace WindowsFormsApplication2
             this.groupBoxTipoEnsayo.Controls.Add(this.labelTipoEnsayo);
             this.groupBoxTipoEnsayo.Controls.Add(this.comboBoxTipoEnsayo);
             this.groupBoxTipoEnsayo.Controls.Add(this.textBoxReadOnlyTipoEnsayo);
-            this.groupBoxTipoEnsayo.Location = new System.Drawing.Point(22, 202);
+            this.groupBoxTipoEnsayo.Location = new System.Drawing.Point(33, 311);
+            this.groupBoxTipoEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxTipoEnsayo.Name = "groupBoxTipoEnsayo";
-            this.groupBoxTipoEnsayo.Size = new System.Drawing.Size(309, 67);
+            this.groupBoxTipoEnsayo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxTipoEnsayo.Size = new System.Drawing.Size(464, 103);
             this.groupBoxTipoEnsayo.TabIndex = 19;
             this.groupBoxTipoEnsayo.TabStop = false;
             // 
             // textBoxReadOnlyTipoEnsayo
             // 
-            this.textBoxReadOnlyTipoEnsayo.Location = new System.Drawing.Point(109, 24);
-            this.textBoxReadOnlyTipoEnsayo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxReadOnlyTipoEnsayo.Location = new System.Drawing.Point(164, 37);
             this.textBoxReadOnlyTipoEnsayo.Name = "textBoxReadOnlyTipoEnsayo";
-            this.textBoxReadOnlyTipoEnsayo.Size = new System.Drawing.Size(153, 20);
+            this.textBoxReadOnlyTipoEnsayo.Size = new System.Drawing.Size(228, 26);
             this.textBoxReadOnlyTipoEnsayo.TabIndex = 9;
             // 
             // groupBoxParametrosMuestra
@@ -414,9 +449,11 @@ namespace WindowsFormsApplication2
             this.groupBoxParametrosMuestra.Controls.Add(this.txtPerforacion);
             this.groupBoxParametrosMuestra.Controls.Add(this.txtProyecto);
             this.groupBoxParametrosMuestra.Controls.Add(this.txtMuestra);
-            this.groupBoxParametrosMuestra.Location = new System.Drawing.Point(22, 106);
+            this.groupBoxParametrosMuestra.Location = new System.Drawing.Point(33, 163);
+            this.groupBoxParametrosMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxParametrosMuestra.Name = "groupBoxParametrosMuestra";
-            this.groupBoxParametrosMuestra.Size = new System.Drawing.Size(582, 101);
+            this.groupBoxParametrosMuestra.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxParametrosMuestra.Size = new System.Drawing.Size(873, 155);
             this.groupBoxParametrosMuestra.TabIndex = 20;
             this.groupBoxParametrosMuestra.TabStop = false;
             // 
@@ -429,15 +466,28 @@ namespace WindowsFormsApplication2
             this.panel1.Controls.Add(this.label26);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(810, 100);
+            this.panel1.Size = new System.Drawing.Size(1215, 154);
             this.panel1.TabIndex = 69;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(243, 118);
+            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(183, 35);
+            this.button16.TabIndex = 50;
+            this.button16.Text = "Guardar cambios";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(38, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(57, 5);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 91);
+            this.pictureBox2.Size = new System.Drawing.Size(150, 140);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -445,9 +495,10 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(674, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(1011, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(148, 145);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -458,28 +509,19 @@ namespace WindowsFormsApplication2
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(254, 23);
+            this.label26.Location = new System.Drawing.Point(442, 54);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(340, 33);
             this.label26.TabIndex = 6;
             this.label26.Text = "DETALLES DE LA MUESTRA";
             // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(162, 77);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(122, 23);
-            this.button16.TabIndex = 50;
-            this.button16.Text = "Guardar cambios";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
             // Form12
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(810, 653);
+            this.ClientSize = new System.Drawing.Size(1215, 1005);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBoxParametrosMuestra);
             this.Controls.Add(this.groupBoxTipoEnsayo);
@@ -488,6 +530,7 @@ namespace WindowsFormsApplication2
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnCambiarMuestra);
             this.Controls.Add(this.groupBoxEnsayoMuestraRealizado);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form12";
             this.Text = "Form12";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form12_FormClosing);

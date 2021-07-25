@@ -85,7 +85,7 @@ namespace WindowsFormsApplication2
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(433, 313);
+            this.dataGridView1.Size = new System.Drawing.Size(522, 340);
             this.dataGridView1.TabIndex = 49;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication2
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(477, 100);
+            this.panel1.Size = new System.Drawing.Size(558, 100);
             this.panel1.TabIndex = 50;
             // 
             // pictureBox2
@@ -112,7 +112,7 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(369, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(447, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(99, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication2
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(64, 25);
+            this.label23.Location = new System.Drawing.Point(116, 21);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(312, 40);
             this.label23.TabIndex = 6;
@@ -145,7 +145,7 @@ namespace WindowsFormsApplication2
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(477, 450);
+            this.ClientSize = new System.Drawing.Size(558, 480);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);

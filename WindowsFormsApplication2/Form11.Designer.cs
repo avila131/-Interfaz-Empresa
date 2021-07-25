@@ -72,8 +72,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelTituloFijoProyecto.AutoSize = true;
             this.labelTituloFijoProyecto.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTituloFijoProyecto.Location = new System.Drawing.Point(16, 178);
-            this.labelTituloFijoProyecto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTituloFijoProyecto.Location = new System.Drawing.Point(11, 116);
             this.labelTituloFijoProyecto.Name = "labelTituloFijoProyecto";
             this.labelTituloFijoProyecto.Size = new System.Drawing.Size(71, 20);
             this.labelTituloFijoProyecto.TabIndex = 0;
@@ -83,8 +82,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelPerforacion.AutoSize = true;
             this.labelPerforacion.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerforacion.Location = new System.Drawing.Point(16, 263);
-            this.labelPerforacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPerforacion.Location = new System.Drawing.Point(11, 171);
             this.labelPerforacion.Name = "labelPerforacion";
             this.labelPerforacion.Size = new System.Drawing.Size(95, 20);
             this.labelPerforacion.TabIndex = 1;
@@ -94,8 +92,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelTipoEnsayo.AutoSize = true;
             this.labelTipoEnsayo.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoEnsayo.Location = new System.Drawing.Point(16, 345);
-            this.labelTipoEnsayo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTipoEnsayo.Location = new System.Drawing.Point(11, 224);
             this.labelTipoEnsayo.Name = "labelTipoEnsayo";
             this.labelTipoEnsayo.Size = new System.Drawing.Size(61, 20);
             this.labelTipoEnsayo.TabIndex = 2;
@@ -105,8 +102,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelMuestra.AutoSize = true;
             this.labelMuestra.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMuestra.Location = new System.Drawing.Point(567, 268);
-            this.labelMuestra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMuestra.Location = new System.Drawing.Point(378, 174);
             this.labelMuestra.Name = "labelMuestra";
             this.labelMuestra.Size = new System.Drawing.Size(71, 20);
             this.labelMuestra.TabIndex = 3;
@@ -116,8 +112,7 @@ namespace WindowsFormsApplication2
             // 
             this.labelEstadoEnsayoMuestra.AutoSize = true;
             this.labelEstadoEnsayoMuestra.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstadoEnsayoMuestra.Location = new System.Drawing.Point(584, 348);
-            this.labelEstadoEnsayoMuestra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEstadoEnsayoMuestra.Location = new System.Drawing.Point(389, 226);
             this.labelEstadoEnsayoMuestra.Name = "labelEstadoEnsayoMuestra";
             this.labelEstadoEnsayoMuestra.Size = new System.Drawing.Size(61, 20);
             this.labelEstadoEnsayoMuestra.TabIndex = 4;
@@ -125,50 +120,44 @@ namespace WindowsFormsApplication2
             // 
             // txtNombreProyectoSeleccionado
             // 
-            this.txtNombreProyectoSeleccionado.Location = new System.Drawing.Point(165, 182);
-            this.txtNombreProyectoSeleccionado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombreProyectoSeleccionado.Location = new System.Drawing.Point(110, 118);
             this.txtNombreProyectoSeleccionado.Name = "txtNombreProyectoSeleccionado";
-            this.txtNombreProyectoSeleccionado.Size = new System.Drawing.Size(224, 26);
+            this.txtNombreProyectoSeleccionado.Size = new System.Drawing.Size(359, 20);
             this.txtNombreProyectoSeleccionado.TabIndex = 7;
             // 
             // txtNombrePerforacionSeleccionada
             // 
-            this.txtNombrePerforacionSeleccionada.Location = new System.Drawing.Point(242, 268);
-            this.txtNombrePerforacionSeleccionada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombrePerforacionSeleccionada.Location = new System.Drawing.Point(161, 174);
             this.txtNombrePerforacionSeleccionada.Name = "txtNombrePerforacionSeleccionada";
-            this.txtNombrePerforacionSeleccionada.Size = new System.Drawing.Size(224, 26);
+            this.txtNombrePerforacionSeleccionada.Size = new System.Drawing.Size(151, 20);
             this.txtNombrePerforacionSeleccionada.TabIndex = 10;
             // 
             // txtNumeroMuestraSeleccionada
             // 
-            this.txtNumeroMuestraSeleccionada.Location = new System.Drawing.Point(754, 271);
-            this.txtNumeroMuestraSeleccionada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNumeroMuestraSeleccionada.Location = new System.Drawing.Point(503, 176);
             this.txtNumeroMuestraSeleccionada.Name = "txtNumeroMuestraSeleccionada";
-            this.txtNumeroMuestraSeleccionada.Size = new System.Drawing.Size(224, 26);
+            this.txtNumeroMuestraSeleccionada.Size = new System.Drawing.Size(151, 20);
             this.txtNumeroMuestraSeleccionada.TabIndex = 13;
             // 
             // txtTipoEnsayoSeleccionado
             // 
-            this.txtTipoEnsayoSeleccionado.Location = new System.Drawing.Point(242, 348);
-            this.txtTipoEnsayoSeleccionado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTipoEnsayoSeleccionado.Location = new System.Drawing.Point(161, 226);
             this.txtTipoEnsayoSeleccionado.Name = "txtTipoEnsayoSeleccionado";
-            this.txtTipoEnsayoSeleccionado.Size = new System.Drawing.Size(224, 26);
+            this.txtTipoEnsayoSeleccionado.Size = new System.Drawing.Size(151, 20);
             this.txtTipoEnsayoSeleccionado.TabIndex = 16;
             // 
             // txtEstadoEnsayoMuestraSeleccionado
             // 
-            this.txtEstadoEnsayoMuestraSeleccionado.Location = new System.Drawing.Point(700, 348);
-            this.txtEstadoEnsayoMuestraSeleccionado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEstadoEnsayoMuestraSeleccionado.Location = new System.Drawing.Point(467, 226);
             this.txtEstadoEnsayoMuestraSeleccionado.Name = "txtEstadoEnsayoMuestraSeleccionado";
-            this.txtEstadoEnsayoMuestraSeleccionado.Size = new System.Drawing.Size(324, 26);
+            this.txtEstadoEnsayoMuestraSeleccionado.Size = new System.Drawing.Size(217, 20);
             this.txtEstadoEnsayoMuestraSeleccionado.TabIndex = 19;
             // 
             // btnMostrarDetalles
             // 
-            this.btnMostrarDetalles.Location = new System.Drawing.Point(765, 178);
-            this.btnMostrarDetalles.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMostrarDetalles.Location = new System.Drawing.Point(510, 116);
             this.btnMostrarDetalles.Name = "btnMostrarDetalles";
-            this.btnMostrarDetalles.Size = new System.Drawing.Size(178, 63);
+            this.btnMostrarDetalles.Size = new System.Drawing.Size(119, 41);
             this.btnMostrarDetalles.TabIndex = 21;
             this.btnMostrarDetalles.Text = "Ver más detalles";
             this.btnMostrarDetalles.UseVisualStyleBackColor = true;
@@ -176,11 +165,10 @@ namespace WindowsFormsApplication2
             // 
             // btnActualizaEnsayoMuestra
             // 
-            this.btnActualizaEnsayoMuestra.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnActualizaEnsayoMuestra.Location = new System.Drawing.Point(700, 536);
-            this.btnActualizaEnsayoMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnActualizaEnsayoMuestra.BackColor = System.Drawing.Color.LightGray;
+            this.btnActualizaEnsayoMuestra.Location = new System.Drawing.Point(467, 346);
             this.btnActualizaEnsayoMuestra.Name = "btnActualizaEnsayoMuestra";
-            this.btnActualizaEnsayoMuestra.Size = new System.Drawing.Size(184, 57);
+            this.btnActualizaEnsayoMuestra.Size = new System.Drawing.Size(123, 37);
             this.btnActualizaEnsayoMuestra.TabIndex = 22;
             this.btnActualizaEnsayoMuestra.Text = "Actualizar";
             this.btnActualizaEnsayoMuestra.UseVisualStyleBackColor = false;
@@ -188,10 +176,11 @@ namespace WindowsFormsApplication2
             // 
             // btnAgregarSinRealizar
             // 
-            this.btnAgregarSinRealizar.BackColor = System.Drawing.Color.SpringGreen;
-            this.btnAgregarSinRealizar.Location = new System.Drawing.Point(366, 29);
+            this.btnAgregarSinRealizar.BackColor = System.Drawing.Color.LightGray;
+            this.btnAgregarSinRealizar.Location = new System.Drawing.Point(244, 19);
+            this.btnAgregarSinRealizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarSinRealizar.Name = "btnAgregarSinRealizar";
-            this.btnAgregarSinRealizar.Size = new System.Drawing.Size(244, 49);
+            this.btnAgregarSinRealizar.Size = new System.Drawing.Size(163, 32);
             this.btnAgregarSinRealizar.TabIndex = 23;
             this.btnAgregarSinRealizar.Text = "Agregar nuevo sin realizar";
             this.btnAgregarSinRealizar.UseVisualStyleBackColor = false;
@@ -199,10 +188,11 @@ namespace WindowsFormsApplication2
             // 
             // btnAgregarEnsayoRealizado
             // 
-            this.btnAgregarEnsayoRealizado.BackColor = System.Drawing.Color.LightGreen;
-            this.btnAgregarEnsayoRealizado.Location = new System.Drawing.Point(38, 14);
+            this.btnAgregarEnsayoRealizado.BackColor = System.Drawing.Color.LightGray;
+            this.btnAgregarEnsayoRealizado.Location = new System.Drawing.Point(17, 8);
+            this.btnAgregarEnsayoRealizado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarEnsayoRealizado.Name = "btnAgregarEnsayoRealizado";
-            this.btnAgregarEnsayoRealizado.Size = new System.Drawing.Size(280, 80);
+            this.btnAgregarEnsayoRealizado.Size = new System.Drawing.Size(205, 52);
             this.btnAgregarEnsayoRealizado.TabIndex = 24;
             this.btnAgregarEnsayoRealizado.Text = "Agregar EnsayoMuestra que ya se hizo";
             this.btnAgregarEnsayoRealizado.UseVisualStyleBackColor = false;
@@ -211,10 +201,9 @@ namespace WindowsFormsApplication2
             // btnSiguienteMuestra
             // 
             this.btnSiguienteMuestra.InitialImage = null;
-            this.btnSiguienteMuestra.Location = new System.Drawing.Point(990, 271);
-            this.btnSiguienteMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSiguienteMuestra.Location = new System.Drawing.Point(660, 176);
             this.btnSiguienteMuestra.Name = "btnSiguienteMuestra";
-            this.btnSiguienteMuestra.Size = new System.Drawing.Size(36, 31);
+            this.btnSiguienteMuestra.Size = new System.Drawing.Size(24, 20);
             this.btnSiguienteMuestra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSiguienteMuestra.TabIndex = 20;
             this.btnSiguienteMuestra.TabStop = false;
@@ -223,10 +212,9 @@ namespace WindowsFormsApplication2
             // btnAnteriorEnsayo
             // 
             this.btnAnteriorEnsayo.InitialImage = null;
-            this.btnAnteriorEnsayo.Location = new System.Drawing.Point(188, 343);
-            this.btnAnteriorEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAnteriorEnsayo.Location = new System.Drawing.Point(125, 223);
             this.btnAnteriorEnsayo.Name = "btnAnteriorEnsayo";
-            this.btnAnteriorEnsayo.Size = new System.Drawing.Size(42, 35);
+            this.btnAnteriorEnsayo.Size = new System.Drawing.Size(28, 23);
             this.btnAnteriorEnsayo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnAnteriorEnsayo.TabIndex = 15;
             this.btnAnteriorEnsayo.TabStop = false;
@@ -235,10 +223,9 @@ namespace WindowsFormsApplication2
             // btnSiguienteEnsayo
             // 
             this.btnSiguienteEnsayo.InitialImage = null;
-            this.btnSiguienteEnsayo.Location = new System.Drawing.Point(477, 348);
-            this.btnSiguienteEnsayo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSiguienteEnsayo.Location = new System.Drawing.Point(318, 226);
             this.btnSiguienteEnsayo.Name = "btnSiguienteEnsayo";
-            this.btnSiguienteEnsayo.Size = new System.Drawing.Size(36, 31);
+            this.btnSiguienteEnsayo.Size = new System.Drawing.Size(24, 20);
             this.btnSiguienteEnsayo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSiguienteEnsayo.TabIndex = 14;
             this.btnSiguienteEnsayo.TabStop = false;
@@ -247,10 +234,9 @@ namespace WindowsFormsApplication2
             // btnAnteriorMuestra
             // 
             this.btnAnteriorMuestra.InitialImage = null;
-            this.btnAnteriorMuestra.Location = new System.Drawing.Point(700, 266);
-            this.btnAnteriorMuestra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAnteriorMuestra.Location = new System.Drawing.Point(467, 173);
             this.btnAnteriorMuestra.Name = "btnAnteriorMuestra";
-            this.btnAnteriorMuestra.Size = new System.Drawing.Size(42, 35);
+            this.btnAnteriorMuestra.Size = new System.Drawing.Size(28, 23);
             this.btnAnteriorMuestra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnAnteriorMuestra.TabIndex = 12;
             this.btnAnteriorMuestra.TabStop = false;
@@ -259,10 +245,9 @@ namespace WindowsFormsApplication2
             // btnAnteriorPerforacion
             // 
             this.btnAnteriorPerforacion.InitialImage = null;
-            this.btnAnteriorPerforacion.Location = new System.Drawing.Point(188, 263);
-            this.btnAnteriorPerforacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAnteriorPerforacion.Location = new System.Drawing.Point(125, 171);
             this.btnAnteriorPerforacion.Name = "btnAnteriorPerforacion";
-            this.btnAnteriorPerforacion.Size = new System.Drawing.Size(42, 35);
+            this.btnAnteriorPerforacion.Size = new System.Drawing.Size(28, 23);
             this.btnAnteriorPerforacion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnAnteriorPerforacion.TabIndex = 9;
             this.btnAnteriorPerforacion.TabStop = false;
@@ -271,10 +256,9 @@ namespace WindowsFormsApplication2
             // btnSiguientePerforacion
             // 
             this.btnSiguientePerforacion.InitialImage = null;
-            this.btnSiguientePerforacion.Location = new System.Drawing.Point(477, 268);
-            this.btnSiguientePerforacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSiguientePerforacion.Location = new System.Drawing.Point(318, 174);
             this.btnSiguientePerforacion.Name = "btnSiguientePerforacion";
-            this.btnSiguientePerforacion.Size = new System.Drawing.Size(36, 31);
+            this.btnSiguientePerforacion.Size = new System.Drawing.Size(24, 20);
             this.btnSiguientePerforacion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSiguientePerforacion.TabIndex = 8;
             this.btnSiguientePerforacion.TabStop = false;
@@ -288,17 +272,15 @@ namespace WindowsFormsApplication2
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 154);
+            this.panel1.Size = new System.Drawing.Size(781, 100);
             this.panel1.TabIndex = 25;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(34, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(23, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(148, 145);
+            this.pictureBox2.Size = new System.Drawing.Size(99, 94);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -306,10 +288,9 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(832, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(643, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 145);
+            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -320,8 +301,7 @@ namespace WindowsFormsApplication2
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(284, 43);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(226, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(281, 40);
             this.label1.TabIndex = 6;
@@ -331,29 +311,26 @@ namespace WindowsFormsApplication2
             // 
             this.panel2.Controls.Add(this.btnAgregarEnsayoRealizado);
             this.panel2.Controls.Add(this.btnAgregarSinRealizar);
-            this.panel2.Location = new System.Drawing.Point(34, 511);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(23, 332);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(639, 112);
+            this.panel2.Size = new System.Drawing.Size(426, 73);
             this.panel2.TabIndex = 26;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(72, 482);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 313);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 27;
-            this.label2.Text = "label2";
+            this.label2.Text = "Agregar";
             // 
             // btnBorrar
             // 
-            this.btnBorrar.BackColor = System.Drawing.Color.Red;
-            this.btnBorrar.Location = new System.Drawing.Point(700, 436);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBorrar.BackColor = System.Drawing.Color.LightGray;
+            this.btnBorrar.Location = new System.Drawing.Point(628, 346);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(184, 57);
+            this.btnBorrar.Size = new System.Drawing.Size(123, 37);
             this.btnBorrar.TabIndex = 28;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = false;
@@ -361,9 +338,10 @@ namespace WindowsFormsApplication2
             // 
             // Form11
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 674);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(781, 419);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
@@ -386,7 +364,6 @@ namespace WindowsFormsApplication2
             this.Controls.Add(this.labelTipoEnsayo);
             this.Controls.Add(this.labelPerforacion);
             this.Controls.Add(this.labelTituloFijoProyecto);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form11";
             this.Text = "Form11";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form11_FormClosed);
