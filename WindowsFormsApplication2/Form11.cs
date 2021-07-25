@@ -174,6 +174,21 @@ namespace WindowsFormsApplication2
             MostrarDatosActualizadosEnPantalla();
         }
 
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            string query = "DELETE FROM ensayoMuestra WHERE ens_idEnsayoMuestra = " + ensayoMuestra_ID + ";";
+            MySqlCommand command = Program.getNewMySqlCommand(query);
+            try
+            {
+                command.ExecuteNonQuery();
+                MessageBox.Show("Borrao ejecutado correctamente");
+                Program.closed_by_user = false;
+                Program.MenSelection = new Form11(Muestra_ID, Perforacion_ID, Proyecto_ID);
+                this.Close();
+            }
+            catch (Exception)
+            { MessageBox.Show("Error en el borrado del EnsayoMuestra"); }
+        }
 
         private void Form11_Load(object sender, EventArgs e)
         {

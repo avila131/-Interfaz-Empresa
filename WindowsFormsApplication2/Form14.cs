@@ -43,6 +43,7 @@ namespace WindowsFormsApplication2
         public Form14()
         {
             InitializeComponent();
+            comboBoxSeleccionHistorial.Text = "Historial EnsayoMuestra";
             pictureBox1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\logoEmpresa.png"));
             pictureBox2.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Imagenes\\png-transparent-computer-icons-arrow-back-angle-triangle-monochrome.png"));
             dataGridView1.Visible = true;

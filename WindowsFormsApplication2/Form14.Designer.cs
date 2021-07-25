@@ -54,10 +54,9 @@ namespace WindowsFormsApplication2
             "Historial EnsayoMuestra",
             "Historial Muestras",
             "Historial Perforaciones"});
-            this.comboBoxSeleccionHistorial.Location = new System.Drawing.Point(189, 110);
-            this.comboBoxSeleccionHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxSeleccionHistorial.Location = new System.Drawing.Point(284, 169);
             this.comboBoxSeleccionHistorial.Name = "comboBoxSeleccionHistorial";
-            this.comboBoxSeleccionHistorial.Size = new System.Drawing.Size(151, 21);
+            this.comboBoxSeleccionHistorial.Size = new System.Drawing.Size(224, 28);
             this.comboBoxSeleccionHistorial.TabIndex = 1;
             // 
             // panel1
@@ -68,15 +67,17 @@ namespace WindowsFormsApplication2
             this.panel1.Controls.Add(this.label23);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(838, 99);
+            this.panel1.Size = new System.Drawing.Size(1257, 152);
             this.panel1.TabIndex = 44;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(18, 9);
+            this.pictureBox2.Location = new System.Drawing.Point(27, 14);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(63, 63);
+            this.pictureBox2.Size = new System.Drawing.Size(94, 97);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 50;
             this.pictureBox2.TabStop = false;
@@ -84,9 +85,10 @@ namespace WindowsFormsApplication2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(393, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(1047, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(148, 145);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -97,7 +99,8 @@ namespace WindowsFormsApplication2
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(175, 31);
+            this.label23.Location = new System.Drawing.Point(493, 47);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(190, 40);
             this.label23.TabIndex = 6;
@@ -105,10 +108,9 @@ namespace WindowsFormsApplication2
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(365, 109);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAceptar.Location = new System.Drawing.Point(548, 168);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(72, 25);
+            this.btnAceptar.Size = new System.Drawing.Size(108, 38);
             this.btnAceptar.TabIndex = 45;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -117,20 +119,18 @@ namespace WindowsFormsApplication2
             // lblEmptyDataGridView
             // 
             this.lblEmptyDataGridView.AutoSize = true;
-            this.lblEmptyDataGridView.Location = new System.Drawing.Point(131, 144);
-            this.lblEmptyDataGridView.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmptyDataGridView.Location = new System.Drawing.Point(196, 222);
             this.lblEmptyDataGridView.Name = "lblEmptyDataGridView";
-            this.lblEmptyDataGridView.Size = new System.Drawing.Size(220, 13);
+            this.lblEmptyDataGridView.Size = new System.Drawing.Size(332, 20);
             this.lblEmptyDataGridView.TabIndex = 46;
             this.lblEmptyDataGridView.Text = "No hay registros para mostrar de este historial";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 112);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(22, 172);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(241, 20);
             this.label1.TabIndex = 47;
             this.label1.Text = "Seleccione una tabla de historial:";
             // 
@@ -160,8 +160,7 @@ namespace WindowsFormsApplication2
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(79)))), ((int)(((byte)(138)))));
-            this.dataGridView1.Location = new System.Drawing.Point(18, 176);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 271);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -175,22 +174,21 @@ namespace WindowsFormsApplication2
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(1168, 563);
             this.dataGridView1.TabIndex = 48;
             // 
             // Form14
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(838, 456);
+            this.ClientSize = new System.Drawing.Size(1257, 841);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEmptyDataGridView);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBoxSeleccionHistorial);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form14";
             this.Text = "Form14";
             this.panel1.ResumeLayout(false);

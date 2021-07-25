@@ -96,6 +96,7 @@ namespace WindowsFormsApplication2
                     arg[0] = mr.GetString(0);
                     arg[1] = mr.GetString(1);
                     arg[2] = mr.GetString(2);
+                    mr.Close();
                     Program.closed_by_user = false;
                     Program.MenSelection = new Form11(arg[1],arg[2],arg[0]);
                     this.Close();
