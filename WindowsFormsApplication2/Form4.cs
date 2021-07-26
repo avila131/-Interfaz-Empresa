@@ -312,7 +312,6 @@ namespace WindowsFormsApplication2
             {
                 string query = "SELECT func_contarParticipacionesEmpleado(" +
                     Program.Evaluar(empleados[currentEmpleadoIndex].emp_idEmpleado, 1) + ")";
-                MessageBox.Show(query);
                 MySqlCommand mc = Program.getNewMySqlCommand(query);
                 try
                 {
