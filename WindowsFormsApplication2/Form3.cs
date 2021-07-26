@@ -574,6 +574,11 @@ namespace WindowsFormsApplication2
 
         private void btnCrearEnsayoMuestra_Click(object sender, EventArgs e)
         {
+            if (muestras.Count <= 0)
+            {
+                MessageBox.Show("Seleccione una muestra adecuada");
+                return;
+            }
             String_ID_MuestraActual = muestras[currentMuestraIndex].mue_idMuestra;
             String_ID_PerforacionActual = perforaciones[currentPerforacionIndex].per_idPerforacion;
             Program.closed_by_user = false;

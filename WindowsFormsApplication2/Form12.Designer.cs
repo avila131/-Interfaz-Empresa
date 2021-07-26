@@ -382,7 +382,7 @@ namespace WindowsFormsApplication2
             // txtEstadoEnsayoReadOnly
             // 
             this.txtEstadoEnsayoReadOnly.Location = new System.Drawing.Point(101, 21);
-            this.txtEstadoEnsayoReadOnly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstadoEnsayoReadOnly.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstadoEnsayoReadOnly.Name = "txtEstadoEnsayoReadOnly";
             this.txtEstadoEnsayoReadOnly.Size = new System.Drawing.Size(99, 20);
             this.txtEstadoEnsayoReadOnly.TabIndex = 16;
@@ -401,7 +401,7 @@ namespace WindowsFormsApplication2
             // textBoxReadOnlyTipoEnsayo
             // 
             this.textBoxReadOnlyTipoEnsayo.Location = new System.Drawing.Point(109, 24);
-            this.textBoxReadOnlyTipoEnsayo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxReadOnlyTipoEnsayo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReadOnlyTipoEnsayo.Name = "textBoxReadOnlyTipoEnsayo";
             this.textBoxReadOnlyTipoEnsayo.Size = new System.Drawing.Size(153, 20);
             this.textBoxReadOnlyTipoEnsayo.TabIndex = 9;
@@ -468,7 +468,7 @@ namespace WindowsFormsApplication2
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(295, 35);
+            this.label26.Location = new System.Drawing.Point(227, 23);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(340, 33);
             this.label26.TabIndex = 6;

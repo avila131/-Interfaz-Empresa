@@ -185,7 +185,7 @@
             "Número de muestra",
             "Profundidad"});
             this.comboBoxFiltroMuestra.Location = new System.Drawing.Point(349, 19);
-            this.comboBoxFiltroMuestra.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxFiltroMuestra.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxFiltroMuestra.Name = "comboBoxFiltroMuestra";
             this.comboBoxFiltroMuestra.Size = new System.Drawing.Size(186, 23);
             this.comboBoxFiltroMuestra.TabIndex = 37;
@@ -552,7 +552,7 @@
             "Nombre Perforación",
             "Localización Perforación"});
             this.comboBoxFiltroProyecto.Location = new System.Drawing.Point(349, 22);
-            this.comboBoxFiltroProyecto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxFiltroProyecto.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxFiltroProyecto.Name = "comboBoxFiltroProyecto";
             this.comboBoxFiltroProyecto.Size = new System.Drawing.Size(186, 23);
             this.comboBoxFiltroProyecto.TabIndex = 37;
